@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Components", "Demo.Components\Demo.Components.csproj", "{8F99C434-4E00-42E5-A64F-49CC9370D122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcf.Components", "Wcf.Components\Wcf.Components.csproj", "{933ECB41-B845-4F09-A1BB-745A3467B2D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F99C434-4E00-42E5-A64F-49CC9370D122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F99C434-4E00-42E5-A64F-49CC9370D122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F99C434-4E00-42E5-A64F-49CC9370D122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F99C434-4E00-42E5-A64F-49CC9370D122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{933ECB41-B845-4F09-A1BB-745A3467B2D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933ECB41-B845-4F09-A1BB-745A3467B2D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933ECB41-B845-4F09-A1BB-745A3467B2D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933ECB41-B845-4F09-A1BB-745A3467B2D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
