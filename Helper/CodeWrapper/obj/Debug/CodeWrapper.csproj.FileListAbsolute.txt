@@ -1,0 +1,16 @@
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\obj\Debug\ResolveAssemblyReference.cache
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\obj\Debug\CodeWrapper.Properties.Resources.resources
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\obj\Debug\CodeWrapper.csproj.GenerateResource.Cache
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\obj\Debug\CodeWrapper.MainForm.resources
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\bin\Debug\CodeWrapper.exe
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\bin\Debug\CodeWrapper.pdb
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\obj\Debug\CodeWrapper.exe
+C:\VSProjects\GizmoBeach.Condor\CodeWrapper\obj\Debug\CodeWrapper.pdb
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.exe
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.pdb
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\bin\Debug\CodeWrapper.exe
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\bin\Debug\CodeWrapper.pdb
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\ResolveAssemblyReference.cache
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.MainForm.resources
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.Properties.Resources.resources
+C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.csproj.GenerateResource.Cache
