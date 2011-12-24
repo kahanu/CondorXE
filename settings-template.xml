@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<WebAppSettings>
+  <Version>1.0.0</Version>
+  <Namespace></Namespace>
+  <Tables>
+  </Tables>
+  <ServiceLayer Use="true" SupportWCF="true">
+    <ServiceNamespace>Services</ServiceNamespace>
+    <DataContract>http://www.tempuri.net/2010/09/24/</DataContract>
+    <Selected>StandardServiceLayerObjects</Selected>
+    <ClassName></ClassName>
+  </ServiceLayer>
+  <BusinessObjects Use="true">
+    <Selected>StandardBusinessObjects</Selected>
+    <BusinessObjectsNamespace>BusinessObjects</BusinessObjectsNamespace>
+    <ClassName></ClassName>
+  </BusinessObjects>
+  <Common SaveToFile="true" />
+  <DataOptions>
+    <DataObjectsNamespace>DataObjects</DataObjectsNamespace>
+    <VersionColumnName>rowversion</VersionColumnName>
+    <ClassPrefix IsDefault="true">
+      <Name>SQLServer</Name>
+    </ClassPrefix>
+    <ClassSuffix IsDefault="true">
+      <Name>Dao</Name>
+    </ClassSuffix>
+    <DataContext IsDefault="true">
+      <Name>ActionEntities</Name>
+    </DataContext>
+    <DataStore>
+      <Selected>SQLServer</Selected>
+      <ClassName></ClassName>
+    </DataStore>
+    <ORMFramework>
+      <Selected>EntityFramework</Selected>
+      <ClassName></ClassName>
+    </ORMFramework>
+    <DataPattern>
+      <Selected>Repository</Selected>
+      <ClassName></ClassName>
+    </DataPattern>
+  </DataOptions>
+  <UI Use="true">
+    <UINamespace>MyWebsite</UINamespace>
+    <UIWcfServiceNamespace>ServiceReference</UIWcfServiceNamespace>
+    <ClassName></ClassName>
+    <UIFramework>
+      <Selected>AspNetWebFormsUILayerObjects</Selected>
+    </UIFramework>
+  </UI>
+  <IoC Use="true">
+    <ClassName></ClassName>
+    <IoCProvider>
+      <Selected>MvcUnityProvider</Selected>
+    </IoCProvider>
+  </IoC>
+  <DotNet>
+    <DotNetFramework>
+      <Selected>FourPointZero</Selected>
+    </DotNetFramework>
+  </DotNet>
+</WebAppSettings>

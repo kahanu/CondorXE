@@ -1,0 +1,923 @@
+##|TYPE Template
+##|UNIQUEID ff3c282d-72de-430c-9a13-f44b0a1457eb
+##|TITLE CondorXE
+##|NAMESPACE 
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE None
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE System.Windows.Forms.dll, System.Xml.dll %><%#NAMESPACE System, System.Text, System.Collections, System.IO, System.Collections.Generic, System.Xml %>
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui(ZeusContext context) : base(context) {}
+	string sOutputPath = "";
+	private SettingsManager manager;
+	private UILoader loader;
+	
+	//-----------------------------------------
+	// The User Interface Entry Point
+	//-----------------------------------------
+	public override void Setup()
+	{
+		string defaultNamespace = "";
+		
+		// Grab default output path
+		if (input.Contains("defaultOutputPath")) 
+		{
+			sOutputPath = input["defaultOutputPath"].ToString();
+			
+			if (!sOutputPath.EndsWith("\\") ) 
+				sOutputPath += "\\";
+		}
+
+		// This loads the settings from the CondorUILoader.xml file in 
+		// the MyGeneration application folder.
+		loader = new UILoader();
+
+		manager = new SettingsManager(sOutputPath);
+		
+		
+
+		ui.Title = "CondorXE Code Generator - by Gizmo Beach - Version: " + GetVersion;
+		ui.Width = 650;
+		ui.Height = 600;
+		ui.AddTab("General");
+		
+		
+		
+		
+		// Setup Folder selection input control.
+		GuiLabel lblPath = ui.AddLabel("lblPath", "Select the Output Path:", "Select the output path in the field below.");
+		lblPath.Bold = true;
+		GuiTextBox outpath = ui.AddTextBox("txtPath", sOutputPath, "Select the Output Path.");
+		GuiFilePicker btnSelectPath = ui.AddFilePicker("btnPath", "Select Path", "Select the Output Path.", "txtPath", true);
+			
+		GuiLabel lblNamespace = ui.AddLabel ("lblNamespace", "Namespace :",  "Provide your objects namespace.");
+		lblNamespace.Bold = true;	
+		GuiTextBox txtNamespace = ui.AddTextBox("txtNamespace", defaultNamespace, "Provide your objects namespace.");	
+		txtNamespace.Width = ui.Width - 250;
+		txtNamespace.AttachEvent("onkeypress", "txtNamespace_onkeypress");
+		
+		GuiButton btnSetNamespace = ui.AddButton("btnSetNamespace", "Set Namespace", "Sets the namespace to all tabs.");
+		btnSetNamespace.Width = 195;
+		btnSetNamespace.Left = txtNamespace.Width + 20;
+		btnSetNamespace.Top = txtNamespace.Top;
+		btnSetNamespace.AttachEvent("onclick", "btnSetNamespace_onclick");
+		
+
+		// Setup Database selection combobox.
+		GuiLabel lblDatabases = ui.AddLabel("lblDatabases", "Select a Database :", "Select a database in the dropdown below.");
+		lblDatabases.Bold = true;
+		lblDatabases.Width = ui.Width / 2 - 10;
+		
+		GuiComboBox cmbDatabases = ui.AddComboBox("cmbDatabase", "Select a database.");
+		
+		
+		
+
+		// Setup Tables selection multi-select listbox.
+		GuiLabel lblTables = ui.AddLabel("lblTables", "Select Tables :", "Select tables from the listbox below.");
+		lblTables.Bold = true;	
+		
+		GuiListBox lstTablesViews = ui.AddListBox("lstTablesViews", "Select table or view.");
+		lstTablesViews.Height = 140;
+		
+		// Attach the onchange event to the cmbDatabases control.
+		setupDatabaseDropdown(cmbDatabases);
+		
+		GuiLabel lblFooter = ui.AddLabel("lblFooter", "Gizmo Beach - Copyright 2011 ", "");
+		lblFooter.ForeColor = "Navy";
+		
+		
+		/************************ Set some global variables **********************/
+		int labelWidth = 160;
+		int textBoxWidth = ui.Width - 220;
+		int textBoxLeft = 180;
+		int buttonLeft = ui.Width - 50;
+		int buttonWidth = 25;
+		
+
+		
+		
+		/************************ Set Business Objects Tab ******************************/
+		ui.AddTab("Business Objects");
+		
+		GuiLabel lblBusinessObjects = ui.AddLabel("lblBusinessObjects", "---------- Business Objects ----------", "Create Business Objects");
+		lblBusinessObjects.Bold = true;
+		
+		GuiCheckBox chkCreateBusinessObjects = ui.AddCheckBox("chkCreateBusinessObjects", "Create Business Objects", true, "");
+		chkCreateBusinessObjects.AttachEvent("onclick", "CreateBusinessObjects_onclick");
+		
+		GuiLabel lblBizObjsDescription = ui.AddLabel("lblBizObjsDescription", "---------- Business Objects Namespace ---------- ", "");
+		lblBizObjsDescription.Bold = true;
+		
+		GuiTextBox txtBusinessObjectsNamespace = ui.AddTextBox("txtBusinessObjectsNamespace", "BusinessObjects", "Enter the Namespace of the Business Objects project.");
+		
+		GuiLabel lblChooseBusinessObjects = ui.AddLabel("lblChooseBusinessObjects", "----------- Choose the Business Objects Type -------------", "");
+		lblChooseBusinessObjects.Bold = true;
+		
+		GuiComboBox ddlChooseBusinessObjects = ui.AddComboBox("ddlChooseBusinessObjects", "");
+		LoadDDLClasses(ddlChooseBusinessObjects, "BusinessObjects");
+		
+		
+		
+		
+		
+		
+		
+		
+		/************************ Set Service Layer Tab *****************************/
+		ui.AddTab("Service Layer");
+		
+		GuiCheckBox chkEnableServices = ui.AddCheckBox("chkEnableServices", "Enable Services", true, "Check this box if you want to enable services.");
+		chkEnableServices.AttachEvent("onclick", "EnableServices_onclick");
+		
+		GuiLabel lblServiceNamespace = ui.AddLabel("lblServiceNamespace", "Service Layer Visual Studio Project Namespace", "Enter the namespace of the WCF Service Layer project.");
+		GuiTextBox txtServiceNamespace = ui.AddTextBox("txtServiceNamespace", "ActionService", "");
+		
+		GuiLabel lblChooseServiceType = ui.AddLabel("lblChooseServiceType", "----------- Choose the Service Type -------------", "");
+		lblChooseServiceType.Bold = true;
+		
+		GuiComboBox ddlChooseServiceType = ui.AddComboBox("ddlChooseServiceType", "");
+		
+		LoadDDLClasses(ddlChooseServiceType, "ServiceLayer");
+		
+		
+		GuiLabel lblSeparator = ui.AddLabel ("lblSeparator", " ---------  Windows Communication Foundation  -----------",  "");
+		lblSeparator.Bold = true;
+		
+		GuiLabel lblWCFDescription = ui.AddLabel("lblWCFDescription", "This is only applied if your service classes are to be decorated wtih [DataContract] attributes.", "");
+
+		GuiLabel lblDataContract = ui.AddLabel ("lblDataContract", "[ DataContract ]",  "For the [DataContract] Attribute.");
+		lblDataContract.Bold = true;	
+		
+		string year = DateTime.Now.Year.ToString();
+		string month = DateTime.Now.Month.ToString();
+		string day = DateTime.Now.Day.ToString();
+		GuiTextBox txtDataContract = ui.AddTextBox("txtDataContract", "http://www.tempuri.org/" + year + "/" + month + "/" + day + "/", "Provide your URI for the DataContract.");	
+		
+		/************************************************************
+		*** End WCF Service Layer Objects
+		*************************************************************/
+
+
+
+
+
+
+
+
+		/************************ Set Data Objects Tab ******************************/
+		ui.AddTab("Data Options");
+		int leftIndent = 20;
+		int rightColumnPosition = 305;
+		int rightColumnWidth = 285;
+		int leftColumnWidth = ui.Width / 2 - 60;
+
+		GuiLabel lblDataObjectsNamespace = ui.AddLabel("lblDataObjectsNamespace", "---------- Data Objects Namespace ---------- ", "");
+		lblDataObjectsNamespace.Bold = true;
+		lblDataObjectsNamespace.Width = ui.Width / 2 - 60;
+		
+		GuiTextBox txtDataObjectsNamespace = ui.AddTextBox("txtDataObjectsNamespace", "DataObjects", "");
+		txtDataObjectsNamespace.Width = ui.Width / 2 - 60;
+		
+		
+		
+		/************************ Choose ORM Framework *****************************/
+		GuiLabel lblChooseOrmFramework = ui.AddLabel("lblChooseOrmFramework", "---------- Choose ORM Framework ----------", "");
+		lblChooseOrmFramework.Bold = true;
+		lblChooseOrmFramework.Width = leftColumnWidth;
+		
+		GuiComboBox ddlChooseOrmFramework = ui.AddComboBox("ddlChooseOrmFramework", "Choose the ORM Framework");
+		
+		ddlChooseOrmFramework.Width = leftColumnWidth;
+		ddlChooseOrmFramework.AttachEvent("onchange", "ChooseOrmFramework_onchange");
+		LoadDDLClasses(ddlChooseOrmFramework, "ORMFramework");
+		
+		GuiLabel lblDataContextName = ui.AddLabel("lblDataContextName", "---------- Data Context Name ---------- ", "");
+		lblDataContextName.Bold = true;
+		lblDataContextName.Width = leftColumnWidth;
+		
+		GuiTextBox txtDataContextName = ui.AddTextBox("txtDataContextName", "ActionDataContext", "The name used for the ORM Framework.");
+		txtDataContextName.Width = leftColumnWidth;
+		
+		/************************ Set Data Pattern Section *****************************/
+		
+		GuiLabel lblDataPattern = ui.AddLabel("lblDataPattern", "----------- Data Pattern ------------", "");
+		lblDataPattern.Bold = true;
+		lblDataPattern.Width = ui.Width / 2 - 30;
+		
+		GuiComboBox ddlChooseDataPattern = ui.AddComboBox("ddlChooseDataPattern", "Choose Data Pattern");
+		ddlChooseDataPattern.Width = leftColumnWidth;
+		LoadDDLClasses(ddlChooseDataPattern, "DataPattern");
+
+
+
+		GuiLabel lblChooseRDBMS = ui.AddLabel("lblChooseRDBMS", "---------- Choose RDBMS ----------", "");
+		lblChooseRDBMS.Bold = true;
+		lblChooseRDBMS.Left = rightColumnPosition;
+		lblChooseRDBMS.Top = lblDataObjectsNamespace.Top;
+		
+		GuiComboBox ddlChooseDataStore = ui.AddComboBox("ddlChooseDataStore", "Choose the Relational Database Management System");
+		ddlChooseDataStore.Left = rightColumnPosition;
+		ddlChooseDataStore.Width = rightColumnWidth;
+		LoadDDLDataStoreClasses(ddlChooseDataStore, "DataStore");
+		ddlChooseDataStore.AttachEvent("onchange", "ChooseDataStore_onchange");
+
+		/************************* Set Prefix and Suffix Fields ************************/
+		
+		GuiLabel lblClassPrefix = ui.AddLabel("lblClassPrefix", "---------- Data Class Prefix and Suffix ---------- ", "");
+		lblClassPrefix.Bold = true;
+		lblClassPrefix.Top = lblChooseOrmFramework.Top;
+		lblClassPrefix.Left = rightColumnPosition;
+		lblClassPrefix.Width = rightColumnWidth;
+		
+		GuiTextBox txtClassPrefix = ui.AddTextBox("txtClassPrefix", "", "Enter an optional prefix for the data classes");
+		txtClassPrefix.Top = ddlChooseOrmFramework.Top;
+		txtClassPrefix.Left = rightColumnPosition;
+		txtClassPrefix.Width = 100;
+		txtClassPrefix.Enabled = false;
+		
+		GuiLabel lblCustomer = ui.AddLabel("lblCustomer", "Customer", "");
+		lblCustomer.Top = txtClassPrefix.Top;
+		lblCustomer.Left = txtClassPrefix.Left + txtClassPrefix.Width;
+		lblCustomer.Width = 53;
+		
+		GuiTextBox txtClassSuffix = ui.AddTextBox("txtClassSuffix", "Dao", "Enter an optional suffix for the data classes");
+		txtClassSuffix.Top = lblCustomer.Top;
+		txtClassSuffix.Left = lblCustomer.Left + lblCustomer.Width + 5;
+		txtClassSuffix.Width = 100;
+		
+		GuiLabel lblDataClassExample = ui.AddLabel("lblDataClassExample", "Example: LinqCustomerDao.cs", "");
+		lblDataClassExample.Top = lblDataContextName.Top;
+		lblDataClassExample.Left = rightColumnPosition;
+		lblDataClassExample.Width = rightColumnWidth;
+		
+		
+				
+		GuiLabel lblVersionColumnName = ui.AddLabel("lblVersionColumnName", "-------------- Version Column Name -------------", "This is the name of the column in each table used for concurrency.");
+		lblVersionColumnName.Bold = true;
+		lblVersionColumnName.Left = rightColumnPosition;
+		lblVersionColumnName.Width = rightColumnWidth;
+		
+		GuiTextBox txtVersionColumnName = ui.AddTextBox("txtVersionColumnName", "rowversion", "This is the name of the column in each table used for concurrency.");
+		txtVersionColumnName.Width = rightColumnWidth;
+		txtVersionColumnName.Left = rightColumnPosition;
+		
+
+		
+		
+		
+		
+		
+		/************************************************* UI Tab *********************************************************/
+		ui.AddTab("UI");
+
+		GuiLabel lblUI = ui.AddLabel("lblUI", "------------- UI Definitions -------------", "");
+		lblUI.Bold = true;
+		
+		GuiCheckBox chkRenderUI = ui.AddCheckBox("chkRenderUI", "Render the UI Layer classes.", true, "");
+		chkRenderUI.AttachEvent("onclick", "RenderUI_onchange");
+		
+		GuiLabel lblUINamespace = ui.AddLabel("lblUINamespace", "Enter the UI Namespace", "");
+		GuiTextBox txtUINamespace = ui.AddTextBox("txtUINamespace", "", "");
+		txtUINamespace.AttachEvent("onkeypress", "MirrorUINamespace_onkeypress");
+		
+		
+		GuiLabel lblWCFServiceNamespace = ui.AddLabel("lblWCFServiceNamespace", "This is the name of the WCF service namespace, if any.", "");
+		GuiTextBox txtWCFServiceNamespace = ui.AddTextBox("txtWCFServiceNamespace", "Wcf.ServiceReference", "Enter the WCF service namespace for your application, if WCF is being used.");
+		
+		GuiLabel lblDescription = ui.AddLabel("lblDescription", "Choose the Presentation Layer for your application and some repository and helper classes will be generated.", "");
+		
+		GuiComboBox ddlChooseUI = ui.AddComboBox("ddlChooseUI", "");
+		LoadDDLClasses(ddlChooseUI, "UIFramework");
+
+		
+		
+		
+		
+
+
+		
+		/************************ Set Ioc Tab ******************************/
+		ui.AddTab("IoC");
+		
+
+		GuiLabel lblIoC = ui.AddLabel("lblIoC", "------------ Dependency Injection Providers --------------", "");
+		lblIoC.Bold = true;
+		
+		GuiCheckBox chkUseIoC = ui.AddCheckBox("chkUseIoC", "Use Dependency Injection", false, "");
+		chkUseIoC.AttachEvent("onclick", "UseIoC_onclick");
+		
+		GuiLabel lblIocDescription = ui.AddLabel("lblIocDescription", "Select the Dependency Injection (IoC) provider for your application.  Create your own IoC Provider classes to generate bootstrapper classes, web configuration sections, or anything that you need, and plug it into this Drop Down.", "The Inversion Of Control container will be created in your UI project.");
+		lblIocDescription.Height = 40;
+		
+		GuiComboBox ddlChooseIoCProvider = ui.AddComboBox("ddlChooseIoCProvider", "Choose the IoC provider");
+		LoadDDLClasses(ddlChooseIoCProvider, "IoCProvider");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		/************************ Set Common Tab ******************************/
+		ui.AddTab("Common");
+		
+		GuiCheckBox chkSaveToFile = ui.AddCheckBox("chkSaveToFile", "Save Files", true, "Check to save files, otherwise is will simply display the results");
+		
+		GuiLabel lblChooseDotNetFramework = ui.AddLabel("lblChooseDotNetFramework", "------------ Choose .Net Framework --------------", "");
+		lblChooseDotNetFramework.Bold = true;
+				
+		GuiComboBox ddlChooseDotNetFramework = ui.AddComboBox("ddlChooseDotNetFramework", "Choose the .Net Framework for your application.");
+		ddlChooseDotNetFramework.Width = ui.Width / 2 - 60;
+		
+		LoadDDL(ddlChooseDotNetFramework, "DotNetFramework");
+		ddlChooseDotNetFramework.AttachEvent("onchange", "ChooseDotNetFramework_onchange");
+		
+		GuiLabel lblPluralizerHeading = ui.AddLabel("lblPluralizerHeading", "--------------- Pluralizer Settings ----------------", "");
+		
+		GuiLabel lblPluralizer = ui.AddLabel("lblPluralizer", "Select settings for pluralizing of objects.", "");
+		GuiLabel lblPluralizerDisclaimer = ui.AddLabel("lblPluralizerDisclaimer", "Disclaimer: this hasn't been throughly tested.  Leaving it at 'Unchanged' is recommended.", "");
+		
+		GuiLabel lblClassNames = ui.AddLabel("lblClassNames", "----------- Class Names ------------", "");
+		lblClassNames.Bold = true;
+		GuiComboBox ddlClassNamePluralizer = ui.AddComboBox("ddlClassNamePluralizer", "Choose how you want your class names created.");
+		ddlClassNamePluralizer.Width = leftColumnWidth;
+		ddlClassNamePluralizer.Add("Unchanged", "Unchanged");
+		ddlClassNamePluralizer.Add("Singular", "Singular");
+		ddlClassNamePluralizer.Add("Plural", "Plural");
+		ddlClassNamePluralizer.Select("Unchanged");
+		
+		
+		GuiLabel lblFieldNames = ui.AddLabel("lblFieldNames", "----------- Field Names ------------", "");
+		lblFieldNames.Bold = true;
+		
+		GuiComboBox ddlFieldNamePluralizer = ui.AddComboBox("ddlFieldNamePluralizer", "Choose how you want your field names created.");
+		ddlFieldNamePluralizer.Width = leftColumnWidth;
+		ddlFieldNamePluralizer.Add("Unchanged", "Unchanged");
+		ddlFieldNamePluralizer.Add("Singular", "Singular");
+		ddlFieldNamePluralizer.Add("Plural", "Plural");
+		ddlFieldNamePluralizer.Select("Unchanged");
+		
+		GuiLabel lblPropertyNames = ui.AddLabel("lblPropertyNames", "----------- Properties ------------", "");
+		lblPropertyNames.Bold = true;
+		
+		GuiComboBox ddlPropertyNamePluralizer = ui.AddComboBox("ddlPropertyNamePluralizer", "Choose how you want your properties created.");
+		ddlPropertyNamePluralizer.Width = leftColumnWidth;
+		ddlPropertyNamePluralizer.Add("Unchanged", "Unchanged");
+		ddlPropertyNamePluralizer.Add("Singular", "Singular");
+		ddlPropertyNamePluralizer.Add("Plural", "Plural");
+		ddlPropertyNamePluralizer.Select("Unchanged");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		ui.ShowGui = true;
+		
+		/******************************************************************************************
+		*	Begin the Settings Manager Load functions
+		*	This section populates the form from the WebAppSettings.xml file
+		*   in the root of the Visual Studio project.
+		*   
+		*   The SettingsManager class can be found at the bottom of this page.
+		*******************************************************************************************/
+		
+		// Set the namespace
+		txtNamespace.Text = manager.Namespace;
+
+		
+		// Set Business Objects settings
+		Dictionary<string, GuiCheckBox> chkBoxList = new Dictionary<string, GuiCheckBox>();
+		chkBoxList.Add("Use", chkCreateBusinessObjects);
+		manager.SetCheckBoxes(chkBoxList, "//BusinessObjects");
+		
+		Dictionary<string, GuiTextBox> TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("BusinessObjectsNamespace", txtBusinessObjectsNamespace);
+		manager.SetTextBoxes(TextBoxList, "//BusinessObjects");
+		CreateBusinessObjects_onclick(chkCreateBusinessObjects);
+		
+		
+		TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("DataContract", txtDataContract);
+		TextBoxList.Add("ServiceNamespace", txtServiceNamespace);
+		manager.SetTextBoxes(TextBoxList, "//ServiceLayer");
+		EnableServices_onclick(chkEnableServices);
+		
+		// Data Objects settings
+		TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("DataObjectsNamespace", txtDataObjectsNamespace);
+		TextBoxList.Add("VersionColumnName", txtVersionColumnName);
+		manager.SetTextBoxes(TextBoxList, "//DataOptions");
+		
+		TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("Name", txtDataContextName);
+		manager.SetTextBoxes(TextBoxList, "//DataOptions/DataContext");
+
+		
+		TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("Name", txtClassPrefix);
+		manager.SetTextBoxes(TextBoxList, "//DataOptions/ClassPrefix");
+		
+		TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("Name", txtClassSuffix);
+		manager.SetTextBoxes(TextBoxList, "//DataOptions/ClassSuffix");
+		
+		// UI settings
+		
+		TextBoxList = new Dictionary<string, GuiTextBox>();
+		TextBoxList.Add("UINamespace", txtUINamespace);
+		TextBoxList.Add("UIWcfServiceNamespace", txtWCFServiceNamespace);
+		manager.SetTextBoxes(TextBoxList, "//UI");
+		
+		chkBoxList = new Dictionary<string, GuiCheckBox>();
+		chkBoxList.Add("Use", chkRenderUI);
+		manager.SetCheckBoxes(chkBoxList, "//UI");
+
+		// IoC settings
+		chkBoxList = new Dictionary<string, GuiCheckBox>();
+		chkBoxList.Add("Use", chkUseIoC);
+		manager.SetCheckBoxes(chkBoxList, "//IoC");
+
+
+
+		// Initiates these events when the form loads.
+		UseIoC_onclick(chkUseIoC);
+		txtNamespace_onkeypress(txtNamespace);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// Toggle the state of the "Set Namespace" button if
+	// the namespace field is empty or not.
+	public void txtNamespace_onkeypress(GuiTextBox txt)
+	{
+		GuiButton btn = ui["btnSetNamespace"] as GuiButton;
+		
+		if (string.IsNullOrEmpty(txt.Text))
+		{
+			btn.Enabled = false;
+		}else{
+			btn.Enabled = true;
+		}
+	}
+	
+	// For new applications, distribute the primary namespace
+	// across all tabs for all namespaces.
+	public void btnSetNamespace_onclick(GuiButton btn)
+	{
+		GuiTextBox ns = ui["txtNamespace"] as GuiTextBox;
+		GuiTextBox nsBizObj = ui["txtBusinessObjectsNamespace"] as GuiTextBox;
+		GuiTextBox nsService = ui["txtServiceNamespace"] as GuiTextBox;
+		GuiTextBox nsDataObject = ui["txtDataObjectsNamespace"] as GuiTextBox;
+		GuiTextBox nsUI = ui["txtUINamespace"] as GuiTextBox;
+
+		string baseNs = ns.Text;
+		
+		if (!string.IsNullOrEmpty(baseNs))
+		{
+			if (nsBizObj.Text == "BusinessObjects")
+				nsBizObj.Text = baseNs + ".BusinessObjects";
+				
+			if (nsService.Text == "Services")
+				nsService.Text = baseNs + ".Services";
+				
+			if (nsDataObject.Text == "DataObjects")
+				nsDataObject.Text = baseNs + ".DataObjects";
+				
+			if (nsUI.Text == "MyWebsite")
+				nsUI.Text = baseNs + ".MyWebsite";
+		}
+	}
+	
+	// On the UI tab, reflect the keystrokes from the UI namespace
+	// and mirror them into the WCF service reference text box.
+	public void MirrorUINamespace_onkeypress(GuiTextBox uiNamespace)
+	{
+		GuiTextBox wcfNamespace = ui["txtWCFServiceNamespace"] as GuiTextBox;
+		wcfNamespace.Text = uiNamespace.Text + "ServiceReference";
+	}
+	
+	// Toggle the state of the IoCProvider controls based on the 
+	// checkbox state.
+	public void UseIoC_onclick(GuiCheckBox chk)
+	{
+		GuiComboBox ddl = ui["ddlChooseIoCProvider"] as GuiComboBox;
+		if (chk.Checked)
+		{
+			ddl.Enabled = true;
+		}
+		else
+		{
+			ddl.Enabled = false;
+		}
+	}
+	
+	// Load the dropdown list box with the value attributes from the
+	// CondorXELoader.xml file for the selected object type.
+	public void LoadDDL(GuiComboBox ddl, string objectName)
+	{
+		XmlNodeList nodeList = loader.GetNodes("//add[@type='" + objectName + "']");
+		string selected = manager.GetNode("//" + objectName + "/Selected").InnerText;
+		foreach (XmlNode item in nodeList)
+		{
+			ddl.Add(item.Attributes["value"].Value, item.Attributes["text"].Value);
+			if (selected == item.Attributes["value"].Value)
+				ddl.Select(item.Attributes["value"].Value);
+		}
+	}
+	
+	// Load the dropdown list box with the class name attribute value
+	// from the CondorXELoader.xml file for the selected object type.
+	public void LoadDDLClasses(GuiComboBox ddl, string objectName)
+	{
+		XmlNodeList nodeList = loader.GetNodes("//add[@type='" + objectName + "']");
+		string selected = manager.GetNode("//" + objectName + "/Selected").InnerText;
+		foreach (XmlNode item in nodeList)
+		{
+			ddl.Add(item.Attributes["class"].Value, item.Attributes["text"].Value);
+			if (item.Attributes["class"].Value.Contains(selected))
+				ddl.Select(item.Attributes["class"].Value);
+		}
+	}
+	
+	public void LoadDDLDataStoreClasses(GuiComboBox ddl, string objectName)
+	{
+		XmlNodeList nodeList = loader.GetNodes("//add[@type='" + objectName + "']");
+		string selected = manager.GetNode("//" + objectName + "/ClassName").InnerText;
+		foreach (XmlNode item in nodeList)
+		{
+			ddl.Add(item.Attributes["class"].Value, item.Attributes["text"].Value);
+			if (item.Attributes["class"].Value == selected)
+				ddl.Select(item.Attributes["class"].Value);
+		}
+	}
+	
+	// Toggle the state of the controls for the Services tab
+	// based on the checkbox state.
+	public void EnableServices_onclick(GuiCheckBox chk)
+	{
+		GuiTextBox txtDataContract = ui["txtDataContract"] as GuiTextBox;
+		GuiTextBox txtServiceNamespace = ui["txtServiceNamespace"] as GuiTextBox;
+		GuiComboBox ddlServiceType = ui["ddlChooseServiceType"] as GuiComboBox;	
+		
+		if (chk.Checked)
+		{
+			ddlServiceType.Enabled = true;
+			txtServiceNamespace.Enabled = true;
+			txtDataContract.Enabled = true;
+		}
+		else
+		{
+			ddlServiceType.Enabled = false;
+			txtServiceNamespace.Enabled = false;
+			txtDataContract.Enabled = false;
+		}
+	}
+	
+	// Toggle the state of the controls for the UI tab
+	// based on the checkbox state.
+	public void RenderUI_onchange(GuiCheckBox chk)
+	{
+		GuiTextBox txtNS = ui["txtUINamespace"] as GuiTextBox;
+		GuiComboBox ddlUI = ui["ddlChooseUI"] as GuiComboBox;
+		GuiTextBox txtWcf = ui["txtWCFServiceNamespace"] as GuiTextBox;
+		
+		string selectedUI = ddlUI.SelectedValue;
+
+		if (chk.Checked)
+		{
+			txtNS.Enabled = true;
+			ddlUI.Enabled = true;
+			txtWcf.Enabled = true;
+		}
+		else
+		{
+			txtNS.Enabled = false;
+			ddlUI.Enabled = false;
+			txtWcf.Enabled = false;
+		}
+	}
+
+	// Toggle the state of the controls for the BusinessObjects tab
+	// based on the checkbox state.
+	public void CreateBusinessObjects_onclick(GuiCheckBox chk)
+	{
+		GuiTextBox txtBox = ui["txtBusinessObjectsNamespace"] as GuiTextBox;
+		GuiComboBox ddlChooseBiz = ui["ddlChooseBusinessObjects"] as GuiComboBox;
+		
+		if (chk.Checked)
+		{
+			txtBox.Enabled = true;
+			ddlChooseBiz.Enabled = true;
+		}
+		else
+		{
+			txtBox.Enabled = false;
+			ddlChooseBiz.Enabled = false;
+		}
+	}
+
+	
+	// Update the class prefix for the chosen data store.
+	public void ChooseDataStore_onchange(GuiComboBox ddl)
+	{
+		XmlNode prefixNode = manager.GetNode("//ClassPrefix");
+		bool isPrefixDefault = Convert.ToBoolean(prefixNode.Attributes["IsDefault"].Value);
+		GuiTextBox txtClassPrefix = ui["txtClassPrefix"] as GuiTextBox;
+		
+		if (isPrefixDefault){
+			string className = ddl.SelectedValue;
+			XmlNode dataStoreNode = loader.GetNode("//add[@class='" + className + "']");
+			string nodeVal = dataStoreNode.Attributes["value"].Value;
+			txtClassPrefix.Text = nodeVal;
+		}
+	}
+
+	// Change the DotNet framework version and run a simple
+	// validation based on other values.
+	public void ChooseDotNetFramework_onchange(GuiComboBox ddl)
+	{
+		
+		bool is3point5 = (ddl.SelectedValue == "3.5") ? true : false;
+		
+		GuiComboBox ddlOrm = ui["ddlChooseOrmFramework"] as GuiComboBox;		
+		bool isEF = (ddlOrm.SelectedValue.ToLower() == "entityframework") ? true : false;
+		
+		if (is3point5 && isEF)
+		{
+			System.Windows.Forms.MessageBox.Show("The Entity Framework is not presently available for the .Net 3.5 Framework.  \nPlease change the .Net Target Framework on the Common Tab to 4.0 to use the Entity Framework.", "Entity Framework Alert");
+		}
+	}
+	
+	// For the ORM Framework, set the DataContext name based on the
+	// ORM framework type and run a simple validation.
+	public void ChooseOrmFramework_onchange(GuiComboBox ddl)
+	{
+		GuiTextBox txtBox = ui["txtDataContextName"] as GuiTextBox;
+		XmlNode node = manager.GetNode("//DataContext");
+		bool isDefault = Convert.ToBoolean(node.Attributes["IsDefault"].Value);
+		
+		GuiComboBox ddlDotNet = ui["ddlChooseDotNetFramework"] as GuiComboBox;	
+		bool is3point5 = (ddlDotNet.SelectedValue.ToLower() == "3.5") ? true : false;
+		
+		if (ddl.SelectedValue == "LinqToSql")
+		{
+			if (isDefault)
+				txtBox.Text = "ActionDataContext";
+		}
+		else
+		{
+		
+			if (is3point5)
+			{
+				System.Windows.Forms.MessageBox.Show("The Entity Framework is not presently available for the .Net 3.5 Framework.  \nPlease change the .Net Target Framework on the Common Tab to 4.0 to use the Entity Framework.", "Entity Framework Alert");
+			}
+			else
+			{
+				if (isDefault)
+					txtBox.Text = "ActionEntities";
+			}
+		}
+	}
+	
+	// On the General Tab, populated the databases drop down list.
+	public void setupDatabaseDropdown(GuiComboBox cmbDatabases)
+	{
+		try 
+		{	
+			if (MyMeta.IsConnected)
+			{
+				cmbDatabases.BindData(MyMeta.Databases);
+				if (MyMeta.DefaultDatabase != null) 
+				{
+					cmbDatabases.SelectedValue = MyMeta.DefaultDatabase.Alias;
+					bind(cmbDatabases.SelectedValue, "Tables");
+				}
+			}
+		}
+		catch (Exception ex)
+		{
+		}
+	}
+	
+	// A helper method used with 'setupDatabaseDropdown' to 
+	// bind the selected table from the settings.xml file
+	// with the MyMeta databases list.
+	public void bind(string sDatabase, string sObjectType)
+	{
+		int count = 0;
+	
+		GuiListBox lstTables = ui["lstTablesViews"] as GuiListBox;
+		
+		try 
+		{	
+			IDatabase db = MyMeta.Databases[sDatabase];
+			if(sObjectType=="Tables") 
+			{
+				lstTables.BindData(db.Tables);
+				SettingsManager manager = new SettingsManager(sOutputPath);
+				manager.SelectTables(lstTables);
+			} 
+			else 
+			{
+				//lstTables.BindData(db.Views);
+			}
+		}
+		catch (Exception ex)
+		{
+			//System.Windows.Forms.MessageBox.Show(ex.Message);
+		}
+	}
+
+	public string GetVersion
+	{
+		get 
+		{ 
+			return Condor.Version;
+		}
+	}
+}
+
+
+/*******************************************************
+*** Begin Settings Manager class
+***
+*** This class helps restore settings to the UI from 
+*** the settings.xml file.
+*******************************************************/
+public class SettingsManager
+{
+	private string _fileName = "settings.xml";
+	private string _xmlTemplate = "settings-template.xml";
+	private XmlDocument _xmlDoc;
+
+	public SettingsManager(string outputPath)
+	{
+		Load(outputPath);
+	}
+	
+	public string Namespace
+	{
+		get { return GetNode("//Namespace").InnerText; }
+	}
+	
+		
+	public void SelectTables(GuiListBox listBox)
+	{
+		XmlNodeList tableNameNodes = GetNodes("//Table");
+		foreach (XmlNode node in tableNameNodes)
+		{
+			listBox.Select(node.Attributes["Name"].Value);
+		}
+	}
+	
+	public void SetCheckBoxes(Dictionary<string, GuiCheckBox> chkList, string xpath)
+	{
+		XmlNode parentNode = GetNode(xpath);
+		foreach (XmlAttribute attr in parentNode.Attributes)
+		{
+			if (chkList.ContainsKey(attr.Name))
+			{
+				chkList[attr.Name].Checked = Convert.ToBoolean(attr.Value);
+			}
+		}
+		
+		foreach (XmlNode node in parentNode.ChildNodes)
+		{
+			if (chkList.ContainsKey(node.Name))
+			{
+				chkList[node.Name].Checked = Convert.ToBoolean(node.InnerText);
+			}
+		}
+	}
+	
+	public void SetTextBoxes(Dictionary<string, GuiTextBox> pathsList, string xpath)
+	{
+		XmlNode servicePathsNode = GetNode(xpath);
+		foreach (XmlNode node in servicePathsNode.ChildNodes)
+		{
+			if (pathsList.ContainsKey(node.Name))
+			{
+				pathsList[node.Name].Text = node.InnerText;
+			}
+		}
+	}
+		
+	public XmlNode GetNode(string xpath)
+	{
+		XmlNode node = _xmlDoc.DocumentElement.SelectSingleNode(xpath);
+		return node;
+	}
+	
+	public XmlNodeList GetNodes(string xpath)
+	{
+		XmlNodeList nodes = _xmlDoc.DocumentElement.SelectNodes(xpath);
+		return nodes;
+	}
+	
+	
+	private void Load(string outputPath)
+	{
+		XmlDocument xmlDoc = new XmlDocument();
+		string fileName = _fileName;
+
+		try
+		{
+			xmlDoc.Load(outputPath + fileName);
+		}
+		catch (FileNotFoundException)
+		{
+			xmlDoc.Load(_xmlTemplate);
+			xmlDoc.Save(outputPath + fileName);
+		}
+		catch (Exception ex)
+		{
+			System.Windows.Forms.MessageBox.Show("Error: " + ex.Message);
+		}
+		_xmlDoc = xmlDoc;	
+	}
+	
+} // End SettingsManager class
+
+
+public class UILoader
+{
+	private XmlDocument _xmlDoc;
+	private string _fileName = "CondorXELoader.xml";
+	
+	public UILoader()
+	{
+		Load();
+	}
+	
+
+	public XmlNode GetNode(string xpath)
+	{
+		XmlNode node = _xmlDoc.DocumentElement.SelectSingleNode(xpath);
+		return node;
+	}
+	
+	public XmlNodeList GetNodes(string xpath)
+	{
+		XmlNodeList nodes = _xmlDoc.DocumentElement.SelectNodes(xpath);
+		return nodes;
+	}
+	
+	private void Load()
+	{
+		XmlDocument xmlDoc = new XmlDocument();
+		xmlDoc.Load(_fileName);
+		_xmlDoc = xmlDoc;
+	}
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#REFERENCE System.Windows.Forms.dll, System.Xml.dll %><%
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	public GeneratedTemplate(ZeusContext context) : base(context) {}
+
+	//---------------------------------------------------
+	// Render() is where you want to write your logic    
+	//---------------------------------------------------
+	public override void Render()
+	{
+		Dnp.Utils.ProgressDialog progressDialog = new Dnp.Utils.ProgressDialog();
+		
+		Condor.Init(MyMeta, context, input, DnpUtils, progressDialog);	
+		Condor.Execute();
+		Condor.Print();
+	}
+
+}
+%>
+##|BODY_END
