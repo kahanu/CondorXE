@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0794882-3726-4F3E-813E-8D1A3A7B2F15}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Condor.Core</RootNamespace>
+    <AssemblyName>Condor.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dnp.Utils, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9cb10e1cb70fd3b4, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\MyGeneration13\Dnp.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="MyMeta, Version=1.3.0.0, Culture=neutral, PublicKeyToken=dbe33188b40af272, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\MyGeneration13\MyMeta.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginInterfaces, Version=1.3.0.0, Culture=neutral, PublicKeyToken=23fec39d9195101e, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files\MyGeneration13\PluginInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
+    <Compile Include="Infrastructure\AutoMapperExtensions.cs" />
+    <Compile Include="CommonUtility.cs" />
+    <Compile Include="DefaultDataStoreFactory.cs" />
+    <Compile Include="EnumFactory.cs" />
+    <Compile Include="GenTable.cs" />
+    <Compile Include="HeaderUtility.cs" />
+    <Compile Include="Interfaces\IAutoMapperFramework.cs" />
+    <Compile Include="Interfaces\IBusinessObjects.cs" />
+    <Compile Include="Interfaces\ICodeTemplateBuilder.cs" />
+    <Compile Include="Interfaces\IDataPattern.cs" />
+    <Compile Include="Interfaces\IDataStore.cs" />
+    <Compile Include="Interfaces\IIoCProvider.cs" />
+    <Compile Include="Interfaces\IMapperConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces\IMapperExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interfaces\IORMFramework.cs" />
+    <Compile Include="Interfaces\IProperty.cs" />
+    <Compile Include="Interfaces\IRenderObject.cs" />
+    <Compile Include="Interfaces\IServiceObjects.cs" />
+    <Compile Include="Interfaces\IUIObjects.cs" />
+    <Compile Include="Interfaces\IWCFServiceHost.cs" />
+    <Compile Include="PluralizerFactory.cs" />
+    <Compile Include="ProgressDialogWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderDataAnnotations.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertiesRenderForeignKey.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderEntLibValidation.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderShortProperty.cs" />
+    <Compile Include="PropertyObjects\MapPropertiesToDto.cs" />
+    <Compile Include="PropertyObjects\MapPropertiesFromDto.cs" />
+    <Compile Include="RenderBase.cs" />
+    <Compile Include="RequestContext.cs" />
+    <Compile Include="SaveActions.cs" />
+    <Compile Include="ScriptSettings.cs" />
+    <Compile Include="Serializer.cs" />
+    <Compile Include="StringFormatter.cs" />
+    <Compile Include="UILoader.cs" />
+    <Compile Include="WebAppSettings\BusinessObjects.cs" />
+    <Compile Include="WebAppSettings\ClassNames.cs" />
+    <Compile Include="WebAppSettings\ClassPrefix.cs" />
+    <Compile Include="WebAppSettings\ClassSuffix.cs" />
+    <Compile Include="WebAppSettings\Common.cs" />
+    <Compile Include="WebAppSettings\DataContext.cs" />
+    <Compile Include="WebAppSettings\DataOptions.cs" />
+    <Compile Include="WebAppSettings\DataPattern.cs" />
+    <Compile Include="WebAppSettings\DataStore.cs" />
+    <Compile Include="WebAppSettings\DotNet.cs" />
+    <Compile Include="WebAppSettings\DotNetFramework.cs" />
+    <Compile Include="WebAppSettings\FieldNames.cs" />
+    <Compile Include="WebAppSettings\IoC.cs" />
+    <Compile Include="WebAppSettings\IoCProvider.cs" />
+    <Compile Include="WebAppSettings\ORMFramework.cs" />
+    <Compile Include="WebAppSettings\Pluralizer.cs" />
+    <Compile Include="WebAppSettings\PropertyNames.cs" />
+    <Compile Include="WebAppSettings\ServiceLayer.cs" />
+    <Compile Include="WebAppSettings\TableItem.cs" />
+    <Compile Include="WebAppSettings\TableObject.cs" />
+    <Compile Include="WebAppSettings\UI.cs" />
+    <Compile Include="WebAppSettings\UIFramework.cs" />
+    <Compile Include="WebAppSettings\WebAppSettings.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

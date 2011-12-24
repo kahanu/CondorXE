@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1007]C:\VSProjects\GizmoBeach.Condor\GizmoBeach.Condor.Tests\bin\Debug\GizmoBeach.Condor.Tests.dll</TopNode>
+  <SelectedNode>[0-1007]C:\VSProjects\GizmoBeach.Condor\GizmoBeach.Condor.Tests\bin\Debug\GizmoBeach.Condor.Tests.dll</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1007]C:\VSProjects\GizmoBeach.Condor\GizmoBeach.Condor.Tests\bin\Debug\GizmoBeach.Condor.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1008]GizmoBeach" Expanded="true" />
+    <Node UniqueName="[0-1009]GizmoBeach.Condor" Expanded="true" />
+    <Node UniqueName="[0-1010]GizmoBeach.Condor.Tests" Expanded="true" />
+    <Node UniqueName="[0-1000]GizmoBeach.Condor.Tests.CoreTests" Expanded="true" />
+    <Node UniqueName="[0-1011]GizmoBeach.Condor.Tests.PropertyDispenserTests" Expanded="true" />
+    <Node UniqueName="[0-1003]GizmoBeach.Condor.Tests.PropertyDispenserTests.PropertyImplementationTests" Expanded="true" />
+  </Nodes>
+</VisualState>

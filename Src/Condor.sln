@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condor", "Condor\Condor.csproj", "{C9B12A78-08C2-4F3B-B574-EC05238E8494}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condor.Core", "Condor.Core\Condor.Core.csproj", "{A0794882-3726-4F3E-813E-8D1A3A7B2F15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condor.Tests", "Condor.Tests\Condor.Tests.csproj", "{51E76321-0C96-4691-B137-0012F84A148B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9B12A78-08C2-4F3B-B574-EC05238E8494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B12A78-08C2-4F3B-B574-EC05238E8494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B12A78-08C2-4F3B-B574-EC05238E8494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B12A78-08C2-4F3B-B574-EC05238E8494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0794882-3726-4F3E-813E-8D1A3A7B2F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0794882-3726-4F3E-813E-8D1A3A7B2F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0794882-3726-4F3E-813E-8D1A3A7B2F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0794882-3726-4F3E-813E-8D1A3A7B2F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E76321-0C96-4691-B137-0012F84A148B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E76321-0C96-4691-B137-0012F84A148B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E76321-0C96-4691-B137-0012F84A148B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E76321-0C96-4691-B137-0012F84A148B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

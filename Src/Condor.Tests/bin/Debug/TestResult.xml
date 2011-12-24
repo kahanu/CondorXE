@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\VSProjects\GizmoBeach.Condor\GizmoBeach.Condor.Tests\bin\Debug\GizmoBeach.Condor.Tests.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-11-26" time="14:37:35">
+  <environment nunit-version="2.5.5.10112" clr-version="2.0.50727.5448" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files\NUnit 2.5.5\bin\net-2.0" machine-name="KINGWILDER-PC" user="King Wilder" user-domain="KingWilder-PC" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\VSProjects\GizmoBeach.Condor\GizmoBeach.Condor.Tests\bin\Debug\GizmoBeach.Condor.Tests.dll" executed="True" result="Success" success="True" time="0.794" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="GizmoBeach" executed="True" result="Success" success="True" time="0.789" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Condor" executed="True" result="Success" success="True" time="0.787" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="0.785" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="CoreTests" executed="True" result="Success" success="True" time="0.012" asserts="0">
+                    <results>
+                      <test-case name="GizmoBeach.Condor.Tests.CoreTests.implemented_renderobject_class_is_typed_properly" executed="True" result="Success" success="True" time="0.006" asserts="0" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="Namespace" name="PropertyDispenserTests" executed="True" result="Success" success="True" time="0.750" asserts="0">
+                    <results>
+                      <test-suite type="TestFixture" name="PropertyDispenserTests" executed="True" result="Inconclusive" success="False" time="0.000" asserts="0" />
+                      <test-suite type="TestFixture" name="PropertyImplementationTests" executed="True" result="Success" success="True" time="0.747" asserts="0">
+                        <results>
+                          <test-case name="GizmoBeach.Condor.Tests.PropertyDispenserTests.PropertyImplementationTests.get_the_tostring_value_from_the_shortproperty" executed="True" result="Success" success="True" time="0.546" asserts="1" />
+                          <test-case name="GizmoBeach.Condor.Tests.PropertyDispenserTests.PropertyImplementationTests.render_data_annotations_property" executed="True" result="Success" success="True" time="0.007" asserts="1" />
+                          <test-case name="GizmoBeach.Condor.Tests.PropertyDispenserTests.PropertyImplementationTests.short_property_class_returns_proper_result" executed="True" result="Success" success="True" time="0.002" asserts="1" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
