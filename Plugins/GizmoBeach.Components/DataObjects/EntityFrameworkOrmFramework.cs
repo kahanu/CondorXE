@@ -246,11 +246,11 @@ namespace GizmoBeach.Components.DataObjects
                 {
                     if (c.IsNullable && (c.LanguageType != "string"))
                     {
-                        str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false) + ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name, false) + " : default(" + c.LanguageType + ")," + Environment.NewLine;
+                        str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " : default(" + c.LanguageType + ")," + Environment.NewLine;
                     }
                     else
                     {
-                        str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false) + "," + Environment.NewLine;
+                        str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + "," + Environment.NewLine;
                     }
                 }
                 else
@@ -286,11 +286,11 @@ namespace GizmoBeach.Components.DataObjects
             {
                 if (c.Name.ToLower() != _script.Settings.DataOptions.VersionColumnName.ToLower())
                 {
-                    strEntity += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = model." + _context.Utility.CleanUpProperty(c.Name, false) + "," + Environment.NewLine;
+                    strEntity += "				" + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name, false) + "," + Environment.NewLine;
                 }
                 else
                 {
-                    strEntity += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = model." + _context.Utility.CleanUpProperty(c.Name, false) + ".AsByteArray()," + Environment.NewLine;
+                    strEntity += "				" + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name, false) + ".AsByteArray()," + Environment.NewLine;
                 }
             }
 
