@@ -1,4 +1,5 @@
 ﻿using MyMeta;
+using System.Text.RegularExpressions;
 
 namespace Condor.Core
 {
@@ -132,7 +133,7 @@ namespace Condor.Core
         /// <returns></returns>
         public string CleanUpProperty(string property)
         {
-            return CleanUpProperty(property, false);
+            return CleanUpProperty(property, false, PropertyModifications.Compress);
         }
 
         /// <summary>
@@ -145,10 +146,25 @@ namespace Condor.Core
         /// <returns></returns>
         public string CleanUpProperty(string property, bool capitalize)
         {
-            property = property.Replace(" ", "");
-            property = property.Replace("-", "");
-            property = property.Replace("_", "");
-            property = property.Replace(".", "");
+            return CleanUpProperty(property, capitalize, PropertyModifications.Compress);
+        }
+
+        public string CleanUpProperty(string property, bool capitalize, PropertyModifications mods)
+        {
+            string pattern = @"[_\/\.\s()-]";
+            Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+
+            switch (mods)
+            {
+                case PropertyModifications.Compress:
+                    property = regex.Replace(property, "");
+                    break;
+                case PropertyModifications.Underscore:
+                    property = regex.Replace(property, "_");
+                    break;
+                default:
+                    break;
+            }
 
             if (capitalize)
             {
@@ -156,5 +172,18 @@ namespace Condor.Core
             }
             return property;
         }
+    }
+
+    public enum PropertyModifications
+    {
+        /// <summary>
+        /// Remove all invalid property name characters.
+        /// </summary>
+        Compress,
+
+        /// <summary>
+        /// Replace all invalid property name characters with underscores.
+        /// </summary>
+        Underscore
     }
 }

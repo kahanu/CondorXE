@@ -61,14 +61,17 @@
   <ItemGroup>
     <Compile Include="Context\IdentityColumn.cs" />
     <Compile Include="CoreTests.cs" />
+    <Compile Include="DecoratorTests\PropertyDecoratorBase.cs" />
     <Compile Include="MiscTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DecoratorTests\PropertyDecoratorTests.cs" />
     <Compile Include="PropertyDispenserTests\PropertyImplementationTests.cs" />
     <Compile Include="Context\TempZeusContext.cs" />
     <Compile Include="Context\TempZeusOutput.cs" />
     <Compile Include="Context\StringColumn.cs" />
     <Compile Include="Context\TempTable.cs" />
     <Compile Include="Context\TempZeusInput.cs" />
+    <Compile Include="RegExTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Condor.Core\Condor.Core.csproj">

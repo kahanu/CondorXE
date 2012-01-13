@@ -21,6 +21,7 @@ namespace Condor.Core
         public IoC IoC;
         public DotNet DotNet;
         public Pluralizer Pluralizer;
+        //public Formatter Formatter;
     }
 
 }

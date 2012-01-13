@@ -5,8 +5,19 @@ namespace Condor.Core
 {
     public enum ePluralizerTypes
     {
+        /// <summary>
+        /// The type remains unchanged.
+        /// </summary>
         Unchanged,
+
+        /// <summary>
+        /// The type is forced to singular.
+        /// </summary>
         Singular,
+
+        /// <summary>
+        /// The type is forced to plural.
+        /// </summary>
         Plural
     }
 

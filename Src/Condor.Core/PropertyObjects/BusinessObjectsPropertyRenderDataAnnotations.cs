@@ -62,6 +62,7 @@ namespace Condor.Core.PropertyObjects
                     _output.autoTabLn(StringFormatter.CreateDisplayName(column.Name));
                     if (!column.IsNullable)
                     {
+                        
                         _output.autoTabLn("public " + column.LanguageType + " " + _util.CleanUpProperty(column.Name) + " { get; set; }");
                         _output.autoTabLn("");
                     }

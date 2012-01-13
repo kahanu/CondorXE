@@ -4,6 +4,7 @@ using Condor.Core;
 using Condor.Core.PropertyObjects;
 using Condor.Tests.Context;
 using NUnit.Framework;
+using MyMeta;
 
 namespace Condor.Tests.PropertyDispenserTests
 {
@@ -16,8 +17,9 @@ namespace Condor.Tests.PropertyDispenserTests
         public void FixtureSetup()
         {
             TempZeusInput input = new TempZeusInput();
-            input["defaultOutputPath"] = @"C:\VSProjects\Condor\Generated\";
-            _script = ScriptSettings.InitInstance(input, null, null, "3");
+            input["defaultOutputPath"] = @"C:\VSProjects\BlogApp8\";
+            
+            _script = ScriptSettings.InitInstance(input, new MyMeta.dbRoot(), new Dnp.Utils.Utils(), "3");
         }
 
         [Test]
