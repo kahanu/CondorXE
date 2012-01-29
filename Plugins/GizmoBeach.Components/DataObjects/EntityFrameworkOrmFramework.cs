@@ -191,7 +191,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("public interface I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " : ICRUD" + _script.Settings.DataOptions.ClassSuffix.Name + "<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + ">");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " GetById(int id);");
+            _output.autoTabLn("" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " GetById(" + _context.Utility.RenderConcreteMethodParameters(table) + ");");
             _output.autoTabLn("List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> GetAll(string sortExpression, int startRowIndex, int maximumRows);");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -273,7 +273,7 @@ namespace GizmoBeach.Components.DataObjects
                 if (_script.Tables.Contains(key.PrimaryTable.Name))
                 {
                     if (key.PrimaryTable.Name != tableName)
-                        str += "				" + StringFormatter.CleanUpClassName(StringFormatter.MakeSingular(key.PrimaryTable.Name)) + " = " + StringFormatter.CleanUpClassName(StringFormatter.MakeSingular(key.PrimaryTable.Name)) + "Mapper.ToBusinessObject(entity." + StringFormatter.CleanUpClassName(StringFormatter.MakeSingular(key.PrimaryTable.Name)) + ")," + Environment.NewLine;
+                        str += "				" + StringFormatter.CleanUpClassName(key.PrimaryTable.Name) + " = " + StringFormatter.CleanUpClassName(key.PrimaryTable.Name) + "Mapper.ToBusinessObject(entity." + StringFormatter.CleanUpClassName(key.PrimaryTable.Name) + ")," + Environment.NewLine;
                 }
             }
 

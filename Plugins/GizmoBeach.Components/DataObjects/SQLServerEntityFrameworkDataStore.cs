@@ -50,7 +50,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.tabLevel++;
 
             _output.autoTabLn("var list = new List<" + model + ">();");
-            _output.autoTabLn("var query = context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)) + ".ToList();");
+            _output.autoTabLn("var query = context." + StringFormatter.CleanUpClassName(tableName, true) + ".ToList();");
             _output.autoTabLn("foreach (" + entity + " entity in query)");
             _output.tabLevel++;
             _output.autoTabLn("list.Add(" + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToBusinessObject(entity));");
@@ -87,7 +87,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
 
             _output.tabLevel++;
-            _output.autoTabLn("context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)) + ".AddObject(entity);");
+            _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".AddObject(entity);");
             _output.autoTabLn("context.SaveChanges();");
 
             // Updated 7/21/2011 by King Wilder
@@ -149,9 +149,9 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
             _output.tabLevel++;
 
-            _output.autoTabLn("context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)) + ".Attach(entity);");
+            _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".Attach(entity);");
             _output.autoTabLn("context.ObjectStateManager.ChangeObjectState(entity, System.Data.EntityState.Modified);");
-            _output.autoTabLn("context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)) + ".ApplyCurrentValues(entity);");
+            _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".ApplyCurrentValues(entity);");
             _output.autoTabLn("context.SaveChanges();");
             _output.tabLevel--;
 
@@ -182,7 +182,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
 
             _output.tabLevel++;
-            _output.autoTabLn("var entity = context." + StringFormatter.CleanUpClassName(StringFormatter.MakePlural(tableName)));
+            _output.autoTabLn("var entity = context." + StringFormatter.CleanUpClassName(tableName, true));
 
             GenTable genTable = new GenTable(table, _context);
             _output.tabLevel++;
@@ -193,7 +193,7 @@ namespace GizmoBeach.Components.DataObjects
 
             _output.autoTabLn(".SingleOrDefault();");
             _output.tabLevel--;
-            _output.autoTabLn("context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)) + ".DeleteObject(entity);");
+            _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".DeleteObject(entity);");
             _output.autoTabLn("context.SaveChanges();");
 
             _output.tabLevel--;
@@ -242,7 +242,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("return " + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToBusinessObject(context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)));
+            _output.autoTabLn("return " + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToBusinessObject(context." + StringFormatter.CleanUpClassName(tableName, true));
             string[] keysSplit = keys.Split(',');
             foreach (string key in keysSplit)
             {
@@ -275,7 +275,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
             _output.tabLevel++;
 
-            _output.autoTabLn("IQueryable<" + entity + "> query = context." + StringFormatter.MakePlural(StringFormatter.CleanUpClassName(tableName)) + ".AsQueryable().OrderBy(sortExpression);");
+            _output.autoTabLn("IQueryable<" + entity + "> query = context." + StringFormatter.CleanUpClassName(tableName, true) + ".AsQueryable().OrderBy(sortExpression);");
             _output.autoTabLn("query = query.Skip(startRowIndex).Take(maximumRows);");
             _output.autoTabLn("var list = new List<" + model + ">();");
             _output.autoTabLn("foreach (" + entity + " entity in query)");

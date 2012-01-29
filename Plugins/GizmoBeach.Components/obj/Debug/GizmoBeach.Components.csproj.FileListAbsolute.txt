@@ -44,7 +44,6 @@ C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\System.Data.SQLit
 C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
 C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\ScintillaNET.dll
-C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\Mono.Security.dll
 C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\MySql.Data.dll
 C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\Npgsql.dll
 C:\VSProjects\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\Interop.ADOX.dll

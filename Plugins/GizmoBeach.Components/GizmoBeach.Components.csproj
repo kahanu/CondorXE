@@ -37,7 +37,7 @@
     </Reference>
     <Reference Include="Condor.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Src\Condor.Core\bin\Debug\Condor.Core.dll</HintPath>
+      <HintPath>..\..\Src\Condor\bin\Debug\Condor.Core.dll</HintPath>
     </Reference>
     <Reference Include="Dnp.Utils, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9cb10e1cb70fd3b4, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
