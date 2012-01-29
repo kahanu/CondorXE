@@ -13,7 +13,6 @@ C:\VSProjects\GizmoBeach.Condor\Src\Condor.Core\obj\Debug\Condor.Core.dll
 C:\VSProjects\GizmoBeach.Condor\Src\Condor.Core\obj\Debug\Condor.Core.pdb
 C:\VSProjects\CondorXE\Src\Condor.Core\bin\Debug\Condor.Core.dll
 C:\VSProjects\CondorXE\Src\Condor.Core\bin\Debug\Condor.Core.pdb
-C:\VSProjects\CondorXE\Src\Condor.Core\bin\Debug\Mono.Security.dll
 C:\VSProjects\CondorXE\Src\Condor.Core\bin\Debug\System.Data.SQLite.dll
 C:\VSProjects\CondorXE\Src\Condor.Core\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\VSProjects\CondorXE\Src\Condor.Core\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll

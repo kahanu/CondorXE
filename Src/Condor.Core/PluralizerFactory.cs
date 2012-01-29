@@ -23,9 +23,40 @@ namespace Condor.Core
 
     public class PluralizerFactory
     {
+        /// <summary>
+        /// Modify the input based on the settings on the Common tab.
+        /// </summary>
+        /// <param name="input">Class name, field name, or property name to change.</param>
+        /// <param name="type">Enum: Unchanged, Singular, Plural</param>
+        /// <returns></returns>
         public string SetWord(string input, ePluralizerTypes type)
         {
+            return SetWord(input, type, false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input">Class name, field name, or property name to change.</param>
+        /// <param name="type">Enum: Unchanged, Singular, Plural</param>
+        /// <param name="isEntitySet">If EntitySet, then will check for Underscore.  EF designer does not pluralize EntitySets with underscores.</param>
+        /// <returns></returns>
+        public string SetWord(string input, ePluralizerTypes type, bool isEntitySet)
+        {
             string result = input;
+            bool containsUnderscore = false;
+
+            if (isEntitySet)
+            {
+                containsUnderscore = input.Contains("_");
+                type = ePluralizerTypes.Plural;
+            }
+
+            if (containsUnderscore)
+            {
+                return result;
+            }
+
 
             switch (type)
             {

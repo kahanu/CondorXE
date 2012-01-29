@@ -14,7 +14,6 @@ C:\VSProjects\GizmoBeach.Condor\Src\Condor\bin\Debug\Npgsql.dll
 C:\VSProjects\GizmoBeach.Condor\Src\Condor\bin\Debug\Interop.ADOX.dll
 C:\VSProjects\GizmoBeach.Condor\Src\Condor\bin\Debug\Condor.Core.pdb
 C:\VSProjects\CondorXE\Src\Condor\bin\Debug\Condor.Core.dll
-C:\VSProjects\CondorXE\Src\Condor\bin\Debug\Mono.Security.dll
 C:\VSProjects\CondorXE\Src\Condor\bin\Debug\System.Data.SQLite.dll
 C:\VSProjects\CondorXE\Src\Condor\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\VSProjects\CondorXE\Src\Condor\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll

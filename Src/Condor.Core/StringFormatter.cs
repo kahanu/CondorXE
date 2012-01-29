@@ -195,16 +195,28 @@ namespace Condor.Core
         /// Fixes tablenames that will be used as class names to make sure
         /// they are valid classnames.
         /// </summary>
-        /// <param name="tableName"></param>
+        /// <param name="tableName">The table name to fix.</param>
         /// <returns></returns>
         public static string CleanUpClassName(string tableName)
+        {
+            return CleanUpClassName(tableName, false);
+        }
+
+        /// <summary>
+        /// Fixes tablenames that will be used as class names to make sure
+        /// they are valid classnames.
+        /// </summary>
+        /// <param name="tableName">The table name to fix.</param>
+        /// <param name="isEntitySet">Should this be rendered as an EntitySet. Determines the pluralization.</param>
+        /// <returns></returns>
+        public static string CleanUpClassName(string tableName, bool isEntitySet)
         {
             string result = tableName;
 
             ePluralizerTypes classType = EnumFactory.Parse<ePluralizerTypes>(Settings.Pluralizer.ClassNames.Selected);
 
             PluralizerFactory factory = new PluralizerFactory();
-            result = factory.SetWord(tableName, classType);
+            result = factory.SetWord(tableName, classType, isEntitySet);
 
             return result;
         }

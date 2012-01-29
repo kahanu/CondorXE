@@ -17,7 +17,6 @@ C:\VSProjects\GizmoBeach.Condor\Src\Condor.Tests\bin\Debug\nunit.framework.xml
 C:\VSProjects\GizmoBeach.Condor\Src\Condor.Tests\bin\Debug\Condor.Core.pdb
 C:\VSProjects\CondorXE\Src\Condor.Tests\bin\Debug\Condor.Core.dll
 C:\VSProjects\CondorXE\Src\Condor.Tests\bin\Debug\nunit.framework.dll
-C:\VSProjects\CondorXE\Src\Condor.Tests\bin\Debug\Mono.Security.dll
 C:\VSProjects\CondorXE\Src\Condor.Tests\bin\Debug\System.Data.SQLite.dll
 C:\VSProjects\CondorXE\Src\Condor.Tests\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
 C:\VSProjects\CondorXE\Src\Condor.Tests\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
