@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Service Layer", "1 - Service Layer", "{6F5F37CB-5730-4EAA-8DED-738BDCCB010A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Components.ServiceLayer", "WebApiServiceLayerObjects\WebApi.Components.ServiceLayer.csproj", "{091F9E27-0844-4D86-A2DA-D38001BBAC33}"

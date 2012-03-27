@@ -75,6 +75,9 @@ namespace Condor.Factories
 
             /*****************************************************************
              * 2 - Create a ORMFramework object
+             * An ORM Framework might be something like, EntityFramework,
+             * Linq-To-Sql, EntitySpaces, etc.  This class takes a datastore
+             * object which contains the basic CRUD method implementations.
              * **************************************************************/
             try
             {
@@ -93,6 +96,8 @@ namespace Condor.Factories
 
             /*****************************************************************
              * 3 - Create a DataPattern object
+             * This could be a RepositoryPattern object or some other
+             * custom pattern that you create.  It takes the ORM Framework.
              * **************************************************************/
             try
             {

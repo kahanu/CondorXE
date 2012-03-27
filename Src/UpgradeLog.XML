@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Condor">
+</Property><Property Name="Solution File" Value="C:\VSProjects\CondorXE\CondorXE\Src\Condor.sln">
+</Property><Property Name="Date" Value="Saturday, March 10, 2012">
+</Property><Property Name="Time" Value="17:38 PM">
+</Property></Properties><Event ErrorLevel="0" Project="Condor" Source="Condor\Condor.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Condor" Source="Condor\Condor.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Condor.Core" Source="Condor.Core\Condor.Core.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Condor.Core" Source="Condor.Core\Condor.Core.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Condor.Tests" Source="Condor.Tests\Condor.Tests.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Condor.Tests" Source="Condor.Tests\Condor.Tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Condor.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Condor.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Condor" Source="Condor\Condor.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Condor.Core" Source="Condor.Core\Condor.Core.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Condor.Tests" Source="Condor.Tests\Condor.Tests.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

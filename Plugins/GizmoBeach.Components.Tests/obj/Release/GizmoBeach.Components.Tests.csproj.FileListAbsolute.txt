@@ -1,0 +1,16 @@
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\GizmoBeach.Components.Tests.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\GizmoBeach.Components.Tests.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\obj\Release\ResolveAssemblyReference.cache
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\obj\Release\GizmoBeach.Components.Tests.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\obj\Release\GizmoBeach.Components.Tests.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Dnp.Utils.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\MyMeta.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\PluginInterfaces.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Npgsql.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\System.Data.SQLite.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\FirebirdSql.Data.FirebirdClient.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\MySql.Data.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Interop.ADOX.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\ScintillaNET.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Mono.Security.dll

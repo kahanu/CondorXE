@@ -1,0 +1,1 @@
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Tests\obj\Release\ResolveAssemblyReference.cache

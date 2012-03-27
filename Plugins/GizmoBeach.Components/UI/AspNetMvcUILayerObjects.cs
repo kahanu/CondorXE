@@ -202,6 +202,8 @@ _output.autoTabLn("}");
 
             ICodeTemplateBuilder builder = new KingsMvcServiceLibraryCodeTemplates(_context, false, useDtos);
             builder.RenderControllerTemplate();
+            builder.RenderAspNetViewTemplates();
+            builder.RenderRazorViewTemplates();
         }
 
         private void CreateJsonResponseClass()

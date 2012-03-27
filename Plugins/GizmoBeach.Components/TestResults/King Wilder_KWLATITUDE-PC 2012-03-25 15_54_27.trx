@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="29b325ee-d498-4899-a1c6-ecd4e4726daf" name="King Wilder@KWLATITUDE-PC 2012-03-25 15:54:27" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="62b80d9b-8758-4aa4-86bc-006c49cbb856">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-03-25 15_54_27">
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\Dnp.Utils.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\MyMeta.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\PluginInterfaces.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-03-25T15:54:27.9409425-07:00" queuing="2012-03-25T15:54:27.9877426-07:00" start="2012-03-25T15:54:28.0033426-07:00" finish="2012-03-25T15:54:28.2217430-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="create_complete_mapper_for_category_table_with_nullable_datetime_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="2e1516b0-82c8-0bd4-4906-c9dd66320e23">
+      <Execution id="d7963ac7-ddbf-456c-97d9-f49e2537ed62" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_complete_mapper_for_category_table_with_nullable_datetime_column" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="2e1516b0-82c8-0bd4-4906-c9dd66320e23" executionId="d7963ac7-ddbf-456c-97d9-f49e2537ed62" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d7963ac7-ddbf-456c-97d9-f49e2537ed62" testId="2e1516b0-82c8-0bd4-4906-c9dd66320e23" testName="create_complete_mapper_for_category_table_with_nullable_datetime_column" computerName="KWLATITUDE-PC" duration="00:00:00.0130337" startTime="2012-03-25T15:54:28.0189426-07:00" endTime="2012-03-25T15:54:28.2061429-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d7963ac7-ddbf-456c-97d9-f49e2537ed62">
+    </UnitTestResult>
+  </Results>
+</TestRun>

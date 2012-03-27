@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e9a84788-e42a-4849-abf0-8bc64fc0e6c2" name="King Wilder@KWLATITUDE-PC 2012-03-25 15:53:23" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="62b80d9b-8758-4aa4-86bc-006c49cbb856">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-03-25 15_53_23">
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\Dnp.Utils.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\MyMeta.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\PluginInterfaces.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-03-25T15:53:23.5220621-07:00" queuing="2012-03-25T15:53:23.5642627-07:00" start="2012-03-25T15:53:23.5798628-07:00" finish="2012-03-25T15:53:23.8450632-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="10" executed="10" passed="10" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="create_complete_mapper_for_category_table_with_nullable_datetime_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="2e1516b0-82c8-0bd4-4906-c9dd66320e23">
+      <Execution id="e5f8f326-a017-4380-9c30-1545b31f3280" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_complete_mapper_for_category_table_with_nullable_datetime_column" />
+    </UnitTest>
+    <UnitTest name="create_mapper_property_for_not_nullable_datetime_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="bdf379f3-777a-75e6-0ad9-a8283544d980">
+      <Execution id="11b1e58d-5f83-4dde-8790-fbdb40887d0d" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_mapper_property_for_not_nullable_datetime_column" />
+    </UnitTest>
+    <UnitTest name="create_mapper_property_for_rowversion_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="2663cddf-64dd-42fa-8dab-881d0db9caa6">
+      <Execution id="7920c42c-9f6f-49a1-bb58-66279c4faeef" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_mapper_property_for_rowversion_column" />
+    </UnitTest>
+    <UnitTest name="categoryname_column_in_table" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="09b60d4e-a45a-0c72-d097-c2ce2bba0d3e">
+      <Execution id="3743562e-1b8c-42eb-a5f9-e374a4c67e80" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="categoryname_column_in_table" />
+    </UnitTest>
+    <UnitTest name="create_mapper_property_for_datetime_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="72ce8c1b-ec55-136b-45ab-8525067c381f">
+      <Execution id="2eaa1e7a-8315-4d84-95c1-d21c13c0fd44" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_mapper_property_for_datetime_column" />
+    </UnitTest>
+    <UnitTest name="loop_through_all_columns_in_CategoryTable" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="7d714add-4aaf-7b2e-007f-45c0db51830a">
+      <Execution id="35cb1e34-3381-4959-b2a6-9c0f6196f627" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="loop_through_all_columns_in_CategoryTable" />
+    </UnitTest>
+    <UnitTest name="create_mapper_property_mapping_for_identity_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="4d97ea6a-378e-90ce-f4d4-a778471471e2">
+      <Execution id="0984ed86-aa47-4438-a66a-c8e06599444e" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_mapper_property_mapping_for_identity_column" />
+    </UnitTest>
+    <UnitTest name="create_mapper_property_for_nullable_datetime_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="776e1da0-864e-28b1-1f45-bf094e219c90">
+      <Execution id="07bb056f-5590-462b-898c-e5f5d9d48b00" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_mapper_property_for_nullable_datetime_column" />
+    </UnitTest>
+    <UnitTest name="create_complete_mapper_for_category_table" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="90a5de20-696e-10b2-f875-227ac9818437">
+      <Execution id="e594f165-1cb8-4d54-9bcd-1d202d1465c0" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_complete_mapper_for_category_table" />
+    </UnitTest>
+    <UnitTest name="create_mapper_property_for_string_column" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\release\gizmobeach.components.tests.dll" id="85dc71bc-1b9d-e5ad-cdca-7cb13b5d2a8e">
+      <Execution id="1df68fef-99c2-4d9e-87ca-fe0393307414" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Release/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.EntitySpacesMappingTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="create_mapper_property_for_string_column" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="09b60d4e-a45a-0c72-d097-c2ce2bba0d3e" executionId="3743562e-1b8c-42eb-a5f9-e374a4c67e80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2663cddf-64dd-42fa-8dab-881d0db9caa6" executionId="7920c42c-9f6f-49a1-bb58-66279c4faeef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e1516b0-82c8-0bd4-4906-c9dd66320e23" executionId="e5f8f326-a017-4380-9c30-1545b31f3280" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d97ea6a-378e-90ce-f4d4-a778471471e2" executionId="0984ed86-aa47-4438-a66a-c8e06599444e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="72ce8c1b-ec55-136b-45ab-8525067c381f" executionId="2eaa1e7a-8315-4d84-95c1-d21c13c0fd44" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="776e1da0-864e-28b1-1f45-bf094e219c90" executionId="07bb056f-5590-462b-898c-e5f5d9d48b00" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d714add-4aaf-7b2e-007f-45c0db51830a" executionId="35cb1e34-3381-4959-b2a6-9c0f6196f627" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="85dc71bc-1b9d-e5ad-cdca-7cb13b5d2a8e" executionId="1df68fef-99c2-4d9e-87ca-fe0393307414" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90a5de20-696e-10b2-f875-227ac9818437" executionId="e594f165-1cb8-4d54-9bcd-1d202d1465c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bdf379f3-777a-75e6-0ad9-a8283544d980" executionId="11b1e58d-5f83-4dde-8790-fbdb40887d0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3743562e-1b8c-42eb-a5f9-e374a4c67e80" testId="09b60d4e-a45a-0c72-d097-c2ce2bba0d3e" testName="categoryname_column_in_table" computerName="KWLATITUDE-PC" duration="00:00:00.0113287" startTime="2012-03-25T15:53:23.5954628-07:00" endTime="2012-03-25T15:53:23.7670631-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3743562e-1b8c-42eb-a5f9-e374a4c67e80">
+    </UnitTestResult>
+    <UnitTestResult executionId="7920c42c-9f6f-49a1-bb58-66279c4faeef" testId="2663cddf-64dd-42fa-8dab-881d0db9caa6" testName="create_mapper_property_for_rowversion_column" computerName="KWLATITUDE-PC" duration="00:00:00.0013735" startTime="2012-03-25T15:53:23.7670631-07:00" endTime="2012-03-25T15:53:23.7826631-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7920c42c-9f6f-49a1-bb58-66279c4faeef">
+    </UnitTestResult>
+    <UnitTestResult executionId="e5f8f326-a017-4380-9c30-1545b31f3280" testId="2e1516b0-82c8-0bd4-4906-c9dd66320e23" testName="create_complete_mapper_for_category_table_with_nullable_datetime_column" computerName="KWLATITUDE-PC" duration="00:00:00.0013748" startTime="2012-03-25T15:53:23.7826631-07:00" endTime="2012-03-25T15:53:23.7826631-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e5f8f326-a017-4380-9c30-1545b31f3280">
+    </UnitTestResult>
+    <UnitTestResult executionId="0984ed86-aa47-4438-a66a-c8e06599444e" testId="4d97ea6a-378e-90ce-f4d4-a778471471e2" testName="create_mapper_property_mapping_for_identity_column" computerName="KWLATITUDE-PC" duration="00:00:00.0004832" startTime="2012-03-25T15:53:23.7826631-07:00" endTime="2012-03-25T15:53:23.7982632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0984ed86-aa47-4438-a66a-c8e06599444e">
+    </UnitTestResult>
+    <UnitTestResult executionId="2eaa1e7a-8315-4d84-95c1-d21c13c0fd44" testId="72ce8c1b-ec55-136b-45ab-8525067c381f" testName="create_mapper_property_for_datetime_column" computerName="KWLATITUDE-PC" duration="00:00:00.0006170" startTime="2012-03-25T15:53:23.7982632-07:00" endTime="2012-03-25T15:53:23.7982632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2eaa1e7a-8315-4d84-95c1-d21c13c0fd44">
+    </UnitTestResult>
+    <UnitTestResult executionId="07bb056f-5590-462b-898c-e5f5d9d48b00" testId="776e1da0-864e-28b1-1f45-bf094e219c90" testName="create_mapper_property_for_nullable_datetime_column" computerName="KWLATITUDE-PC" duration="00:00:00.0009745" startTime="2012-03-25T15:53:23.7982632-07:00" endTime="2012-03-25T15:53:23.8138632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="07bb056f-5590-462b-898c-e5f5d9d48b00">
+    </UnitTestResult>
+    <UnitTestResult executionId="35cb1e34-3381-4959-b2a6-9c0f6196f627" testId="7d714add-4aaf-7b2e-007f-45c0db51830a" testName="loop_through_all_columns_in_CategoryTable" computerName="KWLATITUDE-PC" duration="00:00:00.0006696" startTime="2012-03-25T15:53:23.8138632-07:00" endTime="2012-03-25T15:53:23.8138632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="35cb1e34-3381-4959-b2a6-9c0f6196f627">
+      <Output>
+        <StdOut>Id - Type: int - IsPrimaryKey: True - IsNullable: False
+CategoryName - Type: string - IsPrimaryKey: False - IsNullable: False
+Rowversion - Type: byte[] - IsPrimaryKey: False - IsNullable: True</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1df68fef-99c2-4d9e-87ca-fe0393307414" testId="85dc71bc-1b9d-e5ad-cdca-7cb13b5d2a8e" testName="create_mapper_property_for_string_column" computerName="KWLATITUDE-PC" duration="00:00:00.0004798" startTime="2012-03-25T15:53:23.8138632-07:00" endTime="2012-03-25T15:53:23.8138632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1df68fef-99c2-4d9e-87ca-fe0393307414">
+    </UnitTestResult>
+    <UnitTestResult executionId="e594f165-1cb8-4d54-9bcd-1d202d1465c0" testId="90a5de20-696e-10b2-f875-227ac9818437" testName="create_complete_mapper_for_category_table" computerName="KWLATITUDE-PC" duration="00:00:00.0016493" startTime="2012-03-25T15:53:23.8138632-07:00" endTime="2012-03-25T15:53:23.8294632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e594f165-1cb8-4d54-9bcd-1d202d1465c0">
+    </UnitTestResult>
+    <UnitTestResult executionId="11b1e58d-5f83-4dde-8790-fbdb40887d0d" testId="bdf379f3-777a-75e6-0ad9-a8283544d980" testName="create_mapper_property_for_not_nullable_datetime_column" computerName="KWLATITUDE-PC" duration="00:00:00.0009826" startTime="2012-03-25T15:53:23.8294632-07:00" endTime="2012-03-25T15:53:23.8294632-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="11b1e58d-5f83-4dde-8790-fbdb40887d0d">
+    </UnitTestResult>
+  </Results>
+</TestRun>

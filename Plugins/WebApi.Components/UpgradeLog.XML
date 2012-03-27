@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WebApi.Components">
+</Property><Property Name="Solution File" Value="C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi.Components\WebApi.Components.sln">
+</Property><Property Name="Date" Value="Saturday, March 10, 2012">
+</Property><Property Name="Time" Value="17:52 PM">
+</Property></Properties><Event ErrorLevel="0" Project="WebApi.Components.ServiceLayer" Source="WebApiServiceLayerObjects\WebApi.Components.ServiceLayer.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WebApi.Components.ServiceLayer" Source="WebApiServiceLayerObjects\WebApi.Components.ServiceLayer.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WebApi.Components.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="WebApi.Components.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WebApi.Components.ServiceLayer" Source="WebApiServiceLayerObjects\WebApi.Components.ServiceLayer.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

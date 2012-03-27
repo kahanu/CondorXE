@@ -53,7 +53,7 @@ namespace Condor.Core.PropertyObjects
                 }
                 else if (column.IsInPrimaryKey)
                 {
-                    _output.autoTabLn("[ScaffoldColumn(false)]");
+                    _output.autoTabLn("[Key]");
                     _output.autoTabLn("public " + column.LanguageType + " " + _util.CleanUpProperty(column.Name) + " { get; set; }");
                     _output.autoTabLn("");
                 }

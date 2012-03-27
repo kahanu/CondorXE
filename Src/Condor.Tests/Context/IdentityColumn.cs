@@ -264,5 +264,10 @@ namespace Condor.Tests.Context
         }
 
         #endregion
+
+        public bool Equals(MyMeta.IColumn other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

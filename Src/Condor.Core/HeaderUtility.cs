@@ -17,7 +17,7 @@ namespace Condor.Core
             string hdr = "/*" + Environment.NewLine;
             hdr += "===============================================================" + Environment.NewLine;
             hdr += "            CondorXE Code Generator - ver " + _version + Environment.NewLine;
-            hdr += "       Generated using MyGeneration Software - ver 1.3.0.9" + Environment.NewLine;
+            hdr += "       Generated using MyGeneration Software - ver 1.3.1.1" + Environment.NewLine;
             hdr += "       Created By King Wilder - http://www.kingwilder.com" + Environment.NewLine;
             hdr += "                   " + DateTime.Now.ToString() + Environment.NewLine;
             hdr += "===============================================================" + Environment.NewLine;

@@ -171,5 +171,10 @@ namespace Condor.Tests.Context
             }
         }
         #endregion
+
+        public bool Equals(ITable other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

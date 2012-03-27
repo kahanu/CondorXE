@@ -122,5 +122,11 @@ namespace Condor.Tests.Context
             sb.Append("\r\n");
         }
         #endregion
+
+
+        public void rollback(int num)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

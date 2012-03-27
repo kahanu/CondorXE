@@ -392,5 +392,10 @@ namespace Condor.Tests.Context
             }
         }
         #endregion
+
+        public bool Equals(IColumn other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
