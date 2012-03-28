@@ -102,7 +102,9 @@ namespace GizmoBeach.Components.DataObjects
 
             RenderAutoMapperExtensions();
 
-            CreateEntitySpacesFolder();
+            //CreateEntitySpacesFolder();
+
+            RenderDataObjectsExtensions();
         }
 
         private void RenderMapperClass(ITable table)
@@ -245,7 +247,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntitySpaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.DataStore.Selected);
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public class " + _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " : " + StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ", I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name);
@@ -261,7 +263,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("}");
 
             _context.FileList.Add("    " + _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
-            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.DataStore.Selected, _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.DontOverwrite);
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\" + _script.Settings.DataOptions.DataStore.Selected, _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.DontOverwrite);
         }
 
         private void RenderBaseClass(ITable table)
@@ -276,7 +278,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntitySpaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.DataStore.Selected);
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public class " + StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + " : ICRUD" + _script.Settings.DataOptions.ClassSuffix.Name + "<" + _script.Settings.BusinessObjects.BusinessObjectsNamespace + "." + StringFormatter.CleanUpClassName(table.Name) + ">");
@@ -301,7 +303,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("}");
 
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
-            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.DataStore.Selected + "\\Generated", StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.Overwrite);
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\" + _script.Settings.DataOptions.DataStore.Selected + "\\Generated", StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.Overwrite);
         }
 
         private void RenderInterface(ITable table)
@@ -330,6 +332,283 @@ namespace GizmoBeach.Components.DataObjects
                 }
             }
         }
+
+        private void RenderDataObjectsExtensions()
+        {
+            _hdrUtil.WriteClassHeader(_output);
+
+            _output.autoTabLn("using System;");
+            _output.autoTabLn("using System.Collections.Generic;");
+            _output.autoTabLn("using System.Linq;");
+            _output.autoTabLn("using System.Data.Linq;");
+            _output.autoTabLn("");
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace);
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Useful set of Extension methods for Data Access purposes.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("public static class Extensions");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into Identity data type (integer).");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <param name=\"defaultId\">Optional default value is -1.</param>");
+            _output.autoTabLn("/// <returns>Identity value.</returns>");
+            _output.autoTabLn("public static int AsId(this object item, int defaultId = -1)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultId;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("int result;");
+            _output.autoTabLn("if (!int.TryParse(item.ToString(), out result))");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultId;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return result;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into integer data type.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <param name=\"defaultId\">Optional default value is default(int).</param>");
+            _output.autoTabLn("/// <returns>The integer value.</returns>");
+            _output.autoTabLn("public static int AsInt(this object item, int defaultInt = default(int))");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultInt;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("int result;");
+            _output.autoTabLn("if (!int.TryParse(item.ToString(), out result))");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultInt;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return result;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into double data type.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <param name=\"defaultId\">Optional default value is default(double).</param>");
+            _output.autoTabLn("/// <returns>The double value.</returns>");
+            _output.autoTabLn("public static double AsDouble(this object item, double defaultDouble = default(double))");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultDouble;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("double result;");
+            _output.autoTabLn("if (!double.TryParse(item.ToString(), out result))");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultDouble;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return result;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into string data type.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <param name=\"defaultId\">Optional default value is default(string).</param>");
+            _output.autoTabLn("/// <returns>The string value.</returns>");
+            _output.autoTabLn("public static string AsString(this object item, string defaultString = default(string))");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null || item.Equals(System.DBNull.Value))");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultString;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return item.ToString().Trim();");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into DateTime data type.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <param name=\"defaultId\">Optional default value is default(DateTime).</param>");
+            _output.autoTabLn("/// <returns>The DateTime value.</returns>");
+            _output.autoTabLn("public static DateTime AsDateTime(this object item, DateTime defaultDateTime = default(DateTime))");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null || string.IsNullOrEmpty(item.ToString()))");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultDateTime;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("DateTime result;");
+            _output.autoTabLn("if (!DateTime.TryParse(item.ToString(), out result))");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultDateTime;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return result;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into bool data type.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <param name=\"defaultId\">Optional default value is default(bool).</param>");
+            _output.autoTabLn("/// <returns>The bool value.</returns>");
+            _output.autoTabLn("public static bool AsBool(this object item, bool defaultBool = default(bool))");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("return defaultBool;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return new List<string>() { \"yes\", \"y\", \"true\" }.Contains(item.ToString().ToLower());");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform string into byte array.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"s\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <returns>The transformed byte array.</returns>");
+            _output.autoTabLn("public static byte[] AsByteArray(this string s)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (string.IsNullOrEmpty(s))");
+            _output.tabLevel++;
+            _output.autoTabLn("return null;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return Convert.FromBase64String(s);");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into base64 string.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <returns>The base64 string value.</returns>");
+            _output.autoTabLn("public static string AsBase64String(this object item)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("return null;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return Convert.ToBase64String((byte[]) item); ");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform Binary into base64 string data type. ");
+            _output.autoTabLn("/// Note: This is used in LINQ to SQL only.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <returns>The base64 string value.</returns>");
+            _output.autoTabLn("public static string AsBase64String(this Binary item)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (item == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("return null;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return Convert.ToBase64String(item.ToArray());");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform base64 string to Binary data type. ");
+            _output.autoTabLn("/// Note: This is used in LINQ to SQL only.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"s\">The base 64 string to be transformed.</param>");
+            _output.autoTabLn("/// <returns>The Binary value.</returns>");
+            _output.autoTabLn("public static Binary AsBinary(this string s)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (string.IsNullOrEmpty(s))");
+            _output.tabLevel++;
+            _output.autoTabLn("return null;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return new Binary(Convert.FromBase64String(s));");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Transform object into Guid data type.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"item\">The object to be transformed.</param>");
+            _output.autoTabLn("/// <returns>The Guid value.</returns>");
+            _output.autoTabLn("public static Guid AsGuid(this object item)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("try { return new Guid(item.ToString()); }");
+            _output.autoTabLn("catch { return Guid.Empty; }");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Concatenates SQL and ORDER BY clauses into a single string. ");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <param name=\"sql\">The SQL string</param>");
+            _output.autoTabLn("/// <param name=\"sortExpression\">The Sort Expression.</param>");
+            _output.autoTabLn("/// <returns>Contatenated SQL Statement.</returns>");
+            _output.autoTabLn("public static string OrderBy(this string sql, string sortExpression)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (string.IsNullOrEmpty(sortExpression))");
+            _output.tabLevel++;
+            _output.autoTabLn("return sql;");
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("return sql + \" ORDER BY \" + sortExpression;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Takes an enumerable source and returns a comma separate string.");
+            _output.autoTabLn("/// Handy to build SQL Statements (for example with IN () statements) from object collections.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <typeparam name=\"T\">The Enumerable type</typeparam>");
+            _output.autoTabLn("/// <typeparam name=\"U\">The original data type (typically identities - int).</typeparam>");
+            _output.autoTabLn("/// <param name=\"source\">The enumerable input collection.</param>");
+            _output.autoTabLn("/// <param name=\"func\">The function that extracts property value in object.</param>");
+            _output.autoTabLn("/// <returns>The comma separated string.</returns>");
+            _output.autoTabLn("public static string CommaSeparate<T, U>(this IEnumerable<T> source, Func<T, U> func)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("return string.Join(\",\", source.Select(s => func(s).ToString()).ToArray());");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+
+            _context.FileList.Add("    Extensions.cs");
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\Shared", "Extensions.cs"), SaveActions.Overwrite);
+        }
+
 
         #endregion
     }
