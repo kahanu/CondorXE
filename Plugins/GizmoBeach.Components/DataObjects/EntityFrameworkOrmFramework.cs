@@ -15,7 +15,8 @@ namespace GizmoBeach.Components.DataObjects
 
         private readonly IAutoMapperFramework _autoMapperFramework;
 
-        public EntityFrameworkOrmFramework(IDataStore dataStore, RequestContext context):this(dataStore, context, null)
+        public EntityFrameworkOrmFramework(IDataStore dataStore, RequestContext context)
+            : this(dataStore, context, null)
         {
         }
 
@@ -30,7 +31,7 @@ namespace GizmoBeach.Components.DataObjects
             this._context = context;
             this._database = context.Database;
             this._dialog = context.Dialog;
-        } 
+        }
         #endregion
 
         #region IORMFramework Members
@@ -134,12 +135,13 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Data.Linq;");
             _output.autoTabLn("");
             _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ";");
             _output.autoTabLn("");
             _output.autoTabLn("using System.Linq.Dynamic;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.DataStore.Selected);
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public class " + _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " : " + StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ", I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name);
@@ -158,7 +160,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("}");
 
             _context.FileList.Add("    " + _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
-            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.DataStore.Selected, _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.DontOverwrite);
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\" + _script.Settings.DataOptions.DataStore.Selected, _script.Settings.DataOptions.DataStore.Selected + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.DontOverwrite);
         }
 
         private void RenderBaseClass(ITable table)
@@ -172,10 +174,11 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Data.Linq;");
             _output.autoTabLn("");
             _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ";");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.DataStore.Selected);
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public class " + StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + " : ICRUD" + _script.Settings.DataOptions.ClassSuffix.Name + "<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + ">");
@@ -200,7 +203,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("}");
 
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
-            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.DataStore.Selected + "\\Generated", StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.Overwrite);
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\" + _script.Settings.DataOptions.DataStore.Selected + "\\Generated", StringFormatter.CleanUpClassName(table.Name) + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs"), SaveActions.Overwrite);
         }
 
         private void RenderDaoInterface(ITable table)
@@ -271,13 +274,13 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Data.Objects.DataClasses;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace);
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public class " + StringFormatter.CleanUpClassName(table.Name) + "Mapper");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("public static " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToBusinessObject(" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " entity)");
+            _output.autoTabLn("public static " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToBusinessObject(this " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " entity)");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("if (entity == null) return null;");
@@ -335,12 +338,12 @@ namespace GizmoBeach.Components.DataObjects
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("");
-            _output.autoTabLn("public static " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToEntity(" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model)");
+            _output.autoTabLn("public static " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToEntity(this " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model, " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " entity)");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("if (model == null) return null;");
             _output.autoTabLn("");
-            _output.autoTabLn("var entity = new " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "();");
+            //_output.autoTabLn("var entity = new " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "();");
             _output.autoTabLn("");
 
             // ToEntity Loop
@@ -368,19 +371,19 @@ namespace GizmoBeach.Components.DataObjects
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("");
-            _output.autoTabLn("public static List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> ToBusinessObjects(EntityCollection<" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> entities)");
+            _output.autoTabLn("public static List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> ToBusinessObjects(this EntityCollection<" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> entities)");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("if (entities == null) return null;");
-            _output.autoTabLn("return entities.Select(o => ToBusinessObject(o)).ToList();");
+            _output.autoTabLn("return entities.Select(o => o.ToBusinessObject()).ToList();");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("");
-            _output.autoTabLn("public static List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> ToBusinessObjects(IEnumerable<" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> entities)");
+            _output.autoTabLn("public static List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> ToBusinessObjects(this IEnumerable<" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> entities)");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("if (entities == null) return null;");
-            _output.autoTabLn("return entities.Select(o => ToBusinessObject(o)).ToList();");
+            _output.autoTabLn("return entities.Select(o => o.ToBusinessObject()).ToList();");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.tabLevel--;
@@ -532,7 +535,7 @@ namespace GizmoBeach.Components.DataObjects
 
         private void RenderDynamicLinqClass()
         {
-            
+
 
 
         }
@@ -817,51 +820,51 @@ namespace GizmoBeach.Components.DataObjects
         {
             _hdrUtil.WriteClassHeader(_output);
 
-_output.autoTabLn("using System.Configuration;");
-_output.autoTabLn("");
-_output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected);
-_output.autoTabLn("{");
-	_output.tabLevel++;
-	_output.autoTabLn("/// <summary>");
-	_output.autoTabLn("/// DataObjectFactory caches the connectionstring so that the context can be created quickly.");
-	_output.autoTabLn("/// </summary>");
-	_output.autoTabLn("public static class DataObjectFactory");
-	_output.autoTabLn("{");
-		_output.tabLevel++;
-		_output.autoTabLn("private static readonly string _connectionString;");
-		_output.autoTabLn("");
-		_output.autoTabLn("/// <summary>");
-		_output.autoTabLn("/// Static constructor. Reads the connectionstring from web.config just once.");
-		_output.autoTabLn("/// </summary>");
-		_output.autoTabLn("static DataObjectFactory()");
-		_output.autoTabLn("{");
-			_output.tabLevel++;
-			_output.autoTabLn("string connectionStringName = ConfigurationManager.AppSettings.Get(\"ConnectionStringName\");");
-			_output.autoTabLn("_connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;");
-		_output.tabLevel--;
-		_output.autoTabLn("}");
-		_output.autoTabLn("");
-		_output.autoTabLn("/// <summary>");
-		_output.autoTabLn("/// Creates the Context using the current connectionstring.");
-		_output.autoTabLn("/// </summary>");
-		_output.autoTabLn("/// <remarks>");
-		_output.autoTabLn("/// Gof pattern: Factory method. ");
-		_output.autoTabLn("/// </remarks>");
-		_output.autoTabLn("/// <returns>Action Entities context.</returns>");
-		_output.autoTabLn("public static " + _script.Settings.DataOptions.DataContext.Name + " CreateContext()");
-		_output.autoTabLn("{");
-			_output.tabLevel++;
+            _output.autoTabLn("using System.Configuration;");
+            _output.autoTabLn("");
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected);
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// DataObjectFactory caches the connectionstring so that the context can be created quickly.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("public static class DataObjectFactory");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("private static readonly string _connectionString;");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Static constructor. Reads the connectionstring from web.config just once.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("static DataObjectFactory()");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("string connectionStringName = ConfigurationManager.AppSettings.Get(\"ConnectionStringName\");");
+            _output.autoTabLn("_connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("/// <summary>");
+            _output.autoTabLn("/// Creates the Context using the current connectionstring.");
+            _output.autoTabLn("/// </summary>");
+            _output.autoTabLn("/// <remarks>");
+            _output.autoTabLn("/// Gof pattern: Factory method. ");
+            _output.autoTabLn("/// </remarks>");
+            _output.autoTabLn("/// <returns>Action Entities context.</returns>");
+            _output.autoTabLn("public static " + _script.Settings.DataOptions.DataContext.Name + " CreateContext()");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
             _output.autoTabLn("return new " + _script.Settings.DataOptions.DataContext.Name + "(_connectionString);");
-		_output.tabLevel--;
-		_output.autoTabLn("}");
-	_output.tabLevel--;
-	_output.autoTabLn("}");
-_output.tabLevel--;
-_output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
 
-        _context.FileList.Add("    DataObjectFactory.cs");
-		SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected, "DataObjectFactory.cs"), SaveActions.Overwrite);
-        }            
+            _context.FileList.Add("    DataObjectFactory.cs");
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected, "DataObjectFactory.cs"), SaveActions.Overwrite);
+        }
     }
 }
 

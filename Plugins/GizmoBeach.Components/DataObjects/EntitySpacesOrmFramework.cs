@@ -109,7 +109,7 @@ namespace GizmoBeach.Components.DataObjects
 
         private void RenderMapperClass(ITable table)
         {
-
+            _hdrUtil.WriteClassHeader(_output);
 
             _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Collections.Generic;");
@@ -149,7 +149,7 @@ namespace GizmoBeach.Components.DataObjects
                     {
                         //if (c.IsNullable)
                         //{
-                            line += ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name) + " : default(" + c.LanguageType + ")";
+                        line += ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name) + " : default(" + c.LanguageType + ")";
                         //}
                     }
                     _output.autoTabLn(line + ";");
@@ -206,7 +206,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("if (entities == null) return null;");
-            _output.autoTabLn("return entities.Select(o => ToBusinessObject(o)).ToList();");
+            _output.autoTabLn("return entities.Select(o => o.ToBusinessObject()).ToList();");
 
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -218,7 +218,7 @@ namespace GizmoBeach.Components.DataObjects
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs");
             SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
         }
-  
+
         private void RenderCRUDInterface()
         {
             _hdrUtil.WriteClassHeader(_output);
