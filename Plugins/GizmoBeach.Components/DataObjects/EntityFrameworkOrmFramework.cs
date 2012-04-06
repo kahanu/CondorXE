@@ -135,9 +135,9 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Data.Linq;");
             _output.autoTabLn("");
             _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
-            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ";");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper;");
             _output.autoTabLn("");
             _output.autoTabLn("using System.Linq.Dynamic;");
             _output.autoTabLn("");
@@ -169,14 +169,11 @@ namespace GizmoBeach.Components.DataObjects
 
             _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Collections.Generic;");
+            _output.autoTabLn("using System.Data;");
             _output.autoTabLn("using System.Linq;");
-            _output.autoTabLn("using System.Text;");
-            _output.autoTabLn("using System.Data.Linq;");
             _output.autoTabLn("");
-            _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
-            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
-            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ";");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
@@ -274,10 +271,10 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Data.Objects.DataClasses;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper");
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("public class " + StringFormatter.CleanUpClassName(table.Name) + "Mapper");
+            _output.autoTabLn("public static class " + StringFormatter.CleanUpClassName(table.Name) + "Mapper");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public static " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToBusinessObject(this " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " entity)");
@@ -300,16 +297,16 @@ namespace GizmoBeach.Components.DataObjects
                 //else 
                 if (c.Name.ToLower() == _context.ScriptSettings.Settings.DataOptions.VersionColumnName)
                 {
-                    _output.autoTabLn("model." + _context.ScriptSettings.Settings.DataOptions.VersionColumnName + " = entity." + _context.Utility.CleanUpProperty(c.Name) + ".AsBase64String();");
+                    _output.autoTabLn("model." + _context.ScriptSettings.Settings.DataOptions.VersionColumnName + " = entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + ".AsBase64String();");
                 }
                 else
                 {
-                    line = "model." + _context.Utility.CleanUpProperty(c.Name) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name);
+                    line = "model." + _context.Utility.CleanUpProperty(c.Name) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore);
                     if (c.LanguageType.ToLower() != "string")
                     {
                         if (c.IsNullable)
                         {
-                            line += ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name) + " : default(" + c.LanguageType + ")";
+                            line += ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " : default(" + c.LanguageType + ")";
                         }
                     }
                     _output.autoTabLn(line + ";");
@@ -327,14 +324,34 @@ namespace GizmoBeach.Components.DataObjects
             }
 
 
-            //_output.autoTabLn("model.Id = entity.Id;");
-            //_output.autoTabLn("model.Question = entity.Question;");
-            //_output.autoTabLn("model.Answer = entity.Answer;");
-            //_output.autoTabLn("model.SortOrder = entity.SortOrder.HasValue ? (int)entity.SortOrder : default(int);");
-            //_output.autoTabLn("model.rowversion = entity.rowversion.AsBase64String();");
-
             _output.autoTabLn("");
             _output.autoTabLn("return model;");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.autoTabLn("");
+            _output.autoTabLn("public static " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToEntity(this " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("if (model == null) return null;");
+            _output.autoTabLn("");
+            _output.autoTabLn("var entity = new " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "();");
+            _output.autoTabLn("");
+
+            // ToEntity Loop
+            foreach (Column c in table.Columns)
+            {
+                if (c.Name.ToLower() == _context.ScriptSettings.Settings.DataOptions.VersionColumnName.ToLower())
+                {
+                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name) + ".AsByteArray();");
+                }
+                else
+                {
+                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = " + "model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                }
+            }
+
+            _output.autoTabLn("");
+            _output.autoTabLn("return entity;");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("");
@@ -343,7 +360,6 @@ namespace GizmoBeach.Components.DataObjects
             _output.tabLevel++;
             _output.autoTabLn("if (model == null) return null;");
             _output.autoTabLn("");
-            //_output.autoTabLn("var entity = new " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "();");
             _output.autoTabLn("");
 
             // ToEntity Loop
@@ -351,25 +367,19 @@ namespace GizmoBeach.Components.DataObjects
             {
                 if (c.Name.ToLower() == _context.ScriptSettings.Settings.DataOptions.VersionColumnName.ToLower())
                 {
-                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name) + " = model." + _context.Utility.CleanUpProperty(c.Name) + ".AsByteArray();");
+                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name) + ".AsByteArray();");
                 }
                 else
                 {
-                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name) + " = " + "model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = " + "model." + _context.Utility.CleanUpProperty(c.Name) + ";");
                 }
             }
-
-
-            //_output.autoTabLn("entity.Id = model.Id;");
-            //_output.autoTabLn("entity.Question = model.Question;");
-            //_output.autoTabLn("entity.Answer = model.Answer;");
-            //_output.autoTabLn("entity.SortOrder = model.SortOrder;");
-            //_output.autoTabLn("entity.rowversion = model.rowversion.AsByteArray();");
 
             _output.autoTabLn("");
             _output.autoTabLn("return entity;");
             _output.tabLevel--;
             _output.autoTabLn("}");
+
             _output.autoTabLn("");
             _output.autoTabLn("public static List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> ToBusinessObjects(this EntityCollection<" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> entities)");
             _output.autoTabLn("{");
@@ -393,7 +403,7 @@ namespace GizmoBeach.Components.DataObjects
 
 
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs");
-            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
         }
 
 

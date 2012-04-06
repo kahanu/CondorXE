@@ -53,7 +53,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("var query = context." + StringFormatter.CleanUpClassName(tableName, true) + ".ToList();");
             _output.autoTabLn("foreach (" + entity + " entity in query)");
             _output.tabLevel++;
-            _output.autoTabLn("list.Add(" + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToBusinessObject(entity));");
+            _output.autoTabLn("list.Add(entity.ToBusinessObject());");
             _output.tabLevel--;
             _output.autoTabLn("return list;");
 
@@ -81,7 +81,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
 
             _output.tabLevel++;
-            _output.autoTabLn("var entity = " + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToEntity(model);");
+            _output.autoTabLn("var entity = model.ToEntity();");
             _output.autoTabLn("");
             _output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
             _output.autoTabLn("{");
@@ -130,38 +130,93 @@ namespace GizmoBeach.Components.DataObjects
 
         public void Update(ITable table)
         {
-            string tableName = table.Name;
 
             _output.tabLevel++;
             _output.tabLevel++;
             _output.autoTabLn("/// <summary>");
-            _output.autoTabLn("/// Update " + StringFormatter.CleanUpClassName(tableName) + ".  Map  fields to " + StringFormatter.CleanUpClassName(tableName) + " properties.");
+            _output.autoTabLn("/// Update " + StringFormatter.CleanUpClassName(table.Name) + ".  Map  fields to " + StringFormatter.CleanUpClassName(table.Name) + " properties.");
             _output.autoTabLn("/// </summary>");
-            _output.autoTabLn("/// <param name=\"" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(tableName)) + "\"></param>");
+            _output.autoTabLn("/// <param name=\"" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + "\"></param>");
             _output.autoTabLn("/// <returns></returns>");
-            _output.autoTabLn("public void Update(" + _util.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(tableName)) + " model)");
+            _output.autoTabLn("public void Update(" + _context.Utility.BuildModelClassWithNameSpace(table.Name) + " model)");
             _output.autoTabLn("{");
-
             _output.tabLevel++;
-            _output.autoTabLn("var entity = " + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToEntity(model);");
             _output.autoTabLn("");
             _output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
             _output.autoTabLn("{");
             _output.tabLevel++;
+            _output.autoTabLn("");
+            _output.autoTabLn("var entity = context." + StringFormatter.CleanUpClassName(table.Name, true));
 
-            _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".Attach(entity);");
-            _output.autoTabLn("context.ObjectStateManager.ChangeObjectState(entity, System.Data.EntityState.Modified);");
-            _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".ApplyCurrentValues(entity);");
+            GenTable genTable = new GenTable(table, _context);
+            _output.tabLevel++;
+            for (int i = 0; i < genTable.GetPrimaryKeyNames.Length; i++)
+            {
+                _output.autoTabLn(".Where(o => o." + genTable.GetPrimaryKeyNames[i] + " == model." + genTable.GetPrimaryKeyNames[i] + ")");
+            }
+                
+            _output.autoTabLn(".SingleOrDefault();");
+
+            _output.tabLevel--;
+            _output.autoTabLn("entity = model.ToEntity(entity);");
+            _output.autoTabLn("");
+            _output.autoTabLn("try");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
             _output.autoTabLn("context.SaveChanges();");
             _output.tabLevel--;
-
+            _output.autoTabLn("}");
+            _output.autoTabLn("catch (OptimisticConcurrencyException)");
+            _output.autoTabLn("{");
+            _output.tabLevel++;
+            _output.autoTabLn("context.Refresh(System.Data.Objects.RefreshMode.ClientWins, entity);");
+            _output.autoTabLn("context.SaveChanges();");
+            _output.tabLevel--;
             _output.autoTabLn("}");
             _output.tabLevel--;
             _output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.autoTabLn("}");
+            _output.tabLevel--;
+            _output.tabLevel--;
 
-            _output.tabLevel--;
-            _output.tabLevel--;
         }
+
+
+        //public void Update(ITable table)
+        //{
+        //    string tableName = table.Name;
+
+        //    _output.tabLevel++;
+        //    _output.tabLevel++;
+        //    _output.autoTabLn("/// <summary>");
+        //    _output.autoTabLn("/// Update " + StringFormatter.CleanUpClassName(tableName) + ".  Map  fields to " + StringFormatter.CleanUpClassName(tableName) + " properties.");
+        //    _output.autoTabLn("/// </summary>");
+        //    _output.autoTabLn("/// <param name=\"" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(tableName)) + "\"></param>");
+        //    _output.autoTabLn("/// <returns></returns>");
+        //    _output.autoTabLn("public void Update(" + _util.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(tableName)) + " model)");
+        //    _output.autoTabLn("{");
+
+        //    _output.tabLevel++;
+        //    _output.autoTabLn("var entity = model.ToEntity();");
+        //    _output.autoTabLn("");
+        //    _output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
+        //    _output.autoTabLn("{");
+        //    _output.tabLevel++;
+
+        //    _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".Attach(entity);");
+        //    _output.autoTabLn("context.ObjectStateManager.ChangeObjectState(entity, System.Data.EntityState.Modified);");
+        //    _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".ApplyCurrentValues(entity);");
+        //    _output.autoTabLn("context.SaveChanges();");
+        //    _output.tabLevel--;
+
+        //    _output.autoTabLn("}");
+        //    _output.tabLevel--;
+        //    _output.autoTabLn("}");
+
+        //    _output.tabLevel--;
+        //    _output.tabLevel--;
+        //}
 
         public void Delete(ITable table)
         {
@@ -177,12 +232,13 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
 
             _output.tabLevel++;
-            _output.autoTabLn("");
             _output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
             _output.autoTabLn("{");
-
             _output.tabLevel++;
-            _output.autoTabLn("var entity = context." + StringFormatter.CleanUpClassName(tableName, true));
+            _output.autoTabLn(StringFormatter.CleanUpClassName(tableName) + " entity = null;");
+            _output.autoTabLn("");
+            _output.autoTabLn("entity = context." + StringFormatter.CleanUpClassName(tableName, true));
+            _output.tabLevel++;
 
             GenTable genTable = new GenTable(table, _context);
             _output.tabLevel++;
@@ -193,11 +249,45 @@ namespace GizmoBeach.Components.DataObjects
 
             _output.autoTabLn(".SingleOrDefault();");
             _output.tabLevel--;
+            _output.tabLevel--;
+            _output.autoTabLn("");
+            _output.autoTabLn("if (entity == null)");
+            _output.tabLevel++;
+            _output.autoTabLn("throw new NullReferenceException(\"The record doesn't exist or has been deleted by another user since you opened this record.\");");
+            _output.tabLevel--;
+            _output.autoTabLn("");
             _output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".DeleteObject(entity);");
             _output.autoTabLn("context.SaveChanges();");
-
             _output.tabLevel--;
             _output.autoTabLn("}");
+
+
+            //_output.tabLevel++;
+            //_output.autoTabLn("");
+            //_output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
+            //_output.autoTabLn("{");
+
+            //_output.tabLevel++;
+            //_output.autoTabLn("var entity = context." + StringFormatter.CleanUpClassName(tableName, true));
+
+            //GenTable genTable = new GenTable(table, _context);
+            //_output.tabLevel++;
+            //for (int i = 0; i < genTable.GetPrimaryKeyNames.Length; i++)
+            //{
+            //    _output.autoTabLn(".Where(o => o." + genTable.GetPrimaryKeyNames[i] + " == model." + genTable.GetPrimaryKeyNames[i] + ")");
+            //}
+
+            //_output.autoTabLn(".SingleOrDefault();");
+            //_output.tabLevel--;
+            //_output.autoTabLn("context." + StringFormatter.CleanUpClassName(tableName, true) + ".DeleteObject(entity);");
+            //_output.autoTabLn("context.SaveChanges();");
+
+            //_output.tabLevel--;
+            //_output.autoTabLn("}");
+
+
+
+
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.tabLevel--;
@@ -242,14 +332,14 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using (var context = DataObjectFactory.CreateContext())");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("return " + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToBusinessObject(context." + StringFormatter.CleanUpClassName(tableName, true));
+            _output.autoTabLn("return context." + StringFormatter.CleanUpClassName(tableName, true));
             string[] keysSplit = keys.Split(',');
             foreach (string key in keysSplit)
             {
                 _output.tabLevel++;
                 _output.autoTabLn(".Where(o => o." + _util.CleanUpProperty(key, true) + " == " + key + ")");
             }
-            _output.autoTabLn(".SingleOrDefault());");
+            _output.autoTabLn(".SingleOrDefault().ToBusinessObject();");
             _output.tabLevel--;
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -280,7 +370,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("var list = new List<" + model + ">();");
             _output.autoTabLn("foreach (" + entity + " entity in query)");
             _output.tabLevel++;
-            _output.autoTabLn("list.Add(" + StringFormatter.CleanUpClassName(tableName) + "Mapper.ToBusinessObject(entity));");
+            _output.autoTabLn("list.Add(entity.ToBusinessObject());");
             _output.tabLevel--;
             _output.autoTabLn("return list;");
             _output.tabLevel--;

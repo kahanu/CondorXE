@@ -115,7 +115,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Collections.Generic;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper");
+            _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("public static class " + StringFormatter.CleanUpClassName(table.Name) + "Mapper");
@@ -216,7 +216,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("}");
 
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs");
-            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
+            SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
         }
 
         private void RenderCRUDInterface()
@@ -243,9 +243,9 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Collections.Generic;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
-            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntitySpaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
@@ -274,9 +274,9 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("using System.Collections.Generic;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
-            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntityMapper;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".EntitySpaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + "." + _script.Settings.DataOptions.DataStore.Selected);
             _output.autoTabLn("{");
