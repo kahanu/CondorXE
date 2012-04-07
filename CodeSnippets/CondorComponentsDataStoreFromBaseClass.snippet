@@ -1,0 +1,112 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        Condor Components BusinessObjects snippet
+      </Title>
+      <Shortcut>condorcomponentsdatastorefromdefaultclass</Shortcut>
+      <Author>King Wilder</Author>
+      <Description>Create a Condor concrete DataStore class that inherits from DefaultDataStoreFactory.</Description>
+    </Header>
+    <Snippet>
+    	<Declarations>
+    		<Literal>
+    			<ID>mynamespace</ID>
+    			<ToolTip>Namespace of class</ToolTip>
+    			<Default>MyNamespace</Default>
+    		</Literal>
+    		<Literal>
+    			<ID>name</ID>
+    			<ToolTip>Name of class</ToolTip>
+    			<Default>My</Default>
+    		</Literal>
+    	</Declarations>
+      <Code Language="CSharp">
+        <![CDATA[using System;
+using System.Linq;
+using Condor.Core;
+using Zeus;
+using MyMeta;
+
+namespace $mynamespace$.Components
+{
+    public class $name$DataStore : DefaultDataStoreFactory
+    {
+        #region ctors
+        private readonly IZeusOutput _output;
+        private readonly ScriptSettings _script;
+        private readonly RequestContext _context;
+
+        public $name$DataStore(RequestContext context)
+            :base(context)
+        {
+            this._context = context;
+            this._output = context.Zeus.Output;
+            this._script = context.ScriptSettings;
+        } 
+        #endregion
+
+        #region Members
+
+		/* ************************************************
+		* To implement your own IDataStore functionality,
+		* uncomment the method below that you want to override
+		* and add your own functionality.
+		**************************************************/
+		
+
+		//new public void GetAll(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void Insert(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void Update(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void Delete(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void GetById(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void GetAllWithSortingAndPaging(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void Mapper(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void Interface(ITable table)
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+		//new public void CRUDInterface()
+		//{
+		//    throw new NotImplementedException();
+		//}
+
+
+        #endregion
+    }
+}
+
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

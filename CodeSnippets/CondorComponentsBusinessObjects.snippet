@@ -1,0 +1,120 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        Condor Components BusinessObjects snippet
+      </Title>
+      <Shortcut>condorcomponentsbusinessobject</Shortcut>
+      <Author>King Wilder</Author>
+      <Description>Create a Condor concrete class that implements IBusinessObjects.</Description>
+    </Header>
+    <Snippet>
+    	<Declarations>
+    		<Literal>
+    			<ID>mynamespace</ID>
+    			<ToolTip>Namespace of class</ToolTip>
+    			<Default>MyNamespace</Default>
+    		</Literal>
+    		<Literal>
+    			<ID>name</ID>
+    			<ToolTip>Name of class</ToolTip>
+    			<Default>My</Default>
+    		</Literal>
+    	</Declarations>
+      <Code Language="CSharp">
+        <![CDATA[using System;
+using MyMeta;
+using Condor.Core;
+using Condor.Core.Interfaces;
+using Condor.Core.PropertyObjects;
+
+namespace $mynamespace$.Components
+{
+	public class $name$BusinessObjects : RenderBase, IBusinessObjects
+    {
+        private readonly RenderContext _context;
+
+        public $name$BusinessObjects(RenderContext context)
+            : base(context.Zeus.Output)
+        {
+            this._context = context;
+        }
+
+        #region IRenderObject Members
+
+        public void Render()
+        {
+            _context.Dialog.InitDialog();
+
+            _context.csFiles.Add("");
+            _context.csFiles.Add("Generated $name$ Business Objects");
+            foreach (TableItem item in _context.ScriptSettings.Settings.Tables.Tables)
+            {
+                _context.Dialog.Display("Processing $name$ Business Objects for '" + item.Name + "'");
+                ITable table = _context.MyMeta.DefaultDatabase.Tables[item.Name];
+                Render$name$BusinessObjectsClass(table);
+            }
+        }
+  
+        private void Render$name$BusinessObjectsClass(ITable table)
+        {
+            var output = _context.Zeus.Output;
+            output.clear();
+
+            try
+            {
+                hdrUtil.WriteClassHeader(output);
+
+		/* Include any necessary using references here for this generated code. */
+                output.autoTabLn("using System;");
+                output.autoTabLn("using System.Collections.Generic;");
+                output.autoTabLn("");
+                output.autoTabLn("namespace " + _script.Settings.BusinessObjects.BusinessObjectsNamespace);
+                output.autoTabLn("{");
+                output.tabLevel++;
+
+                output.autoTabLn("public class " + StringFormatter.CleanUpClassName(table.Name));
+                output.autoTabLn("{");
+                output.tabLevel++;
+
+                output.autoTabLn("#region Properties");
+                RenderProperties(table);
+                output.autoTabLn("#endregion");
+
+                output.tabLevel--;
+                output.autoTabLn("}");
+                output.autoTabLn("");
+
+                output.tabLevel--;
+                output.autoTabLn("}");
+                
+                _context.csFiles.Add("   " + StringFormatter.CleanUpClassName(table.Name) + ".cs");
+                SaveOutput(CreateFullPath(@"BusinessObjects", StringFormatter.CleanUpClassName(table.Name) + ".cs"), SaveActions.DontOverwrite);
+                output.clear();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error rendering BusinessObjects file - " + ex.Message);
+            }
+        }
+
+        private void RenderProperties(ITable table)
+        {
+            GizmoBeach.Condor.Core.Property prop = null;
+            foreach (IColumn c in table.Columns)
+            {
+                prop = new BusinessObjectsPropertyRender$name$(c, _context);
+                prop.Render();
+            }
+            BusinessObjectsPropertiesRenderForeignKey foreignKey = new BusinessObjectsPropertiesRenderForeignKey(table, _context);
+            foreignKey.Render();
+        }
+
+        #endregion
+    }
+    }
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

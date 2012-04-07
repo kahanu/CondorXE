@@ -1,0 +1,106 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        Condor Components DataStore snippet
+      </Title>
+      <Shortcut>condorcomponentsdatastore</Shortcut>
+      <Author>King Wilder</Author>
+      <Description>Create a Condor concrete DataStore class that implements IDataStore.</Description>
+    </Header>
+    <Snippet>
+    	<Declarations>
+    		<Literal>
+    			<ID>mynamespace</ID>
+    			<ToolTip>Namespace of class</ToolTip>
+    			<Default>MyNamespace</Default>
+    		</Literal>
+    		<Literal>
+    			<ID>name</ID>
+    			<ToolTip>Name of class</ToolTip>
+    			<Default>My</Default>
+    		</Literal>
+    	</Declarations>
+      <Code Language="CSharp">
+        <![CDATA[using System;
+using System.Linq;
+using Condor.Core;
+using Condor.Core.Interfaces;
+using Zeus;
+using MyMeta;
+
+namespace $mynamespace$.Components.DataObjects
+{
+    public class $name$DataStore : IDataStore
+    {
+        #region ctors
+        protected IZeusOutput _output;
+        protected ScriptSettings _script;
+        protected CommonUtility _util;
+        protected RequestContext _context;
+
+        public $name$DataStore(RequestContext context)
+        {
+            this._context = context;
+            this._output = context.Zeus.Output;
+            this._script = context.ScriptSettings;
+            this._util = context.Utility;
+        } 
+        #endregion
+
+        #region IDataStore Members
+
+        public void GetAll(ITable table)
+        {
+            
+        }
+
+        public void Insert(ITable table)
+        {
+            
+        }
+
+        public void Update(ITable table)
+        {
+            
+        }
+
+        public void Delete(ITable table)
+        {
+            
+        }
+
+        public void GetById(ITable table)
+        {
+            
+        }
+
+        public void GetAllWithSortingAndPaging(ITable table)
+        {
+            
+        }
+
+        public void Mapper(ITable table)
+        {
+            
+        }
+
+        public void Interface(ITable table)
+        {
+            
+        }
+
+        public void CRUDInterface()
+        {
+            
+        }
+
+        #endregion
+    }
+}
+
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

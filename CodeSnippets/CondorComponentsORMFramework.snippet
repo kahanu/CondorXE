@@ -1,0 +1,71 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        Condor Components ORMFramework snippet
+      </Title>
+      <Shortcut>condorcomponentsormframework</Shortcut>
+      <Author>King Wilder</Author>
+      <Description>Create a Condor concrete ORMFramework class that implements IORMFramework.</Description>
+    </Header>
+    <Snippet>
+    	<Declarations>
+    		<Literal>
+    			<ID>mynamespace</ID>
+    			<ToolTip>Namespace of class</ToolTip>
+    			<Default>MyNamespace</Default>
+    		</Literal>
+    		<Literal>
+    			<ID>name</ID>
+    			<ToolTip>Name of class</ToolTip>
+    			<Default>My</Default>
+    		</Literal>
+    	</Declarations>
+      <Code Language="CSharp">
+        <![CDATA[using System;
+using Condor.Core;
+using Condor.Core.Interfaces;
+using MyMeta;
+using Zeus;
+
+namespace $mynamespace$.Components.DataObjects
+{
+    public class $name$OrmFramework : RenderBase, IORMFramework
+    {
+        protected IDataStore _dataStore;
+        protected RequestContext _context;
+        protected IDatabase _database;
+        protected IZeusOutput output;
+        protected ProgressDialogWrapper _dialog;
+
+        public $name$OrmFramework(IDataStore dataStore, RequestContext context)
+            :base(context.Zeus.Output)
+        {
+            this._dataStore = dataStore;
+            this._context = context;
+            this._database = context.Database;
+            this._dialog = context.Dialog;
+        }
+
+        #region IORMFramework Members
+
+        public string Name
+        {
+            get { return "Your ORM Name"; }
+        }
+
+        public void Generate()
+        {
+            // Put your logic here
+        }
+
+        #endregion
+    }
+}
+
+
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

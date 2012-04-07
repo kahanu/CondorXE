@@ -1,0 +1,337 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        Condor Service Layer Objects snippet
+      </Title>
+      <Shortcut>condorcomponentsservicelayer</Shortcut>
+      <Author>King Wilder</Author>
+      <Description>Create a Condor concrete class that implements IServiceObjects.</Description>
+    </Header>
+    <Snippet>
+    	<Declarations>
+    		<Literal>
+    			<ID>mynamespace</ID>
+    			<ToolTip>Namespace of class</ToolTip>
+    			<Default>MyNamespace</Default>
+    		</Literal>
+    		<Literal>
+    			<ID>name</ID>
+    			<ToolTip>Name of class</ToolTip>
+    			<Default>My</Default>
+    		</Literal>
+    	</Declarations>
+      <Code Language="CSharp">
+        <![CDATA[using System;
+using System.Linq;
+using Condor.Core;
+using Condor.Core.Interfaces;
+using MyMeta;
+
+namespace $mynamespace$.Components.ServiceLayer
+{
+    public class $name$ServiceLayerObjects : RenderBase, IServiceObjects
+    {
+        #region ctors
+        private readonly RequestContext _context;
+        private readonly ScriptSettings _script;
+
+        public $name$ServiceLayerObjects(RequestContext context)
+            : base(context.Zeus.Output)
+        {
+            this._context = context;
+            this._script = context.ScriptSettings;
+        } 
+        #endregion
+        
+        #region IRenderObject Members
+
+        public void Render()
+        {
+            _context.Dialog.InitDialog(_context.Database.Tables.Count);
+            _context.FileList.Add("");
+            _context.FileList.Add("Generated $name$ Service Layer interfaces: ");
+            RenderServiceCRUDInterface();
+            foreach (string tableName in _script.Tables)
+            {
+                _context.Dialog.Display("Adding I" + tableName + "Service Interface");
+                ITable table = _context.Database.Tables[tableName];
+                RenderInterface(table);
+            }
+
+            _context.Dialog.InitDialog(_context.Database.Tables.Count);
+            _context.FileList.Add("");
+            _context.FileList.Add("Generated $name$ Service Layer Base classes: ");
+            foreach (string tableName in _script.Tables)
+            {
+                _context.Dialog.Display("Adding " + tableName + "ServiceBase class");
+                ITable table = _context.Database.Tables[tableName];
+                RenderServiceBaseClass(table);
+            }
+
+            _context.Dialog.InitDialog(_context.Database.Tables.Count);
+            _context.FileList.Add("");
+            _context.FileList.Add("Generated $name$ Service Layer classes: ");
+            foreach (string tableName in _script.Tables)
+            {
+                _context.Dialog.Display("Adding " + tableName + "Service class");
+                ITable table = _context.Database.Tables[tableName];
+                RenderConcreteClass(table);
+            }
+        }
+
+
+        #endregion
+
+        #region Private Methods
+
+        private void RenderConcreteClass(ITable table)
+        {
+            var output = _context.Zeus.Output;
+            output.clear();
+
+            hdrUtil.WriteClassHeader(output);
+
+            try
+            {
+                GenTable genTable = new GenTable(table, _context);
+                string sortColumn = genTable.GetFirstStringColumnName();
+
+output.autoTabLn("using System;");
+output.autoTabLn("using System.Collections.Generic;");
+output.autoTabLn("using System.Linq;");
+output.autoTabLn("using System.Text;");
+output.autoTabLn("");
+output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+output.autoTabLn("using " + _script.Settings.ServiceLayer.ServiceNamespace + ".Interfaces;");
+output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
+output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
+output.autoTabLn("");
+output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace);
+output.autoTabLn("{");
+output.autoTabLn("    public class " + StringFormatter.CleanUpClassName(table.Name) + "Service : " + StringFormatter.CleanUpClassName(table.Name) + "ServiceBase, I" + StringFormatter.CleanUpClassName(table.Name) + "Service");
+output.autoTabLn("    {");
+output.autoTabLn("");
+    output.tabLevel++;
+    output.autoTabLn("#region Dependency Injection");
+            output.tabLevel++;
+            output.autoTabLn("");
+    output.tabLevel--;
+    output.autoTabLn("public " + StringFormatter.CleanUpClassName(table.Name) + "Service(I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " " + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + "):base(" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ")");
+    output.autoTabLn("{");
+    output.autoTabLn("}");
+    output.autoTabLn("");
+    output.autoTabLn("#endregion");
+output.tabLevel--;
+output.autoTabLn("");
+    output.tabLevel++;
+    output.autoTabLn("#region I" + StringFormatter.CleanUpClassName(table.Name) + "Service Members");
+output.tabLevel--;
+output.autoTabLn("");
+    output.tabLevel++;
+    output.autoTabLn("public List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> GetAll(string sortExpression, int startRowIndex, int maximumRows)");
+    output.autoTabLn("{");
+        output.tabLevel++;
+        output.autoTabLn("if (string.IsNullOrEmpty(sortExpression))");
+            output.tabLevel++;
+            output.autoTabLn("sortExpression = \"" + sortColumn + "\";");
+output.tabLevel--;
+output.tabLevel--;
+output.autoTabLn("");
+        output.tabLevel++;
+        output.autoTabLn("return " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".GetAll(sortExpression, startRowIndex, maximumRows);");
+    output.tabLevel--;
+    output.autoTabLn("}");
+output.tabLevel--;
+output.autoTabLn("");
+    output.tabLevel++;
+    output.autoTabLn("public int GetCount()");
+    output.autoTabLn("{");
+        output.tabLevel++;
+        output.autoTabLn("return " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".GetAll().Count;");
+    output.tabLevel--;
+    output.autoTabLn("}");
+    output.autoTabLn("");
+    output.autoTabLn("public " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " GetById(int Id)");
+    output.autoTabLn("{");
+        output.tabLevel++;
+        output.autoTabLn("return " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".GetById(Id);");
+    output.tabLevel--;
+    output.autoTabLn("}");
+output.tabLevel--;
+output.autoTabLn("");
+    output.tabLevel++;
+    output.autoTabLn("#endregion");
+output.tabLevel--;
+output.autoTabLn("    }");
+output.autoTabLn("}");
+
+                _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Service.cs");
+                SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace, StringFormatter.CleanUpClassName(table.Name) + "Service.cs"), SaveActions.DontOverwrite);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error rendering ServiceLayer Concrete class - " + ex.Message);
+            }
+        }
+
+        private void RenderServiceBaseClass(ITable table)
+        {
+            var output = _context.Zeus.Output;
+            output.clear();
+
+            hdrUtil.WriteClassHeader(output);
+
+            try
+            {
+                output.autoTabLn("using System.Collections.Generic;");
+                output.autoTabLn("using System.Linq;");
+                output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+                output.autoTabLn("using " + _script.Settings.ServiceLayer.ServiceNamespace + ".Interfaces;");
+                output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
+                output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
+                output.autoTabLn("");
+                output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace);
+                output.autoTabLn("{");
+                output.autoTabLn("    public class " + StringFormatter.CleanUpClassName(table.Name) + "ServiceBase : ICRUDService<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + ">");
+                output.autoTabLn("    {");
+                output.tabLevel++;
+                output.autoTabLn("#region Dependency Injection");
+                output.autoTabLn("");
+                output.autoTabLn("protected I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ";");
+                output.tabLevel--;
+                output.autoTabLn("");
+                output.tabLevel++;
+                output.autoTabLn("public " + StringFormatter.CleanUpClassName(table.Name) + "ServiceBase(I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " " + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ")");
+                output.autoTabLn("{");
+                output.tabLevel++;
+                output.autoTabLn("this." + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + " = " + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ";");
+                output.tabLevel--;
+                output.autoTabLn("}");
+                output.autoTabLn("");
+                output.autoTabLn("#endregion");
+                output.tabLevel--;
+                output.autoTabLn("");
+                output.tabLevel++;
+                output.autoTabLn("public List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> GetAll()");
+                output.autoTabLn("{");
+                output.tabLevel++;
+                output.autoTabLn("return " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".GetAll().ToList();");
+                output.tabLevel--;
+                output.autoTabLn("}");
+                output.tabLevel--;
+                output.autoTabLn("");
+                output.tabLevel++;
+                output.autoTabLn("public void Insert(" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model)");
+                output.autoTabLn("{");
+                output.tabLevel++;
+                output.autoTabLn("" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".Insert(model);");
+                output.tabLevel--;
+                output.autoTabLn("}");
+                output.tabLevel--;
+                output.autoTabLn("");
+                output.tabLevel++;
+                output.autoTabLn("public void Update(" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model)");
+                output.autoTabLn("{");
+                output.tabLevel++;
+                output.autoTabLn("" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".Update(model);");
+                output.tabLevel--;
+                output.autoTabLn("}");
+                output.tabLevel--;
+                output.autoTabLn("");
+                output.tabLevel++;
+                output.autoTabLn("public void Delete(" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model)");
+                output.autoTabLn("{");
+                output.tabLevel++;
+                output.autoTabLn("" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ".Delete(model);");
+                output.tabLevel--;
+                output.autoTabLn("}");
+                output.tabLevel--;
+                output.autoTabLn("    }");
+                output.autoTabLn("}");
+
+                _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "ServiceBase.cs");
+                SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\Generated", StringFormatter.CleanUpClassName(table.Name) + "ServiceBase.cs"), SaveActions.Overwrite);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error rendering ServiceBase class - " + ex.Message);
+            }
+
+        }
+
+        private void RenderInterface(ITable table)
+        {
+            var output = _context.Zeus.Output;
+            output.clear();
+
+            hdrUtil.WriteClassHeader(output);
+
+            try
+            {
+                output.autoTabLn("using System;");
+                output.autoTabLn("using System.Collections.Generic;");
+                output.autoTabLn("using System.Linq;");
+                output.autoTabLn("using System.Text;");
+                output.autoTabLn("");
+                output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+                output.autoTabLn("");
+                output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace);
+                output.autoTabLn("{");
+                output.autoTabLn("    public interface I" + StringFormatter.CleanUpClassName(table.Name) + "Service : ICRUDService<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + ">");
+                output.autoTabLn("    {");
+                output.tabLevel++;
+                output.autoTabLn(_context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " GetById(" + _context.Utility.RenderConcreteMethodParameters(table) + ");");
+                output.autoTabLn("List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> GetAll(string sortExpression, int startRowIndex, int maximumRows);");
+                output.autoTabLn("int GetCount();");
+                output.tabLevel--;
+                output.autoTabLn("    }");
+                output.autoTabLn("}");
+
+                _context.FileList.Add("    I" + StringFormatter.CleanUpClassName(table.Name) + "Service.cs");
+                SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\Interfaces", "I" + StringFormatter.CleanUpClassName(table.Name) + "Service.cs"), SaveActions.DontOverwrite);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error rendering RenderServiceLayerInterface  - " + ex.Message);
+            }
+        }
+
+        private void RenderServiceCRUDInterface()
+        {
+            var output = _context.Zeus.Output;
+            output.clear();
+
+            hdrUtil.WriteClassHeader(output);
+
+            output.autoTabLn("using System;");
+            output.autoTabLn("using System.Collections.Generic;");
+            output.autoTabLn("using System.Linq;");
+            output.autoTabLn("using System.Text;");
+            output.autoTabLn("");
+            output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+            output.autoTabLn("");
+            output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace);
+            output.autoTabLn("{");
+            output.autoTabLn("    public interface ICRUDService<T>");
+            output.autoTabLn("    {");
+            output.autoTabLn("        List<T> GetAll();");
+            output.autoTabLn("        void Insert(T model);");
+            output.autoTabLn("        void Update(T model);");
+            output.autoTabLn("        void Delete(T model);");
+            output.autoTabLn("    }");
+            output.autoTabLn("}");
+
+            _context.FileList.Add("    ICRUDService.cs");
+            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\Interfaces", "ICRUDService.cs"), SaveActions.Overwrite);
+        }
+
+        #endregion
+    }
+}
+
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

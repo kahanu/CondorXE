@@ -1,0 +1,57 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>
+        Condor Services Factory snippet
+      </Title>
+      <Shortcut>condorservicesfactory</Shortcut>
+      <Author>King Wilder</Author>
+      <Description>Create a Condor concrete factory class that implements IObjectFactory. Not for end users!</Description>
+    </Header>
+    <Snippet>
+    	<Declarations>
+    		<Literal>
+    			<ID>mynamespace</ID>
+    			<ToolTip>Namespace of class</ToolTip>
+    			<Default>MyNamespace</Default>
+    		</Literal>
+    		<Literal>
+    			<ID>name</ID>
+    			<ToolTip>Name of class</ToolTip>
+    			<Default>MyObject</Default>
+    		</Literal>
+    	</Declarations>
+      <Code Language="CSharp">
+        <![CDATA[using System;
+using Condor.Core;
+using Condor.Core.Interfaces;
+using Condor.Interfaces;
+
+namespace $mynamespace$.Condor.Factories
+{
+    public class $name$Factory : IObjectFactory
+    {
+        private readonly RenderContext _context;
+
+        public $name$Factory(RenderContext context)
+        {
+            this._context = context;
+        }
+
+        public void Render(string typeName)
+        {
+            object[] parms = new object[1]
+            {
+                _context
+            };
+
+            var component = (I$name$Objects)Activator.CreateInstance(Type.GetType(typeName), parms);
+            component.Render();
+        }
+    }
+}
+	]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
