@@ -1,4 +1,4 @@
-##|TYPE Template
+﻿##|TYPE Template
 ##|UNIQUEID ff3c282d-72de-430c-9a13-f44b0a1457eb
 ##|TITLE CondorXE
 ##|NAMESPACE 
@@ -392,7 +392,7 @@ public class GeneratedGui : DotNetScriptGui
 		
 		/******************************************************************************************
 		*	Begin the Settings Manager Load functions
-		*	This section populates the form from the WebAppSettings.xml file
+		*	This section populates the form from the settings.xml file
 		*   in the root of the Visual Studio project.
 		*   
 		*   The SettingsManager class can be found at the bottom of this page.

@@ -14,3 +14,5 @@ C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\ResolveAssemblyRefe
 C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.MainForm.resources
 C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.Properties.Resources.resources
 C:\VSProjects\GizmoBeach.Condor\Helper\CodeWrapper\obj\Debug\CodeWrapper.csproj.GenerateResource.Cache
+C:\VSProjects\CondorXE\CondorXE\Helper\CodeWrapper\obj\Debug\CodeWrapper.exe
+C:\VSProjects\CondorXE\CondorXE\Helper\CodeWrapper\obj\Debug\CodeWrapper.pdb

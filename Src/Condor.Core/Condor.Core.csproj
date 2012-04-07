@@ -90,6 +90,7 @@
     <Compile Include="Infrastructure\CommonGenerators.cs" />
     <Compile Include="Infrastructure\DataObjectsAutoMapperExtensions.cs" />
     <Compile Include="Infrastructure\DataObjectsAutoMapperConfiguration.cs" />
+    <Compile Include="Interfaces\ICodeWriter.cs" />
     <Compile Include="Interfaces\ICommonGenerators.cs" />
     <Compile Include="Interfaces\IAutoMapperFramework.cs" />
     <Compile Include="Interfaces\IBusinessObjects.cs" />
@@ -166,6 +167,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Transforms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

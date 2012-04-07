@@ -115,6 +115,7 @@ namespace Condor
 
         /// <summary>
         /// Call this second.
+        /// This iterates through the necessary objects for each part of the application framework.
         /// </summary>
         public void Execute()
         {

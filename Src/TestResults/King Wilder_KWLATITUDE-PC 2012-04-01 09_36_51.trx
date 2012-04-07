@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="18a7fc6d-aef3-400e-984e-fc151066de5f" name="King Wilder@KWLATITUDE-PC 2012-04-01 09:36:51" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-04-01 09_36_51">
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\bin\Release\Condor.Core.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-04-01T09:36:51.0164579-07:00" queuing="2012-04-01T09:36:52.9116652-07:00" start="2012-04-01T09:36:53.0052653-07:00" finish="2012-04-01T09:36:53.5824663-07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="c:\vsprojects\condorxe\condorxe\src\codewritertests\bin\release\codewritertests.dll" id="ee234183-9c56-f672-d2e0-490341d0619c">
+      <Execution id="ca8c8d68-e179-4c94-a5cb-ccfe8ce72eef" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/CodeWriterTests/bin/Release/CodeWriterTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CodeWriterTests.ImplementationTests, CodeWriterTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ee234183-9c56-f672-d2e0-490341d0619c" executionId="ca8c8d68-e179-4c94-a5cb-ccfe8ce72eef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="ca8c8d68-e179-4c94-a5cb-ccfe8ce72eef" testId="ee234183-9c56-f672-d2e0-490341d0619c" testName="TestMethod1" computerName="KWLATITUDE-PC" duration="00:00:00.1053588" startTime="2012-04-01T09:36:53.0676654-07:00" endTime="2012-04-01T09:36:53.5356663-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca8c8d68-e179-4c94-a5cb-ccfe8ce72eef">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method CodeWriterTests.ImplementationTests.TestMethod1 threw exception: 
+System.NotImplementedException: The method or operation is not implemented.</Message>
+          <StackTrace>    at CodeWriterTests.BusinessObjectsWriter.Write() in C:\VSProjects\CondorXE\CondorXE\Src\CodeWriterTests\ImplementationTests.cs:line 79
+   at CodeWriterTests.ImplementationTests.TestMethod1() in C:\VSProjects\CondorXE\CondorXE\Src\CodeWriterTests\ImplementationTests.cs:line 68
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

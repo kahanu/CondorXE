@@ -1,0 +1,15 @@
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\Condor.Fakes.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\Condor.Fakes.pdb
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\MyMeta.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\PluginInterfaces.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\Npgsql.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\System.Data.SQLite.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\FirebirdSql.Data.FirebirdClient.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\MySql.Data.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\Interop.ADOX.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\ScintillaNET.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\Mono.Security.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\obj\Release\ResolveAssemblyReference.cache
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\obj\Release\Condor.Fakes.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\obj\Release\Condor.Fakes.pdb
