@@ -2413,7 +2413,7 @@ _output.autoTabLn("@(Html.Telerik().Grid(Model.<#= entityName #>List).Name(\"<#=
 	_output.autoTabLn(".Pageable()");
 	_output.autoTabLn(".Sortable()");
 _output.tabLevel--;
-_output.autoTabLn("))");
+_output.autoTabLn(")");
 _output.autoTabLn("");
 _output.autoTabLn("<#");
 _output.autoTabLn("// The following code closes the asp:Content tag used in the case of a master page and the body and html tags in the case of a regular view page");
