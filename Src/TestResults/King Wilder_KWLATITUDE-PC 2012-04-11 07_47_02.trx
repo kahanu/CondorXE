@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f92b295f-20b2-4a36-9aae-db95db9bbcf0" name="King Wilder@KWLATITUDE-PC 2012-04-11 07:47:02" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-04-11 07_47_02">
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\bin\Release\Condor.Core.dll" />
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Release\Condor.Fakes.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\PluginInterfaces.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\MyMeta.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-04-11T07:47:02.5074640-07:00" queuing="2012-04-11T07:47:02.5484663-07:00" start="2012-04-11T07:47:02.5544667-07:00" finish="2012-04-11T07:47:02.7794795-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestMethod1" storage="c:\vsprojects\condorxe\condorxe\src\codewritertests\bin\release\codewritertests.dll" id="ee234183-9c56-f672-d2e0-490341d0619c">
+      <Execution id="6c11fbf0-1a30-4177-90d0-428f43ed5fee" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/CodeWriterTests/bin/Release/CodeWriterTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CodeWriterTests.ImplementationTests, CodeWriterTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ee234183-9c56-f672-d2e0-490341d0619c" executionId="6c11fbf0-1a30-4177-90d0-428f43ed5fee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="6c11fbf0-1a30-4177-90d0-428f43ed5fee" testId="ee234183-9c56-f672-d2e0-490341d0619c" testName="TestMethod1" computerName="KWLATITUDE-PC" duration="00:00:00.0176466" startTime="2012-04-11T07:47:02.5644672-07:00" endTime="2012-04-11T07:47:02.7644787-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c11fbf0-1a30-4177-90d0-428f43ed5fee">
+    </UnitTestResult>
+  </Results>
+</TestRun>

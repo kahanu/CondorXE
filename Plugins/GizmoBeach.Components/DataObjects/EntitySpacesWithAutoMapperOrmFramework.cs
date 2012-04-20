@@ -6,6 +6,14 @@ using Condor.Core.Interfaces;
 
 namespace GizmoBeach.Components.DataObjects
 {
+    /// <summary>
+    /// This class may not completely work. It depends on whether or not you have a rowversion
+    /// column in your tables.  They should be mapped from a byte[] to a string and back and
+    /// I have not completely configured AutoMapper to handle that configuration properly.
+    /// 
+    /// You can feel free to go into the EntitySpacesAutoMapperExtensions.cs class and 
+    /// make the proper adjustments.
+    /// </summary>
     public class EntitySpacesWithAutoMapperOrmFramework : RenderBase, IORMFramework
     {
         #region ctors

@@ -92,6 +92,7 @@
     <Compile Include="BusinessObjects\DataAnnotationsBusinessObjects.cs" />
     <Compile Include="BusinessObjects\EntLibValidationBusinessObjects.cs" />
     <Compile Include="BusinessObjects\StandardBusinessObjects.cs" />
+    <Compile Include="CodeWriters\DataAnnotationsWriter.cs" />
     <Compile Include="DataObjects\DynamicLinq.cs" />
     <Compile Include="DataObjects\EntityFrameworkOrmFramework.cs" />
     <Compile Include="DataObjects\EntityFrameworkWithAutoMapperOrmFramework.cs" />

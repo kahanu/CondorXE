@@ -14,3 +14,9 @@ C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\ScintillaNET.dll
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Mono.Security.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Condor.Core.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Condor.Fakes.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\GizmoBeach.Components.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Condor.Core.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\Condor.Fakes.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\bin\Release\GizmoBeach.Components.pdb

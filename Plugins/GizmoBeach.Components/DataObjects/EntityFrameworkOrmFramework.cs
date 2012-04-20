@@ -107,23 +107,7 @@ namespace GizmoBeach.Components.DataObjects
 
         #endregion
 
-        private void BuildAutoMapperFramework()
-        {
-            if (_autoMapperFramework != null)
-            {
-                bool useWebService = false;
-                _autoMapperFramework.RenderAutoMapperExtensionClass(useWebService);
-                _autoMapperFramework.RenderAutoMapperConfiguration(useWebService);
-                _autoMapperFramework.RenderAutoMapperAppStart();
-
-                foreach (string tableName in _script.Tables)
-                {
-                    ITable table = _database.Tables[tableName];
-                    _autoMapperFramework.BuildModelClass(table, useWebService);
-                }
-            }
-        }
-
+        #region Private Methods
         private void RenderConcreteClass(ITable table)
         {
             _hdrUtil.WriteClassHeader(_output);
@@ -346,7 +330,23 @@ namespace GizmoBeach.Components.DataObjects
                 }
                 else
                 {
-                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = " + "model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                    if (c.LanguageType.ToLower() == "datetime")
+                    {
+                        if (c.IsNullable)
+                        {
+                            // This handles the datetime2 to datetime conversion exceptions with SQL Server.
+                            // This occurs when a nullable datetime has a date of 1/1/0001.
+                            _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = (model." + _context.Utility.CleanUpProperty(c.Name) + " == default(DateTime)) ? null : model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                        }
+                        else
+                        {
+                            _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                        }
+                    }
+                    else
+                    {
+                        _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                    }
                 }
             }
 
@@ -371,7 +371,23 @@ namespace GizmoBeach.Components.DataObjects
                 }
                 else
                 {
-                    _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = " + "model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                    if (c.LanguageType.ToLower() == "datetime")
+                    {
+                        if (c.IsNullable)
+                        {
+                            // This handles the datetime2 to datetime conversion exceptions with SQL Server.
+                            // This occurs when a nullable datetime has a date of 1/1/0001.
+                            _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = (model." + _context.Utility.CleanUpProperty(c.Name) + " == default(DateTime)) ? null : model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                        }
+                        else
+                        {
+                            _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                        }
+                    }
+                    else
+                    {
+                        _output.autoTabLn("entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = " + "model." + _context.Utility.CleanUpProperty(c.Name) + ";");
+                    }
                 }
             }
 
@@ -405,143 +421,6 @@ namespace GizmoBeach.Components.DataObjects
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs");
             SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
         }
-
-
-        //private void RenderMapperClass(ITable table)
-        //{
-        //    string str = "";
-        //    string tableName = table.Name;
-
-        //    // To BusinessObject loop
-        //    foreach (Column c in table.Columns)
-        //    {
-        //        if (c.Name.ToLower() != _script.Settings.DataOptions.VersionColumnName.ToLower())
-        //        {
-        //            if (c.IsNullable)
-        //            {
-        //                if (c.LanguageType != "string")
-        //                {
-        //                    str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " : default(" + c.LanguageType + ")," + Environment.NewLine;
-        //                }
-        //                else if (c.LanguageType == "byte[]")
-        //                {
-        //                    str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + Environment.NewLine;
-        //                }
-        //                else if (c.LanguageType == "string")
-        //                {
-        //                    str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + "," + Environment.NewLine;
-        //                }
-        //                else
-        //                {
-        //                    str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + ".HasValue ? (" + c.LanguageType + ")entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " : default(" + c.LanguageType + ")," + Environment.NewLine;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + "," + Environment.NewLine;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            str += "				" + _context.Utility.CleanUpProperty(c.Name, false) + " = " + "entity." + _context.Utility.CleanUpProperty(c.Name, false) + ".AsBase64String()," + Environment.NewLine;
-        //        }
-        //    }
-
-        //    // Now include any foreign key relationships
-        //    foreach (IForeignKey key in table.ForeignKeys)
-        //    {
-        //        /*
-        //        if (script.Tables.Contains(key.ForeignTable.Name))
-        //        {
-        //            if (key.PrimaryTable.Name == tableName)
-        //                str += "				" + StringFormatter.CleanUpClassName(StringFormatter.MakeSingular(key.ForeignTable.Name), false) + "List = " + StringFormatter.CleanUpClassName(StringFormatter.MakeSingular(key.ForeignTable.Name), false) + "Mapper.ToBusinessObjects(entity." + StringFormatter.CleanUpClassName(StringFormatter.MakePlural(key.ForeignTable.Name), false) + ")," + Environment.NewLine;
-        //        }
-        //        */
-
-        //        if (_script.Tables.Contains(key.PrimaryTable.Name))
-        //        {
-        //            if (key.PrimaryTable.Name != tableName)
-        //                str += "				" + StringFormatter.CleanUpClassName(key.PrimaryTable.Name) + " = " + StringFormatter.CleanUpClassName(key.PrimaryTable.Name) + "Mapper.ToBusinessObject(entity." + StringFormatter.CleanUpClassName(key.PrimaryTable.Name) + ")," + Environment.NewLine;
-        //        }
-        //    }
-
-        //    int lastComma = str.LastIndexOf(",");
-        //    str = str.Substring(0, lastComma);
-
-        //    string strEntity = string.Empty;
-
-        //    foreach (Column c in table.Columns)
-        //    {
-        //        if (c.Name.ToLower() != _script.Settings.DataOptions.VersionColumnName.ToLower())
-        //        {
-        //            strEntity += "				" + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name, false) + "," + Environment.NewLine;
-        //        }
-        //        else
-        //        {
-        //            strEntity += "				" + _context.Utility.CleanUpProperty(c.Name, false, PropertyModifications.Underscore) + " = model." + _context.Utility.CleanUpProperty(c.Name, false) + ".AsByteArray()," + Environment.NewLine;
-        //        }
-        //    }
-
-
-        //    lastComma = strEntity.LastIndexOf(",");
-        //    strEntity = strEntity.Substring(0, lastComma);
-
-        //    _output.autoTabLn("using System;");
-        //    _output.autoTabLn("using System.Data;");
-        //    _output.autoTabLn("using System.Linq;");
-        //    _output.autoTabLn("using System.Linq.Dynamic;");
-        //    _output.autoTabLn("using System.Collections.Generic;");
-        //    _output.autoTabLn("using System.Data.Objects.DataClasses;");
-        //    _output.autoTabLn("");
-        //    _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace);
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn("public class " + StringFormatter.CleanUpClassName(table.Name) + "Mapper");
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn("public static " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToBusinessObject(" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " entity)");
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn("if (entity == null) return null;");
-        //    _output.autoTabLn("");
-        //    _output.autoTabLn("return new " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)));
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn(str);
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("};");
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("}");
-        //    _output.autoTabLn("");
-        //    _output.autoTabLn("public static " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " ToEntity(" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + " model)");
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn("if (model == null) return null;");
-        //    _output.autoTabLn("");
-        //    _output.autoTabLn("return new " + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)));
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn(strEntity);
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("};");
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("}");
-        //    _output.autoTabLn("");
-        //    _output.autoTabLn("public static List<" + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> ToBusinessObjects(EntityCollection<" + _context.Utility.BuildEntityClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "> entities)");
-        //    _output.autoTabLn("{");
-        //    _output.tabLevel++;
-        //    _output.autoTabLn("if (entities == null) return null;");
-        //    _output.autoTabLn("return entities.Select(o => ToBusinessObject(o)).ToList();");
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("}");
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("}");
-        //    _output.tabLevel--;
-        //    _output.autoTabLn("}");
-
-        //    _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs");
-        //    SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\EntityMapper", StringFormatter.CleanUpClassName(table.Name) + "Mapper.cs"), SaveActions.DontOverwrite);
-        //}
 
         private void RenderDynamicLinqClass()
         {
@@ -875,6 +754,24 @@ namespace GizmoBeach.Components.DataObjects
             _context.FileList.Add("    DataObjectFactory.cs");
             SaveOutput(CreateFullPath(_script.Settings.DataOptions.DataObjectsNamespace + "\\" + _script.Settings.DataOptions.ORMFramework.Selected, "DataObjectFactory.cs"), SaveActions.Overwrite);
         }
+
+        private void BuildAutoMapperFramework()
+        {
+            if (_autoMapperFramework != null)
+            {
+                bool useWebService = false;
+                _autoMapperFramework.RenderAutoMapperExtensionClass(useWebService);
+                _autoMapperFramework.RenderAutoMapperConfiguration(useWebService);
+                _autoMapperFramework.RenderAutoMapperAppStart();
+
+                foreach (string tableName in _script.Tables)
+                {
+                    ITable table = _database.Tables[tableName];
+                    _autoMapperFramework.BuildModelClass(table, useWebService);
+                }
+            }
+        } 
+        #endregion
     }
 }
 

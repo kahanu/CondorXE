@@ -105,6 +105,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interfaces\IORMFramework.cs" />
+    <Compile Include="Interfaces\IORMUsings.cs" />
     <Compile Include="Interfaces\IProperty.cs" />
     <Compile Include="Interfaces\IRenderObject.cs" />
     <Compile Include="Interfaces\IServiceObjects.cs" />

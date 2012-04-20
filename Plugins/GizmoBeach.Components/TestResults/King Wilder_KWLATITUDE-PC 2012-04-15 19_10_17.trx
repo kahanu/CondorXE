@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="bb05293b-2827-426f-801b-e21bd7304890" name="King Wilder@KWLATITUDE-PC 2012-04-15 19:10:17" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="62b80d9b-8758-4aa4-86bc-006c49cbb856">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-04-15 19_10_17">
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\bin\Release\Condor.Core.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\MyMeta.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\PluginInterfaces.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\Dnp.Utils.dll" />
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\Condor.Fakes.dll" />
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\GizmoBeach.Components.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-04-15T19:10:17.0747139-07:00" queuing="2012-04-15T19:10:17.3087143-07:00" start="2012-04-15T19:10:17.3399144-07:00" finish="2012-04-15T19:10:17.6363149-07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="2" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="standard_orm_class_with_entityframework_usings" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="a6aba230-fa88-489f-23ce-4b5c544eaddb">
+      <Execution id="1dbeae66-f06b-4663-8b88-1c6bdccbe48b" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="standard_orm_class_with_entityframework_usings" />
+    </UnitTest>
+    <UnitTest name="write_the_standard_class_wrapper" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="29ce6121-18de-7dd2-4987-27767c06cce7">
+      <Execution id="f550afe3-757a-4a50-8545-415f4898a36e" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="write_the_standard_class_wrapper" />
+    </UnitTest>
+    <UnitTest name="standard_orm_class_with_entityspaces_usings" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="2996c028-9c24-2af0-6fde-121db2ab84f4">
+      <Execution id="79541b01-edde-426a-a7f3-869d98584554" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="standard_orm_class_with_entityspaces_usings" />
+    </UnitTest>
+    <UnitTest name="full_test_with_concrete_entityframework_class_and_usings" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="e9e40dd2-d162-657a-1493-986699d183ab">
+      <Execution id="3e3424f6-64c5-44bf-953a-d288fe32003d" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="full_test_with_concrete_entityframework_class_and_usings" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="2996c028-9c24-2af0-6fde-121db2ab84f4" executionId="79541b01-edde-426a-a7f3-869d98584554" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="29ce6121-18de-7dd2-4987-27767c06cce7" executionId="f550afe3-757a-4a50-8545-415f4898a36e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6aba230-fa88-489f-23ce-4b5c544eaddb" executionId="1dbeae66-f06b-4663-8b88-1c6bdccbe48b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9e40dd2-d162-657a-1493-986699d183ab" executionId="3e3424f6-64c5-44bf-953a-d288fe32003d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="79541b01-edde-426a-a7f3-869d98584554" testId="2996c028-9c24-2af0-6fde-121db2ab84f4" testName="standard_orm_class_with_entityspaces_usings" computerName="KWLATITUDE-PC" duration="00:00:00.0173596" startTime="2012-04-15T19:10:17.3555144-07:00" endTime="2012-04-15T19:10:17.5739148-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="79541b01-edde-426a-a7f3-869d98584554">
+    </UnitTestResult>
+    <UnitTestResult executionId="f550afe3-757a-4a50-8545-415f4898a36e" testId="29ce6121-18de-7dd2-4987-27767c06cce7" testName="write_the_standard_class_wrapper" computerName="KWLATITUDE-PC" duration="00:00:00.0006191" startTime="2012-04-15T19:10:17.5895148-07:00" endTime="2012-04-15T19:10:17.5895148-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f550afe3-757a-4a50-8545-415f4898a36e">
+      <Output>
+        <StdOut>namespace BlogApp.DataObjects.EntityFramework.SQLServer
+{
+	public class BlogBaseDao : ICRUDDao&lt;BlogApp.BusinessObjects.Blog&gt;
+	{
+	
+	}
+}
+namespace BlogApp.DataObjects.EntityFramework.SQLServer
+{
+	public class SQLServerBlogDao : BlogBaseDao, IBlogDao
+	{
+	
+	}
+}
+namespace BlogApp.DataObjects.Interfaces
+{
+	public interface IBlogDao : ICRUDDao&lt;BlogApp.BusinessObjects.Blog&gt;
+	{
+	
+	}
+}</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1dbeae66-f06b-4663-8b88-1c6bdccbe48b" testId="a6aba230-fa88-489f-23ce-4b5c544eaddb" testName="standard_orm_class_with_entityframework_usings" computerName="KWLATITUDE-PC" duration="00:00:00.0179775" startTime="2012-04-15T19:10:17.5895148-07:00" endTime="2012-04-15T19:10:17.6051148-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1dbeae66-f06b-4663-8b88-1c6bdccbe48b">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GizmoBeach.Components.Tests.ORMFrameworkCompositionTests.standard_orm_class_with_entityframework_usings threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Condor.Core.ScriptSettings.get_OutputPath() in C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\ScriptSettings.cs:line 105
+   at Condor.Core.ScriptSettings.get_Settings() in C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\ScriptSettings.cs:line 113
+   at GizmoBeach.Components.Tests.EntityFrameworkBaseORMUsings.Render() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 289
+   at GizmoBeach.Components.Tests.StandardORMFramework.CreateBaseClass() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 404
+   at GizmoBeach.Components.Tests.StandardORMFramework.Generate() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 395
+   at GizmoBeach.Components.Tests.ORMFrameworkCompositionTests.standard_orm_class_with_entityframework_usings() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 74
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3e3424f6-64c5-44bf-953a-d288fe32003d" testId="e9e40dd2-d162-657a-1493-986699d183ab" testName="full_test_with_concrete_entityframework_class_and_usings" computerName="KWLATITUDE-PC" duration="00:00:00.0034714" startTime="2012-04-15T19:10:17.6051148-07:00" endTime="2012-04-15T19:10:17.6207149-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e3424f6-64c5-44bf-953a-d288fe32003d">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method GizmoBeach.Components.Tests.ORMFrameworkCompositionTests.full_test_with_concrete_entityframework_class_and_usings threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Condor.Core.ScriptSettings.get_OutputPath() in C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\ScriptSettings.cs:line 105
+   at Condor.Core.ScriptSettings.get_Settings() in C:\VSProjects\CondorXE\CondorXE\Src\Condor.Core\ScriptSettings.cs:line 113
+   at GizmoBeach.Components.Tests.EntityFrameworkBaseORMUsings.Render() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 289
+   at GizmoBeach.Components.Tests.StandardORMFramework.CreateBaseClass() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 404
+   at GizmoBeach.Components.Tests.StandardORMFramework.Generate() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 395
+   at GizmoBeach.Components.Tests.EntityFrameworkWrapperORMFramework.Generate() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 242
+   at GizmoBeach.Components.Tests.ORMFrameworkCompositionTests.full_test_with_concrete_entityframework_class_and_usings() in C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components.Tests\ORMFrameworkCompositionTests.cs:line 170
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

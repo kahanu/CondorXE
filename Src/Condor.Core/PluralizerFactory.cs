@@ -280,6 +280,10 @@ namespace Condor.Core
                         }
                 }
             }
+            if (word.Substring(word.Length - 2) == "ss")
+            {
+                return false;
+            }
             if (word.Substring(word.Length - 1) != "s")
             {
                 return false; // not a plural word if it doesn't end in S

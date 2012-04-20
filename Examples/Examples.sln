@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Components", "Demo.Components\Demo.Components.csproj", "{8F99C434-4E00-42E5-A64F-49CC9370D122}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wcf.Components", "Wcf.Components\Wcf.Components.csproj", "{933ECB41-B845-4F09-A1BB-745A3467B2D4}"

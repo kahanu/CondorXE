@@ -1,4 +1,4 @@
-﻿
+﻿using Condor.Core.Interfaces;
 
 namespace Condor.Core
 {
@@ -56,5 +56,4 @@ namespace Condor.Core
             _progressDialog.Hide();
         }
     }
-
 }

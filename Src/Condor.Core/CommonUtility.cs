@@ -1,5 +1,6 @@
-﻿using MyMeta;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using Condor.Core.Interfaces;
+using MyMeta;
 
 namespace Condor.Core
 {

@@ -3,6 +3,7 @@ using System.Linq;
 using Condor.Core;
 using Condor.Core.Interfaces;
 using Condor.Core.PropertyObjects;
+using GizmoBeach.Components.CodeWriters;
 using MyMeta;
 
 namespace GizmoBeach.Components.BusinessObjects
@@ -10,11 +11,13 @@ namespace GizmoBeach.Components.BusinessObjects
     public class DataAnnotationsBusinessObjects : RenderBase, IBusinessObjects
     {
         private readonly RequestContext _context;
+        protected IDatabase _database;
 
         public DataAnnotationsBusinessObjects(RequestContext context)
         : base(context.Zeus.Output)
         {
             this._context = context;
+            this._database = context.Database;
         }
 
         #region IRenderObject Members
@@ -25,10 +28,10 @@ namespace GizmoBeach.Components.BusinessObjects
 
             _context.FileList.Add("");
             _context.FileList.Add("Generated DataAnnotations Business Objects");
-            foreach (TableItem item in _context.ScriptSettings.Settings.Tables.Tables)
+            foreach (string tableName in _script.Tables)
             {
-                _context.Dialog.Display("Processing DataAnnotations Business Objects for '" + item.Name + "'");
-                ITable table = _context.MyMeta.DefaultDatabase.Tables[item.Name];
+                _context.Dialog.Display("Processing DataAnnotations Business Objects for '" + tableName + "'");
+                ITable table = _database.Tables[tableName];
                 RenderDataAnnotationsBusinessObjectsClass(table);
             }
         }

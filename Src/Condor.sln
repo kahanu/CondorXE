@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condor.Core", "Condor.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Condor.Tests", "Condor.Tests\Condor.Tests.csproj", "{51E76321-0C96-4691-B137-0012F84A148B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWriterTests", "CodeWriterTests\CodeWriterTests.csproj", "{F3A1F4AB-7459-41DB-8DEC-36E4525E0929}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30E35ED3-605D-4C39-8CCC-CC7D25836FF6}"
 	ProjectSection(SolutionItems) = preProject
 		Condor.vsmdi = Condor.vsmdi
@@ -37,10 +35,6 @@ Global
 		{51E76321-0C96-4691-B137-0012F84A148B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51E76321-0C96-4691-B137-0012F84A148B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51E76321-0C96-4691-B137-0012F84A148B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3A1F4AB-7459-41DB-8DEC-36E4525E0929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3A1F4AB-7459-41DB-8DEC-36E4525E0929}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3A1F4AB-7459-41DB-8DEC-36E4525E0929}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3A1F4AB-7459-41DB-8DEC-36E4525E0929}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE4519E3-B7AF-4596-9F7D-79786D4BDF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE4519E3-B7AF-4596-9F7D-79786D4BDF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4519E3-B7AF-4596-9F7D-79786D4BDF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU

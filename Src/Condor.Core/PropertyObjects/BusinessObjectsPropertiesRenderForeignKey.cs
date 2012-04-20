@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Condor.Core.Interfaces;
 using MyMeta;
 using Zeus;
 

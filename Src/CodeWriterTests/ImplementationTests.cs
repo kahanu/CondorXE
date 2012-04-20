@@ -62,7 +62,7 @@ namespace CodeWriterTests
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void businessobjectswriter_returns_correct_output()
         {
             // Arrange
             RequestContext context = new RequestContext();
@@ -73,7 +73,23 @@ namespace CodeWriterTests
             writer.Write();
 
             // Assert
-            Console.WriteLine(writer.Read.ToString());
+            Assert.AreEqual("this is new stuff...\r\n", writer.Read);
+        }
+
+        [TestMethod]
+        public void test_autotabln()
+        {
+            // Arrange
+            RequestContext context = new RequestContext();
+            context.Zeus = new TempZeusContext();
+            IZeusOutput _output = context.Zeus.Output;
+
+            // Act
+            _output.autoTabLn("public int Id { get; set; }");
+            string expected = "public int Id { get; set; }\r\n";
+
+            // Assert
+            Assert.AreEqual(expected, _output.text);
         }
     }
   
@@ -90,13 +106,12 @@ namespace CodeWriterTests
 
         public void Write()
         {
-            _output.autoTabLn("This is a test");
+            //_output.autoTabLn("this is new stuff...");
         }
 
-
-        public IZeusOutput Read
+        public string Read
         {
-            get { return _output; }
+            get { return _output.text; }
         }
     }
 }

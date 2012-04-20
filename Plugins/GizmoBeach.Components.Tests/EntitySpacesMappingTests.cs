@@ -12,6 +12,7 @@ namespace GizmoBeach.Components.Tests
     [TestClass]
     public class EntitySpacesMappingTests
     {
+        
         public EntitySpacesMappingTests()
         {
             //
@@ -136,6 +137,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_mapper_property_for_string_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             ITable table = new CategoryTable(columns, null);
             string expected = "model.CategoryName = entity.CategoryName";
@@ -157,6 +159,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_mapper_property_for_datetime_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new DateTimeNullableColumn());
 
@@ -180,6 +183,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_mapper_property_for_nullable_datetime_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new DateTimeNullableColumn());
 
@@ -206,6 +210,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_mapper_property_for_not_nullable_datetime_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new DateTimeColumn());
 
@@ -234,6 +239,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_mapper_property_for_int_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new ViewCountIntColumn());
 
@@ -262,6 +268,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_mapper_property_for_nullable_int_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new ViewCountIntNullableColumn());
 
@@ -290,6 +297,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_complete_mapper_for_category_table()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new DateTimeColumn());
 
@@ -332,6 +340,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_complete_mapper_for_category_table_with_datetime_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new DateTimeColumn());
 
@@ -374,6 +383,7 @@ namespace GizmoBeach.Components.Tests
         [TestMethod]
         public void create_complete_mapper_for_category_table_with_nullable_datetime_column()
         {
+            // Arrange
             IColumns columns = new CategoryColumns();
             columns.Add(new DateTimeNullableColumn());
 
@@ -411,6 +421,22 @@ namespace GizmoBeach.Components.Tests
 
             // Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void display_output_using_output_dot_text()
+        {
+            // Arrange
+            IColumns columns = new CategoryColumns();
+            ITable table = new CategoryTable(columns, null);
+
+            // Act
+            foreach (IColumn column in table.Columns)
+            {
+                Console.WriteLine(column.Name + " - Type: " + column.LanguageType + " - IsPrimaryKey: " + column.IsInPrimaryKey + " - IsNullable: " + column.IsNullable);
+            }
+
+            // Assert
         }
     }
 }

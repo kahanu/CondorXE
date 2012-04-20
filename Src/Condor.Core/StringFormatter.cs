@@ -1,4 +1,5 @@
 ﻿using System;
+using Condor.Core.Interfaces;
 
 namespace Condor.Core
 {

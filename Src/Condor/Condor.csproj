@@ -85,6 +85,7 @@
     <Compile Include="Factories\IoCFactory.cs" />
     <Compile Include="Factories\ServiceFactory.cs" />
     <Compile Include="Factories\UIFactory.cs" />
+    <Compile Include="Infrastructure\UILoader.cs" />
     <Compile Include="Interfaces\IDataObjectsFactory.cs" />
     <Compile Include="Interfaces\IObjectFactory.cs" />
     <Compile Include="Generator.cs" />
@@ -98,9 +99,7 @@
       <Name>Condor.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>

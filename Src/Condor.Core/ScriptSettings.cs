@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Condor.Core.Interfaces;
 using Zeus;
 using System.Xml;
 
@@ -59,32 +60,50 @@ namespace Condor.Core
         #region Public Properties
         public string Version
         {
-            get { return _version; }
+            get
+            {
+                return _version;
+            }
         }
 
         public Dnp.Utils.Utils DnpUtils
         {
-            get { return _dnpUtils; }
+            get
+            {
+                return _dnpUtils;
+            }
         }
 
         public MyMeta.dbRoot Database
         {
-            get { return _database; }
+            get
+            {
+                return _database;
+            }
         }
 
         public string DatabaseName
         {
-            get { return _input["cmbDatabase"].ToString(); }
+            get
+            {
+                return _input["cmbDatabase"].ToString();
+            }
         }
 
         public ArrayList Tables
         {
-            get { return _input["lstTablesViews"] as ArrayList; }
+            get
+            {
+                return _input["lstTablesViews"] as ArrayList;
+            }
         }
 
         public string OutputPath
         {
-            get { return _input["defaultOutputPath"].ToString(); }
+            get
+            {
+                return _input["defaultOutputPath"].ToString();
+            }
         }
 
         public WebAppSettings Settings
@@ -223,7 +242,7 @@ namespace Condor.Core
         /// </summary>
         /// <param name="className"></param>
         /// <returns></returns>
-        private string GetClassValue(string className)
+        public string GetClassValue(string className)
         {
             string valueName = string.Empty;
 
@@ -244,7 +263,7 @@ namespace Condor.Core
         /// </summary>
         /// <param name="fullConnString"></param>
         /// <returns></returns>
-        private string ChopProvider(string fullConnString)
+        public string ChopProvider(string fullConnString)
         {
             int providerPos = fullConnString.IndexOf("Provider=");
             string connString = "";
@@ -256,7 +275,6 @@ namespace Condor.Core
             }
             return connString;
         }
-
         #endregion
     }
 }

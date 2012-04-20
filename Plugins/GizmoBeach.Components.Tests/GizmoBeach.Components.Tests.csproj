@@ -33,8 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Condor.Core, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Src\Condor.Core\bin\Release\Condor.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Condor.Fakes">
+      <HintPath>..\..\Src\Condor.Fakes\bin\Debug\Condor.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="Dnp.Utils">
       <HintPath>..\..\..\..\..\Program Files (x86)\MyGeneration13\Dnp.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="GizmoBeach.Components">
+      <HintPath>..\GizmoBeach.Components\bin\Debug\GizmoBeach.Components.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MyMeta">
@@ -47,6 +57,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -54,9 +65,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjectsTests.cs" />
     <Compile Include="Context\CategoryColumns.cs" />
     <Compile Include="Context\CategoryNameColumn.cs" />
     <Compile Include="Context\CategoryTable.cs" />
+    <Compile Include="Context\ScriptSettings.cs" />
     <Compile Include="Context\ViewCountIntNullableColumn.cs" />
     <Compile Include="Context\DateTimeColumn.cs" />
     <Compile Include="Context\DateTimeNullableColumn.cs" />
@@ -64,6 +77,8 @@
     <Compile Include="Context\ViewCountIntColumn.cs" />
     <Compile Include="Context\RowversionColumn.cs" />
     <Compile Include="Context\StringColumn.cs" />
+    <Compile Include="IORMUsings.cs" />
+    <Compile Include="ORMFrameworkCompositionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntitySpacesMappingTests.cs" />
   </ItemGroup>

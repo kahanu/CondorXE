@@ -113,6 +113,7 @@ namespace GizmoBeach.Components.DataObjects
 
             _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Collections.Generic;");
+
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace + "." + _script.Settings.DataOptions.ORMFramework.Selected + ".EntityMapper");
@@ -126,8 +127,8 @@ namespace GizmoBeach.Components.DataObjects
             _output.tabLevel++;
             _output.autoTabLn("if (entity == null) return null;");
             _output.autoTabLn("");
-
             _output.autoTabLn("var model = new " + _context.Utility.BuildModelClassWithNameSpace(StringFormatter.CleanUpClassName(table.Name)) + "();");
+            _output.autoTabLn("");
 
             string line = string.Empty;
 
@@ -285,6 +286,7 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("#region CRUD Methods");
+            _output.autoTabLn("");
             _output.tabLevel--;
             _output.autoTabLn("");
 
@@ -293,7 +295,6 @@ namespace GizmoBeach.Components.DataObjects
             _dataStore.Update(table);
             _dataStore.Delete(table);
 
-            _output.autoTabLn("");
             _output.autoTabLn("");
             _output.tabLevel++;
             _output.autoTabLn("#endregion");

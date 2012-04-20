@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="66af0166-bb2f-4b33-8c2b-d94b3574136c" name="King Wilder@KWLATITUDE-PC 2012-04-15 11:05:02" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="62b80d9b-8758-4aa4-86bc-006c49cbb856">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-04-15 11_05_02">
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\MyMeta.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\PluginInterfaces.dll" />
+      <DeploymentItem filename="C:\Program Files (x86)\MyGeneration13\Dnp.Utils.dll" />
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\Condor.Core.dll" />
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Debug\GizmoBeach.Components.dll" />
+      <DeploymentItem filename="C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\Condor.Fakes.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-04-15T11:05:02.2780302-07:00" queuing="2012-04-15T11:05:02.3230328-07:00" start="2012-04-15T11:05:02.3290331-07:00" finish="2012-04-15T11:05:02.5496405-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="standard_orm_class_with_entityframework_usings" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="a6aba230-fa88-489f-23ce-4b5c544eaddb">
+      <Execution id="df67a95e-165f-4afd-bd8f-fe205e5b2052" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="standard_orm_class_with_entityframework_usings" />
+    </UnitTest>
+    <UnitTest name="write_the_standard_class_wrapper" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="29ce6121-18de-7dd2-4987-27767c06cce7">
+      <Execution id="dc3ae547-340e-41fc-8d44-d754a43d74cc" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="write_the_standard_class_wrapper" />
+    </UnitTest>
+    <UnitTest name="standard_orm_class_with_entityspaces_usings" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="2996c028-9c24-2af0-6fde-121db2ab84f4">
+      <Execution id="171ffe44-d3b5-453f-8dba-bf51e6e8b386" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="standard_orm_class_with_entityspaces_usings" />
+    </UnitTest>
+    <UnitTest name="full_test_with_concrete_entityframework_class_and_usings" storage="c:\vsprojects\condorxe\condorxe\plugins\gizmobeach.components.tests\bin\debug\gizmobeach.components.tests.dll" id="e9e40dd2-d162-657a-1493-986699d183ab">
+      <Execution id="0225b663-9178-40cd-8543-a05800e18e55" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Plugins/GizmoBeach.Components.Tests/bin/Debug/GizmoBeach.Components.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="GizmoBeach.Components.Tests.ORMFrameworkCompositionTests, GizmoBeach.Components.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="full_test_with_concrete_entityframework_class_and_usings" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="2996c028-9c24-2af0-6fde-121db2ab84f4" executionId="171ffe44-d3b5-453f-8dba-bf51e6e8b386" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="29ce6121-18de-7dd2-4987-27767c06cce7" executionId="dc3ae547-340e-41fc-8d44-d754a43d74cc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6aba230-fa88-489f-23ce-4b5c544eaddb" executionId="df67a95e-165f-4afd-bd8f-fe205e5b2052" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9e40dd2-d162-657a-1493-986699d183ab" executionId="0225b663-9178-40cd-8543-a05800e18e55" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="171ffe44-d3b5-453f-8dba-bf51e6e8b386" testId="2996c028-9c24-2af0-6fde-121db2ab84f4" testName="standard_orm_class_with_entityspaces_usings" computerName="KWLATITUDE-PC" duration="00:00:00.0215700" startTime="2012-04-15T11:05:02.3330333-07:00" endTime="2012-04-15T11:05:02.5184405-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="171ffe44-d3b5-453f-8dba-bf51e6e8b386">
+    </UnitTestResult>
+    <UnitTestResult executionId="dc3ae547-340e-41fc-8d44-d754a43d74cc" testId="29ce6121-18de-7dd2-4987-27767c06cce7" testName="write_the_standard_class_wrapper" computerName="KWLATITUDE-PC" duration="00:00:00.0008282" startTime="2012-04-15T11:05:02.5184405-07:00" endTime="2012-04-15T11:05:02.5340405-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc3ae547-340e-41fc-8d44-d754a43d74cc">
+      <Output>
+        <StdOut>namespace BlogApp.DataObjects.EntityFramework.SQLServer
+{
+	public class BlogBaseDao : ICRUDDao&lt;BlogApp.BusinessObjects.Blog&gt;
+	{
+	
+	}
+}
+namespace BlogApp.DataObjects.EntityFramework.SQLServer
+{
+	public class SQLServerBlogDao : BlogBaseDao, IBlogDao
+	{
+	
+	}
+}</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="df67a95e-165f-4afd-bd8f-fe205e5b2052" testId="a6aba230-fa88-489f-23ce-4b5c544eaddb" testName="standard_orm_class_with_entityframework_usings" computerName="KWLATITUDE-PC" duration="00:00:00.0012118" startTime="2012-04-15T11:05:02.5340405-07:00" endTime="2012-04-15T11:05:02.5340405-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df67a95e-165f-4afd-bd8f-fe205e5b2052">
+    </UnitTestResult>
+    <UnitTestResult executionId="0225b663-9178-40cd-8543-a05800e18e55" testId="e9e40dd2-d162-657a-1493-986699d183ab" testName="full_test_with_concrete_entityframework_class_and_usings" computerName="KWLATITUDE-PC" duration="00:00:00.0005837" startTime="2012-04-15T11:05:02.5340405-07:00" endTime="2012-04-15T11:05:02.5496405-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0225b663-9178-40cd-8543-a05800e18e55">
+    </UnitTestResult>
+  </Results>
+</TestRun>

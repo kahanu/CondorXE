@@ -1,11 +1,12 @@
-﻿using Condor.Core;
-using System;
+﻿using System;
 using System.Collections;
 using System.Reflection;
-using Zeus;
+using Condor.Core;
+using Condor.Core.Interfaces;
 using Condor.Factories;
 using Condor.Interfaces;
 using Condor.ORM;
+using Zeus;
 
 namespace Condor
 {
@@ -87,6 +88,7 @@ namespace Condor
             try
             {
                 _scriptSettings = ScriptSettings.InitInstance(input, MyMeta, dnp, _version);
+                //_scriptSettings = new ScriptSettings(input, MyMeta, dnp, _version);
                 _scriptSettings.SaveSettings();
             }
             catch (Exception ex)
