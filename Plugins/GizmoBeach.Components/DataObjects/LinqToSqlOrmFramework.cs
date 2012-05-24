@@ -42,7 +42,7 @@ namespace GizmoBeach.Components.DataObjects
             {
                 ITable table = _database.Tables[tableName];
                 RenderInterface(table);
-                _dialog.Display("Processing I" + table.Name + _script.Settings.DataOptions.ClassSuffix + ".cs");
+                _dialog.Display("Processing I" + table.Name + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
             }
 
             _dialog.InitDialog();
@@ -62,7 +62,7 @@ namespace GizmoBeach.Components.DataObjects
             {
                 ITable table = _database.Tables[tableName];
                 RenderBaseClass(table);
-                _dialog.Display("Processing " + table.Name + "Base" + _script.Settings.DataOptions.ClassSuffix + ".cs");
+                _dialog.Display("Processing " + table.Name + "Base" + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
             }
 
             _dialog.InitDialog();
@@ -72,7 +72,7 @@ namespace GizmoBeach.Components.DataObjects
             {
                 ITable table = _database.Tables[tableName];
                 RenderConcreteClass(table);
-                _dialog.Display("Processing " + _script.Settings.DataOptions.DataStore.Selected + table.Name + _script.Settings.DataOptions.ClassSuffix + ".cs");
+                _dialog.Display("Processing " + _script.Settings.DataOptions.DataStore.Selected + table.Name + _script.Settings.DataOptions.ClassSuffix.Name + ".cs");
             }
 
             _dialog.InitDialog(1);

@@ -89,11 +89,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\DataAnnotationsBusinessObjectsForDbContext.cs" />
     <Compile Include="BusinessObjects\DataAnnotationsBusinessObjects.cs" />
     <Compile Include="BusinessObjects\EntLibValidationBusinessObjects.cs" />
     <Compile Include="BusinessObjects\StandardBusinessObjects.cs" />
     <Compile Include="CodeWriters\DataAnnotationsWriter.cs" />
+    <Compile Include="DataObjects\SQLServerDbContextRepositoryDataStore.cs" />
     <Compile Include="DataObjects\DynamicLinq.cs" />
+    <Compile Include="DataObjects\EntityFrameworkDbContextRepositoryOrmFramework.cs" />
     <Compile Include="DataObjects\EntityFrameworkOrmFramework.cs" />
     <Compile Include="DataObjects\EntityFrameworkWithAutoMapperOrmFramework.cs" />
     <Compile Include="DataObjects\EntitySpacesAutoMapperExtensions.cs" />
@@ -105,13 +108,17 @@
     <Compile Include="DataObjects\SQLServerEntityFrameworkDataStore.cs" />
     <Compile Include="DataObjects\SQLServerEntitySpacesDataStore.cs" />
     <Compile Include="DataObjects\SQLServerLinqToSqlDataStore.cs" />
+    <Compile Include="IoC\NinjectMVC3ServiceReferenceIoCProviderForDbContext.cs" />
     <Compile Include="IoC\NinjectMVC3RepositoryReferenceIoCProvider.cs" />
     <Compile Include="IoC\NinjectMVC3ServiceReferenceIoCProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\EntLibValidationServiceLayerObjects.cs" />
+    <Compile Include="ServiceLayer\ServiceClassesForDbContextServiceLayerObjects.cs" />
     <Compile Include="ServiceLayer\StandardWithBaseClassesServiceLayerObjects.cs" />
     <Compile Include="UI\AspNetMvcUILayerObjects.cs" />
     <Compile Include="UI\AspNetMvcWithAutoMapperUILayerObjects.cs" />
+    <Compile Include="UI\AspNetMvcUILayerObjectsForDbContext.cs" />
+    <Compile Include="UI\KingsMvcServiceLibraryCodeTemplatesForDbContext.cs" />
     <Compile Include="UI\KingsMvcServiceLibraryCodeTemplates.cs" />
     <Compile Include="UI\RenderMvcUIAutoMapper.cs" />
     <Compile Include="UI\WebFormsUILayerObjects.cs" />

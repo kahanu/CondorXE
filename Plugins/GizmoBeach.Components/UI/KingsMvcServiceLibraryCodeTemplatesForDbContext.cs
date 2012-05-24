@@ -9,7 +9,7 @@ namespace GizmoBeach.Components.UI
     /// This class renders the T4 controller template to use the ViewData classes
     /// that communicates with either a library service or WCF services.
     /// </summary>
-    public class KingsMvcServiceLibraryCodeTemplates : RenderBase, ICodeTemplateBuilder
+    public class KingsMvcServiceLibraryCodeTemplatesForDbContext : RenderBase, ICodeTemplateBuilder
     {
 
         #region ctors
@@ -25,7 +25,7 @@ namespace GizmoBeach.Components.UI
         /// </summary>
         /// <param name="context">RequestContext object</param>
         /// <param name="useWebServices">Whether this template uses WCF of a service library</param>
-        public KingsMvcServiceLibraryCodeTemplates(RequestContext context, bool useWebServices)
+        public KingsMvcServiceLibraryCodeTemplatesForDbContext(RequestContext context, bool useWebServices)
             : this(context, useWebServices, false)
         {
         }
@@ -37,7 +37,7 @@ namespace GizmoBeach.Components.UI
         /// <param name="context">RequestContext object</param>
         /// <param name="useWebServices">Whether this template uses WCF of a service library</param>
         /// <param name="useUIDtos">Is this application using DTOs?</param>
-        public KingsMvcServiceLibraryCodeTemplates(RequestContext context, bool useWebServices, bool useUIDtos)
+        public KingsMvcServiceLibraryCodeTemplatesForDbContext(RequestContext context, bool useWebServices, bool useUIDtos)
             : base(context.Zeus.Output)
         {
             this._useUIDtos = useUIDtos;
@@ -67,6 +67,7 @@ namespace GizmoBeach.Components.UI
             _output.autoTabLn("#>");
             _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Web.Mvc;");
+            _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("");
             if (_useUIDtos)
             {
@@ -74,7 +75,8 @@ namespace GizmoBeach.Components.UI
             }
             
             _output.autoTabLn("using " + _script.Settings.UI.UINamespace + ".ViewData;");
-            _output.autoTabLn("using " + _script.Settings.UI.UINamespace + ".Controllers;");
+            //_output.autoTabLn("using " + _script.Settings.UI.UINamespace + ".Controllers;");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
             if (_useWebServices)
             {
                 _output.autoTabLn("using " + _script.Settings.UI.UINamespace + ".Repositories.Core;");
@@ -91,18 +93,17 @@ namespace GizmoBeach.Components.UI
             _output.tabLevel++;
             _output.autoTabLn("public class <#= mvcHost.ControllerName #> : BaseController");
             _output.autoTabLn("{");
-            _output.tabLevel--;
             _output.autoTabLn("");
             _output.tabLevel++;
             _output.autoTabLn("#region ctors");
             _output.autoTabLn("");
             _output.autoTabLn("private readonly I<#= mvcHost.ControllerRootName #>Service <#= camelCaseServiceNameWithPrefix #>Service;");
-            _output.tabLevel--;
+            _output.autoTabLn("private readonly IUnitOfWork _unitOfWork;");
             _output.autoTabLn("");
-            _output.tabLevel++;
-            _output.autoTabLn("public <#= mvcHost.ControllerName #>(I<#= mvcHost.ControllerRootName #>Service <#= camelCaseServiceName #>Service)");
+            _output.autoTabLn("public <#= mvcHost.ControllerName #>(I<#= mvcHost.ControllerRootName #>Service <#= camelCaseServiceName #>Service, IUnitOfWork unitOfWork)");
             _output.autoTabLn("{");
             _output.tabLevel++;
+            _output.autoTabLn("this._unitOfWork = unitOfWork;");
             _output.autoTabLn("this.<#= camelCaseServiceNameWithPrefix #>Service = <#= camelCaseServiceName #>Service;");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -119,7 +120,7 @@ namespace GizmoBeach.Components.UI
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("<#= mvcHost.ControllerRootName #>ViewData viewData = ViewDataFactory.CreateBaseViewData<<#= mvcHost.ControllerRootName #>ViewData>(\"<#= mvcHost.ControllerRootName #> List\");");
-            _output.autoTabLn("viewData.<#= mvcHost.ControllerRootName #>List = <#= camelCaseServiceNameWithPrefix #>Service.GetAll()" + WriteToModel() + ";");
+            _output.autoTabLn("viewData.<#= mvcHost.ControllerRootName #>List = <#= camelCaseServiceNameWithPrefix #>Service.Get()" + WriteToModel() + ".ToList();");
             _output.tabLevel--;
             _output.autoTabLn("");
             _output.tabLevel++;
@@ -176,6 +177,7 @@ namespace GizmoBeach.Components.UI
             _output.tabLevel++;
             _output.autoTabLn(((_useUIDtos) ? "var localModel = model.FromModel();" : ""));
             _output.autoTabLn("<#= camelCaseServiceNameWithPrefix #>Service.Insert(" + ((_useUIDtos) ? "localModel" : "model") + ");");
+            _output.autoTabLn("_unitOfWork.Commit();");
             _output.autoTabLn("");
             _output.autoTabLn("return RedirectToAction(Actions.Index());");
             _output.tabLevel--;
@@ -220,6 +222,7 @@ namespace GizmoBeach.Components.UI
             _output.tabLevel++;
             _output.autoTabLn(((_useUIDtos) ? "var localModel = model.FromModel();" : ""));
             _output.autoTabLn("<#= camelCaseServiceNameWithPrefix #>Service.Update(" + ((_useUIDtos) ? "localModel" : "model") + ");");
+            _output.autoTabLn("_unitOfWork.Commit();");
             _output.tabLevel--;
             _output.autoTabLn("");
             _output.tabLevel++;
@@ -261,7 +264,9 @@ namespace GizmoBeach.Components.UI
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn(((_useUIDtos) ? "var localModel = model.FromModel();" : ""));
-            _output.autoTabLn("<#= camelCaseServiceNameWithPrefix #>Service.Delete(" + ((_useUIDtos) ? "localModel" : "model") + ");");
+            _output.autoTabLn("<#= camelCaseServiceNameWithPrefix #>Service.Delete(" + ((_useUIDtos) ? "localModel" : "model.Id") + ");");
+            _output.autoTabLn("_unitOfWork.Commit();");
+            _output.autoTabLn("");
             _output.autoTabLn("return RedirectToAction(Actions.Index());");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -436,6 +441,7 @@ _output.tabLevel--;
 _output.autoTabLn("}");
 _output.autoTabLn("#>");
 		_output.tabLevel++;
+        _output.autoTabLn("@Html.HiddenFor(model => model.rowversion)");
 		_output.autoTabLn("<p>");
 			_output.tabLevel++;
 			_output.autoTabLn("<input type=\"submit\" value=\"Save\" />");

@@ -4,7 +4,6 @@ using Condor.Core;
 using Condor.Core.Interfaces;
 using Condor.Core.PropertyObjects;
 using MyMeta;
-using Zeus;
 
 namespace GizmoBeach.Components.CodeWriters
 {
@@ -14,7 +13,6 @@ namespace GizmoBeach.Components.CodeWriters
     public class DataAnnotationsWriter : RenderBase, ICodeWriter
     {
         private readonly RequestContext _context;
-        private readonly IZeusOutput _output;
         
         private readonly ITable _table;
 
@@ -22,7 +20,6 @@ namespace GizmoBeach.Components.CodeWriters
         {
             this._table = table;
             this._context = context;
-            this._output = context.Zeus.Output;
         }
 
         public void Write()
