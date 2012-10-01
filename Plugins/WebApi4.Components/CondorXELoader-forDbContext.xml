@@ -1,0 +1,8 @@
+   <add type="IoCProvider" value="NinjectMVC3ServiceReferenceIoCProviderForDbContext" class="GizmoBeach.Components.IoC.NinjectMVC3ServiceReferenceIoCProviderForDbContext, GizmoBeach.Components" text="Ninject MVC3 Service Mappings (DbContext)" />
+   <add type="ServiceLayer" value="ServiceClassesForDbContextServiceLayerObjects" class="GizmoBeach.Components.ServiceLayer.ServiceClassesForDbContextServiceLayerObjects, GizmoBeach.Components" text="Service Layer with base classes (DbContext)" />
+   <add type="DataStore" value="SQLServer" class="GizmoBeach.Components.DataObjects.SQLServerDbContextRepositoryDataStore, GizmoBeach.Components" text="SQL Server for EntityFramework (DbContext) DataStore" />
+   <add type="ORMFramework" value="EntityFrameworkDbContextRepository" class="GizmoBeach.Components.DataObjects.EntityFrameworkDbContextRepositoryOrmFramework, GizmoBeach.Components" text="Entity Framework (DbContext)" />
+   <add type="BusinessObjects" value="DataAnnotationsBusinessObjectsForDbContext" class="GizmoBeach.Components.BusinessObjects.DataAnnotationsBusinessObjectsForDbContext, GizmoBeach.Components" text="Data Annotations Business Objects (DbContext)" />
+   <add type="BusinessObjects" value="WebApiBusinessObjects" class="WebApi4.Components.BusinessObjects.WebApiBusinessObjects, WebApi4.Components" text="WebApi4 Business Objects (DbContext)" />
+   <add type="ServiceLayer" value="WebApiServiceLayerObjects" class="WebApi4.Components.ServiceLayer.WebApiServiceLayerObjects, WebApi4.Components" text="WebApi4 Service (DbContext)" />
+   <add type="UIFramework" value="AspNetMvcUILayerObjectsForDbContext" class="GizmoBeach.Components.UI.AspNetMvcUILayerObjectsForDbContext, GizmoBeach.Components" text="ASP.NET MVC (DbContext)" />

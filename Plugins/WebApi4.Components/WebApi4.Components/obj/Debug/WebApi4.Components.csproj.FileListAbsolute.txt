@@ -1,0 +1,16 @@
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\WebApi4.Components.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\WebApi4.Components.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\Condor.Core.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\Dnp.Utils.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\MyMeta.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\PluginInterfaces.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\Npgsql.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\System.Data.SQLite.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\Interop.ADOX.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\ScintillaNET.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Debug\Condor.Core.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\obj\Debug\ResolveAssemblyReference.cache
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\obj\Debug\WebApi4.Components.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\obj\Debug\WebApi4.Components.pdb

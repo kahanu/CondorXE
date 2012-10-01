@@ -252,10 +252,10 @@ namespace GizmoBeach.Components.DataObjects
         {
             _hdrUtil.WriteClassHeader(_output);
 
-            _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Data.Entity;");
             _output.autoTabLn("using System.Data.Entity.ModelConfiguration.Conventions;");
             _output.autoTabLn("using System.Linq;");
+            _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Generated;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.DataOptions.DataObjectsNamespace);
@@ -292,6 +292,18 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();");
+
+            // Include mappings for entities with schema names.
+            _output.autoTabLn("");
+            foreach (string tableName in _script.Tables)
+            {
+                ITable table = _database.Tables[tableName];
+                if (table.Schema.ToLower() != "dbo")
+                {
+                    _output.autoTabLn("modelBuilder.Entity<" + StringFormatter.CleanUpClassName(tableName) + ">().ToTable(\"" + StringFormatter.CleanUpClassName(tableName) + "\", \"" + table.Schema + "\");");
+                }
+            }
+
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("");
