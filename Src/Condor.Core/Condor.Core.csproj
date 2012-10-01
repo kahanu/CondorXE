@@ -108,6 +108,7 @@
     <Compile Include="Interfaces\IORMUsings.cs" />
     <Compile Include="Interfaces\IProperty.cs" />
     <Compile Include="Interfaces\IRenderObject.cs" />
+    <Compile Include="Interfaces\IScriptSettings.cs" />
     <Compile Include="Interfaces\IServiceObjects.cs" />
     <Compile Include="Interfaces\IUIObjects.cs" />
     <Compile Include="Interfaces\IWCFServiceHost.cs" />
@@ -118,7 +119,10 @@
     <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderDataAnnotations.cs" />
     <Compile Include="PropertyObjects\BusinessObjectsPropertiesRenderForeignKey.cs" />
     <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderEntLibValidation.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderFullProperty.cs" />
     <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderShortProperty.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertyRenderDataAnnotationsForDbContext.cs" />
+    <Compile Include="PropertyObjects\BusinessObjectsPropertiesRenderForeignKeyForDbContext.cs" />
     <Compile Include="PropertyObjects\MapPropertiesToDto.cs" />
     <Compile Include="PropertyObjects\MapPropertiesFromDto.cs" />
     <Compile Include="RenderBase.cs" />

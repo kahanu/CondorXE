@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e2a1c402-8446-458e-bac1-0dcb1a3660b6" name="King Wilder@KWLATITUDE-PC 2012-08-16 10:48:13" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-08-16 10_48_13" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-08-16T10:48:13.1471599-07:00" queuing="2012-08-16T10:48:13.1871622-07:00" start="2012-08-16T10:48:13.2291646-07:00" finish="2012-08-16T10:48:13.4665661-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="loop_test_split" storage="c:\vsprojects\condorxe\condorxe\src\condor.unittests\bin\release\condor.unittests.dll" id="5c8188d9-079d-7b0b-bf2c-52ccf24cbd71">
+      <Execution id="c7c1049f-4960-41c5-bafb-8e0c576850e4" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/Condor.UnitTests/bin/Release/Condor.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Condor.UnitTests.UnitTest1, Condor.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="loop_test_split" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="5c8188d9-079d-7b0b-bf2c-52ccf24cbd71" executionId="c7c1049f-4960-41c5-bafb-8e0c576850e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c7c1049f-4960-41c5-bafb-8e0c576850e4" testId="5c8188d9-079d-7b0b-bf2c-52ccf24cbd71" testName="loop_test_split" computerName="KWLATITUDE-PC" duration="00:00:00.0109241" startTime="2012-08-16T10:48:13.2401653-07:00" endTime="2012-08-16T10:48:13.4509661-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7c1049f-4960-41c5-bafb-8e0c576850e4">
+    </UnitTestResult>
+  </Results>
+</TestRun>

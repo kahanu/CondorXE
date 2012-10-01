@@ -8,6 +8,17 @@ namespace Condor.Core.PropertyObjects
     {
         protected CommonUtility _util;
 
+        /// <summary>
+        /// This renders short properties with DataAnnotations Attributes.
+        /// </summary>
+        /// <param name="column"></param>
+        /// <param name="context"></param>
+        /// <example>
+        /// [Required(ErrorMessage = "Category Name is required.")]
+        /// [StringLength(50, ErrorMessage = "Category Name must be between 1 and 50 characters.")]
+        /// [DisplayName("Category Name")]
+        /// public string CategoryName { get; set; }
+        /// </example>
         public BusinessObjectsPropertyRenderDataAnnotations(MyMeta.IColumn column, RequestContext context)
             :base(column, context)
         {

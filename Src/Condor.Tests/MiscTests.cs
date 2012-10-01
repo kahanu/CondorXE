@@ -56,6 +56,23 @@ namespace Condor.Tests
             Assert.AreEqual(expected, connString);
         }
 
+        [Test]
+        public void string_array()
+        {
+            // Arrange
+            string originalString = "Id,rowversion";
+            string[] omitList = originalString.ToLower().Split(',');
+
+            // Act
+            bool actual = omitList.Contains("id");
+            bool expected = true;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
     }
 
     abstract class TempOrmFrameworkBase : IORMFramework

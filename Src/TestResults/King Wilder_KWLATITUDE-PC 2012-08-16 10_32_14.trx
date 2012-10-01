@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f02a8448-920b-48dd-8e88-603adfe8f827" name="King Wilder@KWLATITUDE-PC 2012-08-16 10:32:14" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-08-16 10_32_14" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-08-16T10:32:14.1502124-07:00" queuing="2012-08-16T10:32:14.1814124-07:00" start="2012-08-16T10:32:14.2126125-07:00" finish="2012-08-16T10:32:14.4778129-07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="test_string_split" storage="c:\vsprojects\condorxe\condorxe\src\condor.unittests\bin\release\condor.unittests.dll" id="a56a69e6-e00f-d21d-a09f-ebdb66fee4e9">
+      <Execution id="23c2c14e-4fd1-4f88-b210-80385172d4f2" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/Condor.UnitTests/bin/Release/Condor.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Condor.UnitTests.UnitTest1, Condor.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="test_string_split" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="a56a69e6-e00f-d21d-a09f-ebdb66fee4e9" executionId="23c2c14e-4fd1-4f88-b210-80385172d4f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="23c2c14e-4fd1-4f88-b210-80385172d4f2" testId="a56a69e6-e00f-d21d-a09f-ebdb66fee4e9" testName="test_string_split" computerName="KWLATITUDE-PC" duration="00:00:00.0707488" startTime="2012-08-16T10:32:14.2126125-07:00" endTime="2012-08-16T10:32:14.4622129-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23c2c14e-4fd1-4f88-b210-80385172d4f2">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;True&gt;. Actual:&lt;False&gt;. </Message>
+          <StackTrace>   at Condor.UnitTests.UnitTest1.test_string_split() in C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\UnitTest1.cs:line 74
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

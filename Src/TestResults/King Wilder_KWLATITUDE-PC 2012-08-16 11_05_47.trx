@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="339d8915-fa0e-4883-a237-8b586c6f05b4" name="King Wilder@KWLATITUDE-PC 2012-08-16 11:05:47" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-08-16 11_05_47" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-08-16T11:05:47.1080989-07:00" queuing="2012-08-16T11:05:47.1452993-07:00" start="2012-08-16T11:05:47.1608993-07:00" finish="2012-08-16T11:05:48.1125010-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="iterate_over_property_array_and_validate_only_non_omitted_properties_are_created" storage="c:\vsprojects\condorxe\condorxe\src\condor.unittests\bin\release\condor.unittests.dll" id="d73d739c-778b-b437-4ee1-b75907aa1057">
+      <Execution id="d5a8fea9-2926-467b-b661-85722dbdfc8b" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/Condor.UnitTests/bin/Release/Condor.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Condor.UnitTests.UnitTest1, Condor.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="iterate_over_property_array_and_validate_only_non_omitted_properties_are_created" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="d73d739c-778b-b437-4ee1-b75907aa1057" executionId="d5a8fea9-2926-467b-b661-85722dbdfc8b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d5a8fea9-2926-467b-b661-85722dbdfc8b" testId="d73d739c-778b-b437-4ee1-b75907aa1057" testName="iterate_over_property_array_and_validate_only_non_omitted_properties_are_created" computerName="KWLATITUDE-PC" duration="00:00:00.0110763" startTime="2012-08-16T11:05:47.1920994-07:00" endTime="2012-08-16T11:05:47.3792997-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5a8fea9-2926-467b-b661-85722dbdfc8b">
+    </UnitTestResult>
+  </Results>
+</TestRun>

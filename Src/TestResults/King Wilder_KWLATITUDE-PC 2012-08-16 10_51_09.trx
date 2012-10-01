@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d799a8ad-e315-44d4-8885-dc7ea8fcc331" name="King Wilder@KWLATITUDE-PC 2012-08-16 10:51:09" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-08-16 10_51_09" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-08-16T10:51:09.4185229-07:00" queuing="2012-08-16T10:51:09.4567233-07:00" start="2012-08-16T10:51:09.4567233-07:00" finish="2012-08-16T10:51:09.6595237-07:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="validate_alias_does_not_exist_in_array_equals_true" storage="c:\vsprojects\condorxe\condorxe\src\condor.unittests\bin\release\condor.unittests.dll" id="e249d227-56b2-2ecb-cecf-9cb2ab789071">
+      <Execution id="4c791565-5954-4955-acc9-f5f0ab86c591" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/Condor.UnitTests/bin/Release/Condor.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Condor.UnitTests.UnitTest1, Condor.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="validate_alias_does_not_exist_in_array_equals_true" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e249d227-56b2-2ecb-cecf-9cb2ab789071" executionId="4c791565-5954-4955-acc9-f5f0ab86c591" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4c791565-5954-4955-acc9-f5f0ab86c591" testId="e249d227-56b2-2ecb-cecf-9cb2ab789071" testName="validate_alias_does_not_exist_in_array_equals_true" computerName="KWLATITUDE-PC" duration="00:00:00.0228168" startTime="2012-08-16T10:51:09.4723234-07:00" endTime="2012-08-16T10:51:09.6595237-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c791565-5954-4955-acc9-f5f0ab86c591">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;False&gt;. Actual:&lt;True&gt;. </Message>
+          <StackTrace>   at Condor.UnitTests.UnitTest1.validate_alias_does_not_exist_in_array_equals_true() in C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\UnitTest1.cs:line 106
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

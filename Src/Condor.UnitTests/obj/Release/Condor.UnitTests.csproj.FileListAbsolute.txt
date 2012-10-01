@@ -1,0 +1,5 @@
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\bin\Release\Condor.UnitTests.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\bin\Release\Condor.UnitTests.pdb
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\obj\Release\ResolveAssemblyReference.cache
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\obj\Release\Condor.UnitTests.dll
+C:\VSProjects\CondorXE\CondorXE\Src\Condor.UnitTests\obj\Release\Condor.UnitTests.pdb

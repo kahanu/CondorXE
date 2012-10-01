@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="491ce954-3db6-46d3-872d-8396bc814284" name="King Wilder@KWLATITUDE-PC 2012-08-16 10:50:42" runUser="KWLatitude-PC\King Wilder" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3ea8f12d-a9d1-47d6-9d1e-ef4df6829a79">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="King Wilder_KWLATITUDE-PC 2012-08-16 10_50_42" />
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-08-16T10:50:42.8694184-07:00" queuing="2012-08-16T10:50:42.9630186-07:00" start="2012-08-16T10:50:42.9786186-07:00" finish="2012-08-16T10:50:43.1814190-07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="validate_alias_does_not_exist_in_array_equals_true" storage="c:\vsprojects\condorxe\condorxe\src\condor.unittests\bin\release\condor.unittests.dll" id="e249d227-56b2-2ecb-cecf-9cb2ab789071">
+      <Execution id="82d49469-0b1d-4e44-bdaa-cb72e4a8f04e" />
+      <TestMethod codeBase="C:/VSProjects/CondorXE/CondorXE/Src/Condor.UnitTests/bin/Release/Condor.UnitTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Condor.UnitTests.UnitTest1, Condor.UnitTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="validate_alias_does_not_exist_in_array_equals_true" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e249d227-56b2-2ecb-cecf-9cb2ab789071" executionId="82d49469-0b1d-4e44-bdaa-cb72e4a8f04e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="82d49469-0b1d-4e44-bdaa-cb72e4a8f04e" testId="e249d227-56b2-2ecb-cecf-9cb2ab789071" testName="validate_alias_does_not_exist_in_array_equals_true" computerName="KWLATITUDE-PC" duration="00:00:00.0107624" startTime="2012-08-16T10:50:42.9942186-07:00" endTime="2012-08-16T10:50:43.1658190-07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82d49469-0b1d-4e44-bdaa-cb72e4a8f04e">
+    </UnitTestResult>
+  </Results>
+</TestRun>
