@@ -25,10 +25,10 @@ namespace WebApi4.Components.ServiceLayer
             _context.Dialog.InitDialog(_script.Tables.Count);
             _context.FileList.Add("");
 
-            RenderFormatterClass();
-            RenderRouteConfigClass();
+            //RenderFormatterClass();
+            //RenderRouteConfigClass();
+            //RenderGlobalAsaxClass();
             RenderUnityWebApiConfigurationClass();
-            RenderGlobalAsaxClass();
             RenderBaseControllerClass();
 
             _context.Dialog.InitDialog(_script.Tables.Count);
@@ -55,10 +55,9 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("using System.Collections.Generic;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("using System.Linq.Expressions;");
-            _output.autoTabLn("using System.Net;");
-            _output.autoTabLn("using System.Net.Http;");
-            _output.autoTabLn("using System.Web.Http;");
+            _output.autoTabLn("");
             _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".Controllers");
@@ -72,10 +71,12 @@ namespace WebApi4.Components.ServiceLayer
             _output.tabLevel++;
             _output.autoTabLn("#region ctors");
             _output.autoTabLn("private readonly I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " _" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ";");
+            _output.autoTabLn("private readonly IUnitOfWork _unitOfWork;");
             _output.autoTabLn("");
-            _output.autoTabLn("public " + StringFormatter.CleanUpClassName(table.Name) + "Controller(I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + "):base(" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ")");
+            _output.autoTabLn("public " + StringFormatter.CleanUpClassName(table.Name) + "Controller(I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + " " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ", IUnitOfWork unitOfWork) : base(" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ", unitOfWork)");
             _output.autoTabLn("{");
             _output.tabLevel++;
+            _output.autoTabLn("this._unitOfWork = unitOfWork;");
             _output.autoTabLn("this._" + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + " = " + StringFormatter.CamelCasing(StringFormatter.CleanUpClassName(table.Name)) + _script.Settings.DataOptions.ClassSuffix.Name + ";");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -114,6 +115,35 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("//	return product;");
             _output.autoTabLn("//}");
             _output.autoTabLn("");
+            _output.autoTabLn("///// <summary>");
+            _output.autoTabLn("///// Calculate the tax for a product. (Example PUT method.)");
+            _output.autoTabLn("///// </summary>");
+            _output.autoTabLn("///// <param name=\"name\">Product model</param>");
+            _output.autoTabLn("///// <returns></returns>");
+            _output.autoTabLn("//[HttpPut]");
+            _output.autoTabLn("//public Product CalculateTax(Product model)");
+            _output.autoTabLn("//{");
+            _output.autoTabLn("//	if (ModelState.IsValid)");
+            _output.autoTabLn("//	{");
+            _output.autoTabLn("//		try");
+            _output.autoTabLn("//		{");
+            _output.autoTabLn("//			var tax = model.Amount * _taxRate;");
+            _output.autoTabLn("//			_groupDao.UpdateTax(tax);");
+            _output.autoTabLn("//			_unitOfWork.ActionEntities.Commit();");
+            _output.autoTabLn("//			");
+            _output.autoTabLn("//		}");
+            _output.autoTabLn("//		catch (Exception)");
+            _output.autoTabLn("//		{");
+            _output.autoTabLn("//			return Request.CreateResponse(HttpStatusCode.NotFound);");
+            _output.autoTabLn("//		}");
+            _output.autoTabLn("//		return Request.CreateResponse(HttpStatusCode.OK, model);");
+            _output.autoTabLn("//	}");
+            _output.autoTabLn("//	else");
+            _output.autoTabLn("//	{");
+            _output.autoTabLn("//		return Request.CreateResponse(HttpStatusCode.BadRequest);");
+            _output.autoTabLn("//	}");
+            _output.autoTabLn("//}");
+            _output.autoTabLn("");
             _output.autoTabLn("#endregion");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -135,6 +165,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("using System.Net.Http;");
             _output.autoTabLn("using System.Web.Http;");
             _output.autoTabLn("using " + _script.Settings.BusinessObjects.BusinessObjectsNamespace + ";");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Generated;");
             _output.autoTabLn("");
             _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".Controllers");
@@ -149,10 +180,12 @@ namespace WebApi4.Components.ServiceLayer
             _output.tabLevel++;
             _output.autoTabLn("#region ctors");
             _output.autoTabLn("private readonly IRepository<T> _repository;");
+            _output.autoTabLn("private readonly IUnitOfWork _unitOfWork;");
             _output.autoTabLn("");
-            _output.autoTabLn("public BaseController(IRepository<T> repository)");
+            _output.autoTabLn("public BaseController(IRepository<T> repository, IUnitOfWork unitOfWork)");
             _output.autoTabLn("{");
             _output.tabLevel++;
+            _output.autoTabLn("this._unitOfWork = unitOfWork;");
             _output.autoTabLn("this._repository = repository;");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -202,6 +235,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("_repository.Insert(model);");
+            _output.autoTabLn("_unitOfWork." + _script.Settings.DataOptions.DataContext.Name + ".Commit();");
             _output.autoTabLn("");
             _output.autoTabLn("var response = Request.CreateResponse(HttpStatusCode.Created, model);");
             _output.autoTabLn("response.Headers.Location = new Uri(Url.Link(\"DefaultApi\", new { id = model.Id }));");
@@ -234,6 +268,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("_repository.Update(model);");
+            _output.autoTabLn("_unitOfWork." + _script.Settings.DataOptions.DataContext.Name + ".Commit();");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("catch (Exception)");
@@ -274,6 +309,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("_repository.Delete(model);");
+            _output.autoTabLn("_unitOfWork." + _script.Settings.DataOptions.DataContext.Name + ".Commit();");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("catch (Exception)");
@@ -326,6 +362,9 @@ namespace WebApi4.Components.ServiceLayer
 
             _context.FileList.Add("    Global.asax.cs");
             SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace, "Global.asax.cs"), SaveActions.DontOverwrite);
+
+            _output.writeln("<%@ Application Codebehind=\"Global.asax.cs\" Inherits=\"" + _script.Settings.ServiceLayer.ServiceNamespace + ".Global\" Language=\"C#\" %>");
+            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace, "Global.asax"), SaveActions.DontOverwrite);
         }
 
         private void RenderUnityWebApiConfigurationClass()
@@ -342,6 +381,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Linq;");
             _output.autoTabLn("using System.Web.Http;");
+            _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Repositories;");
             _output.autoTabLn("using Microsoft.Practices.Unity;");
@@ -386,7 +426,8 @@ namespace WebApi4.Components.ServiceLayer
                 ITable table = _context.Database.Tables[tableName];
                 _output.autoTabLn("container.RegisterType<I" + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ", " + StringFormatter.CleanUpClassName(table.Name) + _script.Settings.DataOptions.ClassSuffix.Name + ">();");
             }
-            
+            _output.autoTabLn("container.RegisterType<IUnitOfWork, UnitOfWork>(new HierarchicalLifetimeManager());");
+
             _output.autoTabLn("");
             _output.autoTabLn("return container;");
             _output.tabLevel--;
@@ -457,6 +498,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.tabLevel++;
             _output.autoTabLn("/// <summary>");
             _output.autoTabLn("/// Register your formatters here.");
+            _output.autoTabLn("/// For the Jsonp formatter, install the NuGet package: install-package WebApiContrib.Formatting.Jsonp");
             _output.autoTabLn("/// </summary>");
             _output.autoTabLn("public class FormattersConfig");
             _output.autoTabLn("{");

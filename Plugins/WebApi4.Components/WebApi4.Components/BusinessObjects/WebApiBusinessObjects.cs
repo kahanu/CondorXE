@@ -71,6 +71,7 @@ namespace WebApi4.Components.BusinessObjects
                 _output.autoTabLn("using System.Collections.Generic;");
                 _output.autoTabLn("using System.ComponentModel;");
                 _output.autoTabLn("using System.ComponentModel.DataAnnotations;");
+                _output.autoTabLn("using System.Web.Mvc;");
                 _output.autoTabLn("");
                 _output.autoTabLn("namespace " + _script.Settings.BusinessObjects.BusinessObjectsNamespace);
                 _output.autoTabLn("{");
