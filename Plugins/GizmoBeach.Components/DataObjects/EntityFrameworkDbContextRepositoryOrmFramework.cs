@@ -271,7 +271,9 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn(": base(connectionString)");
             _output.tabLevel--;
             _output.autoTabLn("{");
-            _output.autoTabLn("");
+            _output.tabLevel++;
+            _output.autoTabLn("Database.SetInitializer<" + _script.Settings.DataOptions.DataContext.Name + ">(null);");
+            _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("#endregion");
             _output.autoTabLn("");
@@ -447,13 +449,13 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("if (orderBy != null)");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("return orderBy(query).ToList();");
+            _output.autoTabLn("return orderBy(query);");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.autoTabLn("else");
             _output.autoTabLn("{");
             _output.tabLevel++;
-            _output.autoTabLn("return query.ToList();");
+            _output.autoTabLn("return query;");
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.tabLevel--;
@@ -483,8 +485,26 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("");
             _output.autoTabLn("public virtual void Delete(TEntity entityToDelete)");
             _output.autoTabLn("{");
+
+            // Check which version of Entity Framework is being used.
+
             _output.tabLevel++;
-            _output.autoTabLn("if (_context.Entry(entityToDelete).State == EntityState.Detached)");
+
+            //if (_script.Settings.DataOptions.ORMFramework.Version == "4.5")
+            //{
+            //    // Entity Framework 6.x
+            //    _output.autoTabLn("if (_context.Entry(entityToDelete).State == System.Data.Entity.EntityState.Detached)");
+            //}
+            //else
+            //{
+                // Entity Framework 5.0 and below
+            _output.autoTabLn("// If this line goes red, then you are using Entity Framework 6.x");
+            _output.autoTabLn("// You need to change the line to this:");
+            _output.autoTabLn("//     _context.Entry(entityToDelete).State == System.Data.Entity.EntityState.Detached");
+                _output.autoTabLn("if (_context.Entry(entityToDelete).State == EntityState.Detached)");
+            //}
+            
+
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("_dbSet.Attach(entityToDelete);");
@@ -498,6 +518,9 @@ namespace GizmoBeach.Components.DataObjects
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("_dbSet.Attach(entityToUpdate);");
+            _output.autoTabLn("// If this line goes red, then you are using Entity Framework 6.x");
+            _output.autoTabLn("// You need to change the line to this:");
+            _output.autoTabLn("//     _context.Entry(entityToUpdate).State == System.Data.Entity.EntityState.Modified");
             _output.autoTabLn("_context.Entry(entityToUpdate).State = EntityState.Modified;");
             _output.tabLevel--;
             _output.autoTabLn("}");

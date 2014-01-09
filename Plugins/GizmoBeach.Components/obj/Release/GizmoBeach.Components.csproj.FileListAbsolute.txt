@@ -12,6 +12,8 @@ C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Release\Scinti
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Release\Condor.pdb
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Release\Condor.Core.pdb
-C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\obj\Release\ResolveAssemblyReference.cache
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\obj\Release\GizmoBeach.Components.dll
 C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\obj\Release\GizmoBeach.Components.pdb
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Release\System.Data.SQLite.dll
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\obj\Release\GizmoBeach.Components.csprojResolveAssemblyReference.cache
+C:\VSProjects\CondorXE\CondorXE\Plugins\GizmoBeach.Components\bin\Release\MySql.Data.dll

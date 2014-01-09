@@ -11,13 +11,11 @@ namespace GizmoBeach.Components.BusinessObjects
     public class DataAnnotationsBusinessObjectsForDbContext : RenderBase, IBusinessObjects
     {
         private readonly RequestContext _context;
-        protected IDatabase _database;
 
         public DataAnnotationsBusinessObjectsForDbContext(RequestContext context)
         : base(context.Zeus.Output)
         {
             this._context = context;
-            this._database = context.Database;
         }
 
         #region IRenderObject Members
@@ -28,12 +26,37 @@ namespace GizmoBeach.Components.BusinessObjects
 
             _context.FileList.Add("");
             _context.FileList.Add("Generated DataAnnotations Business Objects");
-            foreach (string tableName in _script.Tables)
+            try
             {
-                _context.Dialog.Display("Processing DataAnnotations Business Objects for '" + tableName + "'");
-                ITable table = _database.Tables[tableName];
-                RenderDataAnnotationsBusinessObjectsClass(table);
+                foreach (TableItem item in _context.ScriptSettings.Settings.Tables.Tables)
+                {
+                    try
+                    {
+                        //_context.FileList.Add("Writing '" + item.Name + "...");
+                        _context.Dialog.Display("Processing DataAnnotations Business Objects for '" + item.Name + "'");
+                        ITable table = _context.Database.Tables[item.Name];
+                        //_context.FileList.Add("   Table: '" + table.Name);
+                        RenderDataAnnotationsBusinessObjectsClass(table);
+                    }
+                    catch (Exception ex)
+                    {
+                        string msg = _output.text;
+                        throw new Exception("Foreach exception: " + ex.Message);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Render method exception: " + ex.Message);
+            }
+
+            //foreach (string tableName in _script.Tables)
+            //{
+            //    _context.Dialog.Display("Processing DataAnnotations Business Objects for '" + tableName + "'");
+            //    ITable table = _database.Tables[tableName];
+            //    RenderDataAnnotationsBusinessObjectsClass(table);
+            //}
         }
    
         private void RenderDataAnnotationsBusinessObjectsClass(ITable table)
@@ -69,7 +92,7 @@ namespace GizmoBeach.Components.BusinessObjects
 
                 _output.tabLevel--;
                 _output.autoTabLn("}");
-
+                
                 _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + ".cs");
                 SaveOutput(CreateFullPath(_script.Settings.BusinessObjects.BusinessObjectsNamespace, StringFormatter.CleanUpClassName(table.Name) + ".cs"), SaveActions.DontOverwrite);
                 
@@ -82,9 +105,11 @@ namespace GizmoBeach.Components.BusinessObjects
 
         private void RenderProperties(ITable table)
         {
+            //_context.FileList.Add("      Inside RenderProperties method...");
             Condor.Core.Property prop = null;
             foreach (IColumn c in table.Columns)
             {
+                //_context.FileList.Add("      Processing column '" + c.Name + "'");
                 prop = new BusinessObjectsPropertyRenderDataAnnotationsForDbContext(c, _context);
                 prop.Render();
             }
