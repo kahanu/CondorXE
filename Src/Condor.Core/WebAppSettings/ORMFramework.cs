@@ -11,5 +11,6 @@ namespace Condor.Core
 
         public string Selected;
         public string ClassName;
+        //public string Version;
     }
 }

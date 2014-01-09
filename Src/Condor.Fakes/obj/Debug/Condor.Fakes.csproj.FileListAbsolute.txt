@@ -9,7 +9,5 @@ C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\MySql.Data.dll
 C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\Interop.ADOX.dll
 C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\ScintillaNET.dll
 C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
-C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\bin\Debug\Mono.Security.dll
-C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\obj\Debug\ResolveAssemblyReference.cache
 C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\obj\Debug\Condor.Fakes.dll
 C:\VSProjects\CondorXE\CondorXE\Src\Condor.Fakes\obj\Debug\Condor.Fakes.pdb

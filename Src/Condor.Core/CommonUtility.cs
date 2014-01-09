@@ -134,12 +134,12 @@ namespace Condor.Core
         /// <returns></returns>
         public string CleanUpProperty(string property)
         {
-            return CleanUpProperty(property, false, PropertyModifications.Compress);
+            return CleanUpProperty(property, false, PropertyModifications.None);
         }
 
         /// <summary>
         /// This does some rudimentary property name cleanup.  
-        /// Removal of spaces, dashes, underscores and periods. 
+        /// Removal of spaces, dashes, underscores and periods, if needed, or left unchanged.
         /// The option to capitalize the property name (Pascal casing).
         /// </summary>
         /// <param name="property"></param>
@@ -147,7 +147,7 @@ namespace Condor.Core
         /// <returns></returns>
         public string CleanUpProperty(string property, bool capitalize)
         {
-            return CleanUpProperty(property, capitalize, PropertyModifications.Compress);
+            return CleanUpProperty(property, capitalize, PropertyModifications.None);
         }
 
         public string CleanUpProperty(string property, bool capitalize, PropertyModifications mods)
@@ -185,6 +185,11 @@ namespace Condor.Core
         /// <summary>
         /// Replace all invalid property name characters with underscores.
         /// </summary>
-        Underscore
+        Underscore,
+
+        /// <summary>
+        /// Leave the property name as is.
+        /// </summary>
+        None
     }
 }

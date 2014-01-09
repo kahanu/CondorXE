@@ -162,6 +162,7 @@ namespace Condor.Core
             s.DataOptions.ORMFramework = new ORMFramework();
             s.DataOptions.ORMFramework.ClassName = _input["ddlChooseOrmFramework"].ToString();
             s.DataOptions.ORMFramework.Selected = GetClassValue(s.DataOptions.ORMFramework.ClassName);
+            //s.DataOptions.ORMFramework.Version = _input["ddlChooseOrmFrameworkVersion"].ToString();
 
             bool isDefault = true;
             if ((_input["txtDataContextName"].ToString() != "ActionDataContext") && (_input["txtDataContextName"].ToString() != "ActionEntities"))

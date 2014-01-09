@@ -41,6 +41,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,6 +50,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dnp.Utils, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9cb10e1cb70fd3b4, processorArchitecture=x86">
@@ -94,6 +96,7 @@
     <Compile Include="Context\StringColumn.cs" />
     <Compile Include="Context\TempTable.cs" />
     <Compile Include="Context\TempZeusInput.cs" />
+    <Compile Include="PropertyTests.cs" />
     <Compile Include="RegExTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@ namespace Condor.Core
         }
 
         /// <summary>
-        /// 
+        /// Returns the name of a class or other property name with valid classname characters.
         /// </summary>
         /// <param name="input">Class name, field name, or property name to change.</param>
         /// <param name="type">Enum: Unchanged, Singular, Plural</param>

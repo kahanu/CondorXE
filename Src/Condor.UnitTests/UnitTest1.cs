@@ -19,23 +19,23 @@ namespace Condor.UnitTests
             //
         }
 
-        private TestContext testContextInstance;
+        //private TestContext testContextInstance;
 
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        ///// <summary>
+        /////Gets or sets the test context which provides
+        /////information about and functionality for the current test run.
+        /////</summary>
+        //public TestContext TestContext
+        //{
+        //    get
+        //    {
+        //        return testContextInstance;
+        //    }
+        //    set
+        //    {
+        //        testContextInstance = value;
+        //    }
+        //}
 
         #region Additional test attributes
         //
@@ -116,7 +116,49 @@ namespace Condor.UnitTests
 
             // Act
             string actual = string.Empty;
+            string actualOmitted = string.Empty;
+
             foreach (var item in fullPropertyList)
+            {
+                if (!omitList.Where(o => o == item.ToLower()).Any())
+                {
+                    actual += item.ToLower() + ",";
+                }
+                else
+                {
+                    actualOmitted += item.ToLower() + ",";
+                }
+            }
+
+            actual += " - " + actualOmitted;
+
+            string expected = "firstname,lastname,phone, - id,rowversion,";
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void succeeds_with_empty_omitlist()
+        {
+            // Arrange
+            string[] fullPropertyList = new string[] { "Id", "FirstName", "LastName", "Phone", "rowversion" };
+            string omitString = null;
+            string[] omitList;
+
+            if (!string.IsNullOrEmpty(omitString))
+            {
+                omitList = omitString.ToLower().Split(',');
+            }
+            else
+            {
+                omitList = new string[0];
+            }
+            
+
+            // Act
+            string actual = string.Empty;
+            foreach (string item in fullPropertyList)
             {
                 if (!omitList.Where(o => o == item.ToLower()).Any())
                 {
@@ -124,7 +166,40 @@ namespace Condor.UnitTests
                 }
             }
 
-            string expected = "firstname,lastname,phone,";
+            string expected = "id,firstname,lastname,phone,rowversion,";
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void test_with_amateur_golf_articles_list_table()
+        {
+            // Arrange
+            string[] fullPropertyList = new string[] { "typeID", "type_name", "type_sort", "type_desc" };
+            string omitString = null;
+            string[] omitList;
+
+            if (!string.IsNullOrEmpty(omitString))
+            {
+                omitList = omitString.ToLower().Split(',');
+            }
+            else
+            {
+                omitList = new string[0];
+            }
+
+            // Act
+            string actual = string.Empty;
+            foreach (string item in fullPropertyList)
+            {
+                if (!omitList.Where(o => o == item.ToLower()).Any())
+                {
+                    actual += item.ToLower() + ",";
+                }
+            }
+
+            string expected = "typeid,type_name,type_sort,type_desc,";
 
             // Assert
             Assert.AreEqual(expected, actual);

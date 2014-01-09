@@ -25,6 +25,7 @@ namespace Condor.Core.PropertyObjects
             : base(column, context)
         {
             this._util = context.Utility;
+            this._omitList = new string[0];
         }
 
         /// <summary>
@@ -36,7 +37,10 @@ namespace Condor.Core.PropertyObjects
         public BusinessObjectsPropertyRenderDataAnnotationsForDbContext(MyMeta.IColumn column, RequestContext context, string omitList)
             :this(column, context)
         {
-            this._omitList = omitList.ToLower().Split(',');
+            if (!string.IsNullOrEmpty(omitList))
+                this._omitList = omitList.ToLower().Split(',');
+            else
+                this._omitList = new string[0];
         }
 
         public override void Render()
@@ -112,6 +116,12 @@ namespace Condor.Core.PropertyObjects
                 {
                     if (!column.IsNullable)
                     {
+                        if (column.DataTypeName == "timestamp")
+                        {
+
+                        }
+
+
                         if (column.LanguageType == "byte[]")
                         {
                             if (column.Name.ToLower() == _script.Settings.DataOptions.VersionColumnName.ToLower())
