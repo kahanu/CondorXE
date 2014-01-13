@@ -101,7 +101,7 @@ namespace Condor.Core.PropertyObjects
                         if (column.Name.ToLower() == _script.Settings.DataOptions.VersionColumnName.ToLower())
                         {
                             _output.autoTabLn("[HiddenInput(DisplayValue=false)]");
-                            _output.autoTabLn("public string " + _util.CleanUpProperty(column.Name) + " { get; set; }");
+                            _output.autoTabLn("public byte[] " + _util.CleanUpProperty(column.Name) + " { get; set; }");
                             _output.autoTabLn("");
                         }
                         else
@@ -123,7 +123,7 @@ namespace Condor.Core.PropertyObjects
                         if (column.Name.ToLower() == _script.Settings.DataOptions.VersionColumnName.ToLower())
                         {
                             _output.autoTabLn("[HiddenInput(DisplayValue=false)]");
-                            _output.autoTabLn("public string " + _util.CleanUpProperty(column.Name) + " { get; set; }");
+                            _output.autoTabLn("public byte[] " + _util.CleanUpProperty(column.Name) + " { get; set; }");
                             _output.autoTabLn("");
                         }
                         else
