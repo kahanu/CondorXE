@@ -4,7 +4,9 @@
    <add type="BusinessObjects" value="DataAnnotationsBusinessObjects" class="GizmoBeach.Components.BusinessObjects.DataAnnotationsBusinessObjects, GizmoBeach.Components" text="Data Annotations Business Objects" />
    <add type="BusinessObjects" value="EntLibValidationBusinessObjects" class="GizmoBeach.Components.BusinessObjects.EntLibValidationBusinessObjects, GizmoBeach.Components" text="Ent Lib Validation Business Objects" />
    <add type="BusinessObjects" value="WcfDtos" class="Wcf.Components.WcfDto, Wcf.Components" text="Wcf DTOs" />
+   <add type="BusinessObjects" value="PIABusinessObjects" class="PIA40.Components.BusinessObjects.PIABusinessObjects, PIA40.Components" text="PIA 4.0 Business Objects" />
    <add type="DataPattern" value="Repository" class="GizmoBeach.Components.DataObjects.RepositoryPattern, GizmoBeach.Components" text="Repository Pattern" />
+   <add type="DataPattern" value="PIAFactoryPattern" class="PIA40.Components.DataObjects.PIAFactoryPattern, PIA40.Components" text="PIA 4.0 Factory Pattern" />
    <add type="ORMFramework" value="EntityFramework" class="GizmoBeach.Components.DataObjects.EntityFrameworkOrmFramework, GizmoBeach.Components" text="Entity Framework" />
    <add type="ORMFramework" value="LinqToSql" class="GizmoBeach.Components.DataObjects.LinqToSqlOrmFramework, GizmoBeach.Components" text="Linq-To-Sql Framework" />
    <add type="ORMFramework" value="EntitySpaces" class="GizmoBeach.Components.DataObjects.EntitySpacesOrmFramework, GizmoBeach.Components" text="EntitySpaces Framework" />
@@ -13,10 +15,25 @@
    <add type="DataStore" value="SQLServer" class="GizmoBeach.Components.DataObjects.SQLServerEntitySpacesDataStore, GizmoBeach.Components" text="SQL Server for EntitySpaces DataStore" />
    <add type="ServiceLayer" value="StandardWithBaseClassesServiceLayerObjects" class="GizmoBeach.Components.ServiceLayer.StandardWithBaseClassesServiceLayerObjects, GizmoBeach.Components" text="Service Layer with base classes" />
    <add type="ServiceLayer" value="EntLibValidationServiceLayerObjects" class="GizmoBeach.Components.ServiceLayer.EntLibValidationServiceLayerObjects, GizmoBeach.Components" text="EntLib Service Layer with base classes" />
+   <add type="ServiceLayer" value="PIAServiceLayerObjects" class="PIA40.Components.Services.PIAServiceLayerObjects, PIA40.Components" text="PIA 4.0 WCF ActionService" />
+   <add type="ServiceLayer" value="PIALibraryWithBaseClassesServiceLayerObjects" class="PIA40.Components.Services.PIALibraryWithBaseClassesServiceLayerObjects, PIA40.Components" text="Service Layer using PIA 4.0 Data dependencies" />
+   <add type="ServiceLayer" value="WebApiServiceLayerObjects" class="WebApi.Components.ServiceLayer.WebApiServiceLayerObjects, WebApi.Components" text="WebApi Service Layer Objects" />
    <add type="DotNetFramework" value="ThreePointFive" text="3.5" />
    <add type="DotNetFramework" value="FourPointZero" text="4.0" />
+   <add type="DotNetFramework" value="FourPointFive" text="4.5" />
    <add type="UIFramework" value="AspNetMvcUILayerObjects" class="GizmoBeach.Components.UI.AspNetMvcUILayerObjects, GizmoBeach.Components" text="ASP.NET MVC" />
+   <add type="UIFramework" value="AspNetMvcUILayerObjectsForDbContext" class="GizmoBeach.Components.UI.AspNetMvcUILayerObjectsForDbContext, GizmoBeach.Components" text="ASP.NET MVC (DbContext)" />
    <add type="UIFramework" value="AspNetMvcWithAutoMapperUILayerObjects" class="GizmoBeach.Components.UI.AspNetMvcWithAutoMapperUILayerObjects, GizmoBeach.Components" text="ASP.NET MVC with AutoMapper" />
+   <add type="UIFramework" value="PIAAspNetMvcWithAutoMapperUILayerObjects" class="PIA40.Components.UI.PIAAspNetMvcWithAutoMapperUILayerObjects, PIA40.Components" text="PIA 4.0 ASP.NET MVC with AutoMapper" />
    <add type="IoCProvider" value="NinjectMVC3RepositoryReferenceIoCProvider" class="GizmoBeach.Components.IoC.NinjectMVC3RepositoryReferenceIoCProvider, GizmoBeach.Components" text="Ninject MVC3 Repository Mappings" />
    <add type="IoCProvider" value="NinjectMVC3ServiceReferenceIoCProvider" class="GizmoBeach.Components.IoC.NinjectMVC3ServiceReferenceIoCProvider, GizmoBeach.Components" text="Ninject MVC3 Service Mappings" />
+   <add type="IoCProvider" value="NinjectMVC3ServiceReferenceIoCProviderForDbContext" class="GizmoBeach.Components.IoC.NinjectMVC3ServiceReferenceIoCProviderForDbContext, GizmoBeach.Components" text="Ninject MVC3 Service Mappings (DbContext)" />
+   <add type="ServiceLayer" value="ServiceClassesForDbContextServiceLayerObjects" class="GizmoBeach.Components.ServiceLayer.ServiceClassesForDbContextServiceLayerObjects, GizmoBeach.Components" text="Service Layer with base classes (DbContext)" />
+   <add type="DataStore" value="SQLServer" class="GizmoBeach.Components.DataObjects.SQLServerDbContextRepositoryDataStore, GizmoBeach.Components" text="SQL Server for EntityFramework (DbContext) DataStore" />
+   <add type="ORMFramework" value="EntityFrameworkDbContextRepository" class="GizmoBeach.Components.DataObjects.EntityFrameworkDbContextRepositoryOrmFramework, GizmoBeach.Components" text="Entity Framework (DbContext)" />
+   <add type="BusinessObjects" value="DataAnnotationsBusinessObjectsForDbContext" class="GizmoBeach.Components.BusinessObjects.DataAnnotationsBusinessObjectsForDbContext, GizmoBeach.Components" text="Data Annotations Business Objects (DbContext)" />
+   <add type="BusinessObjects" value="WebApiBusinessObjects" class="WebApi4.Components.BusinessObjects.WebApiBusinessObjects, WebApi4.Components" text="WebApi4 Business Objects (DbContext)" />
+   <add type="ServiceLayer" value="WebApiServiceLayerObjectsForDbContext" class="WebApi4.Components.ServiceLayer.WebApiServiceLayerObjectsForDbContext, WebApi4.Components" text="WebApi4 Service (DbContext)" />
+   <add type="UIFramework" value="WebApiUILayerObjectsForDbContext" class="WebApi4.Components.UI.WebApiUILayerObjectsForDbContext, WebApi4.Components" text="WebApi4 UI Controllers (DbContext)" />
+   <add type="ServiceLayer" value="ServiceClassesAndCommonBaseClassForDbContextServiceLayerObjects" class="GizmoBeach.Components.ServiceLayer.ServiceClassesAndCommonBaseClassForDbContextServiceLayerObjects, GizmoBeach.Components" text="Service Layer with common base class (DbContext)" />
 </CondorXELoader>
