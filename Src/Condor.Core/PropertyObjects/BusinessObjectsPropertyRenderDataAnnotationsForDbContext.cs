@@ -68,6 +68,7 @@ namespace Condor.Core.PropertyObjects
                                 if (column.DataTypeName.Contains("text") || column.DataTypeNameComplete.ToLower().Contains("varchar(max)"))
                                 {
                                     _output.autoTabLn("[DataType(DataType.MultilineText)]");
+                                    _output.autoTabLn("[UIHint(\"Editor\")]");
                                 }
                             }
                         }
