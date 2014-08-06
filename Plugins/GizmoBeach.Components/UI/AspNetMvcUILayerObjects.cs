@@ -204,6 +204,7 @@ _output.autoTabLn("}");
             builder.RenderControllerTemplate();
             builder.RenderAspNetViewTemplates();
             builder.RenderRazorViewTemplates();
+            builder.RenderWebApiTemplates();
         }
 
         private void CreateJsonResponseClass()

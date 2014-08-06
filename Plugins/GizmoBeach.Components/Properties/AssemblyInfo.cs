@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gizmo Beach")]
 [assembly: AssemblyProduct("Gizmo Beach Condor XE Components")]
-[assembly: AssemblyCopyright("Copyright © Gizmo Beach 2011")]
+[assembly: AssemblyCopyright("Copyright © Gizmo Beach 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1.5")]
-[assembly: AssemblyFileVersion("1.0.1.5")]
+[assembly: AssemblyVersion("1.1.2.5")]
+[assembly: AssemblyFileVersion("1.1.2.5")]

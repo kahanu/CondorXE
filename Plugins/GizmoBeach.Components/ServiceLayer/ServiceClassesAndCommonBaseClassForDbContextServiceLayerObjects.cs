@@ -114,6 +114,15 @@ namespace GizmoBeach.Components.ServiceLayer
             _output.tabLevel++;
             _output.autoTabLn("public interface I" + StringFormatter.CleanUpClassName(table.Name) + "Service : IService<" + StringFormatter.CleanUpClassName(table.Name) + ">");
             _output.autoTabLn("{");
+
+            // Updated 7/15/2014 - set a custom member for SiteSettings - used by King Wilder
+            if (table.Name == "SiteSetting")
+            {
+                _output.tabLevel++;
+                _output.autoTabLn("SiteSetting GetByKey(string key);");
+                _output.tabLevel--;
+            }
+
             _output.autoTabLn("}");
             _output.tabLevel--;
             _output.autoTabLn("}");
@@ -319,6 +328,20 @@ namespace GizmoBeach.Components.ServiceLayer
             _output.autoTabLn("{");
             _output.autoTabLn("");
             _output.autoTabLn("}");
+
+
+            // Updated 7/15/2014 - by King Wilder - write custom code for SiteSetting - used by King Wilder
+            if (table.Name == "SiteSetting")
+            {
+                _output.autoTabLn("public SiteSetting GetByKey(string key)");
+                _output.autoTabLn("{");
+                _output.tabLevel++;
+                _output.autoTabLn("return _dao.Get(s => s.Name == key).SingleOrDefault();");
+                _output.tabLevel--;
+                _output.autoTabLn("}");
+            }
+
+
             _output.tabLevel--;
             _output.autoTabLn("}");
             _output.tabLevel--;

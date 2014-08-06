@@ -82,6 +82,20 @@ namespace GizmoBeach.Components.BusinessObjects
                 _output.autoTabLn("{");
                 _output.tabLevel++;
 
+                _output.autoTabLn("#region ctors");
+                _output.autoTabLn("public " + StringFormatter.CleanUpClassName(table.Name) + "()");
+                _output.autoTabLn("{");
+                _output.tabLevel++;
+                
+                // Render any collection HashSets in the constructor for foreign key associations.
+                BusinessObjectsPropertiesRenderForeignKeyConstructorForDbContext ctor = new BusinessObjectsPropertiesRenderForeignKeyConstructorForDbContext(table, _context);
+                ctor.Render();
+
+                _output.tabLevel--;
+                _output.autoTabLn("}");
+                _output.autoTabLn("#endregion");
+                _output.autoTabLn("");
+
                 _output.autoTabLn("#region Properties");
                 RenderProperties(table);
                 _output.autoTabLn("#endregion");

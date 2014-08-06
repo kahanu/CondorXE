@@ -2748,6 +2748,10 @@ _output.autoTabLn("#>");
 
         }
 
+        public void RenderWebApiTemplates()
+        {
+            
+        }
         #endregion
 
         #region Private Methods
@@ -2764,5 +2768,6 @@ _output.autoTabLn("#>");
         }
 
         #endregion
+
     }
 }

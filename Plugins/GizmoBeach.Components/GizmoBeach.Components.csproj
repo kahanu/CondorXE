@@ -94,9 +94,12 @@
     <Compile Include="BusinessObjects\EntLibValidationBusinessObjects.cs" />
     <Compile Include="BusinessObjects\StandardBusinessObjects.cs" />
     <Compile Include="CodeWriters\DataAnnotationsWriter.cs" />
+    <Compile Include="DataObjects\EFCriteria.cs" />
+    <Compile Include="DataObjects\EntityFramework6DbContextRepositoryOrmFramework.cs" />
+    <Compile Include="DataObjects\EntityFrameworkDbContextRepositoryOrmFramework.cs" />
     <Compile Include="DataObjects\SQLServerDbContextRepositoryDataStore.cs" />
     <Compile Include="DataObjects\DynamicLinq.cs" />
-    <Compile Include="DataObjects\EntityFrameworkDbContextRepositoryOrmFramework.cs" />
+    <Compile Include="DataObjects\EntityFrameworkDbContextRepositoryOrmFrameworkBase.cs" />
     <Compile Include="DataObjects\EntityFrameworkOrmFramework.cs" />
     <Compile Include="DataObjects\EntityFrameworkWithAutoMapperOrmFramework.cs" />
     <Compile Include="DataObjects\EntitySpacesAutoMapperExtensions.cs" />
@@ -111,17 +114,23 @@
     <Compile Include="IoC\NinjectMVC3ServiceReferenceIoCProviderForDbContext.cs" />
     <Compile Include="IoC\NinjectMVC3RepositoryReferenceIoCProvider.cs" />
     <Compile Include="IoC\NinjectMVC3ServiceReferenceIoCProvider.cs" />
+    <Compile Include="IoC\UnityMVC4ServiceReferenceIoCProviderForDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLayer\ServiceClassesAndCommonBaseClassForDbContextServiceLayerObjects.cs" />
     <Compile Include="ServiceLayer\EntLibValidationServiceLayerObjects.cs" />
     <Compile Include="ServiceLayer\ServiceClassesForDbContextServiceLayerObjects.cs" />
     <Compile Include="ServiceLayer\StandardWithBaseClassesServiceLayerObjects.cs" />
+    <Compile Include="UI\AspNetMvc5UILayerObjectsForDbContext.cs" />
     <Compile Include="UI\AspNetMvcUILayerObjects.cs" />
-    <Compile Include="UI\AspNetMvcWithAutoMapperUILayerObjects.cs" />
     <Compile Include="UI\AspNetMvcUILayerObjectsForDbContext.cs" />
+    <Compile Include="UI\AspNetMvcWithAutoMapperUILayerObjects.cs" />
+    <Compile Include="UI\AspNetMvcUILayerObjectsForDbContextBase.cs" />
+    <Compile Include="UI\KingsMvc5ServiceLibraryCodeTemplatesForDbContext.cs" />
+    <Compile Include="UI\AspNetMvc5UILayerObjectsWithTrackingForDbContext.cs" />
     <Compile Include="UI\KingsMvcServiceLibraryCodeTemplatesForDbContext.cs" />
     <Compile Include="UI\KingsMvcServiceLibraryCodeTemplates.cs" />
     <Compile Include="UI\RenderMvcUIAutoMapper.cs" />
+    <Compile Include="UI\UICriteria.cs" />
     <Compile Include="UI\WebFormsUILayerObjects.cs" />
   </ItemGroup>
   <ItemGroup>
