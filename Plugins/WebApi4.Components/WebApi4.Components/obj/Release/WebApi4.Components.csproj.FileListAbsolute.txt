@@ -14,3 +14,4 @@ C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bi
 C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\obj\Release\WebApi4.Components.dll
 C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\obj\Release\WebApi4.Components.pdb
 C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\obj\Release\WebApi4.Components.csprojResolveAssemblyReference.cache
+C:\VSProjects\CondorXE\CondorXE\Plugins\WebApi4.Components\WebApi4.Components\bin\Release\MySql.Data.dll

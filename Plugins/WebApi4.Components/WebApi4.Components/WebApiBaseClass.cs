@@ -4,34 +4,41 @@ using Condor.Core;
 using Condor.Core.Interfaces;
 using MyMeta;
 
-namespace WebApi4.Components.ServiceLayer
+namespace WebApi4.Components
 {
     /// <summary>
-    /// OBSOLETE!!! This class isn't being used any more in favor of
-    /// WebApiServiceLayerObjectsForDbContext.
+    /// This is a base class so render the WebApi4 controllers and base controller.
+    /// This is used by both the WebApi4 stand-alone project, and can be used in
+    /// an ASP.NET MVC 4 application that has WebApi4 capabilities.
     /// </summary>
-    public class WebApiServiceLayerObjects : RenderBase, IServiceObjects
+    public class WebApiBaseClass : RenderBase, IRenderObject
     {
         #region ctors
+
         private readonly RequestContext _context;
 
-        public WebApiServiceLayerObjects(RequestContext context)
-            : base(context.Zeus.Output)
+        private readonly string _namespaceName;
+
+        /// <summary>
+        /// A base class for rendering WebApi4 classes to any particular component.
+        /// </summary>
+        /// <param name="context">The RequestContext</param>
+        /// <param name="namespaceName">The name of the component namespace passed in by the derived class, i.e., Services, UI, etc.</param>
+        public WebApiBaseClass(RequestContext context, string namespaceName) : base(context.Zeus.Output)
         {
+            this._namespaceName = namespaceName;
             this._context = context;
         }
+
         #endregion
 
-        #region IRenderObject Members
+        #region Interface Implementations
 
         public void Render()
         {
             _context.Dialog.InitDialog(_script.Tables.Count);
             _context.FileList.Add("");
 
-            //RenderFormatterClass();
-            //RenderRouteConfigClass();
-            //RenderGlobalAsaxClass();
             RenderUnityWebApiConfigurationClass();
             RenderBaseControllerClass();
 
@@ -54,7 +61,7 @@ namespace WebApi4.Components.ServiceLayer
         private void RenderApiControllerClass(ITable table)
         {
             _hdrUtil.WriteClassHeader(_output);
-
+            
             _output.autoTabLn("using System;");
             _output.autoTabLn("using System.Collections.Generic;");
             _output.autoTabLn("using System.Linq;");
@@ -64,7 +71,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Interfaces;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".Controllers");
+            _output.autoTabLn("namespace " + _namespaceName + ".Controllers");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("/// <summary>");
@@ -155,7 +162,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("}");
 
             _context.FileList.Add("    " + StringFormatter.CleanUpClassName(table.Name) + "Controller.cs");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\Controllers", StringFormatter.CleanUpClassName(table.Name) + "Controller.cs"), SaveActions.DontOverwrite);
+            SaveOutput(CreateFullPath(_namespaceName + "\\Controllers", StringFormatter.CleanUpClassName(table.Name) + "Controller.cs"), SaveActions.DontOverwrite);
         }
 
         private void RenderBaseControllerClass()
@@ -172,7 +179,7 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ";");
             _output.autoTabLn("using " + _script.Settings.DataOptions.DataObjectsNamespace + ".Generated;");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".Controllers");
+            _output.autoTabLn("namespace " + _namespaceName + ".Controllers");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("/// <summary>");
@@ -379,44 +386,6 @@ namespace WebApi4.Components.ServiceLayer
             _output.tabLevel--;
             _output.autoTabLn("}");
 
-
-
-            //_output.autoTabLn("/// <summary>");
-            //_output.autoTabLn("/// Delete the selected model.");
-            //_output.autoTabLn("/// </summary>");
-            //_output.autoTabLn("/// <param name=\"id\">Id</param>");
-            //_output.autoTabLn("/// <returns></returns>");
-            //_output.autoTabLn("public HttpResponseMessage Delete(int id)");
-            //_output.autoTabLn("{");
-            //_output.tabLevel++;
-            //_output.autoTabLn("T model = _repository.GetById(id);");
-            //_output.autoTabLn("if (model == null)");
-            //_output.autoTabLn("{");
-            //_output.tabLevel++;
-            //_output.autoTabLn("return Request.CreateResponse(HttpStatusCode.NotFound);");
-            //_output.tabLevel--;
-            //_output.autoTabLn("}");
-            //_output.autoTabLn("");
-            //_output.autoTabLn("try");
-            //_output.autoTabLn("{");
-            //_output.tabLevel++;
-            //_output.autoTabLn("_repository.Delete(model);");
-            //_output.autoTabLn("_unitOfWork." + _script.Settings.DataOptions.DataContext.Name + ".Commit();");
-            //_output.tabLevel--;
-            //_output.autoTabLn("}");
-            //_output.autoTabLn("catch (Exception)");
-            //_output.autoTabLn("{");
-            //_output.tabLevel++;
-            //_output.autoTabLn("return Request.CreateResponse(HttpStatusCode.NotFound);");
-            //_output.tabLevel--;
-            //_output.autoTabLn("}");
-            //_output.autoTabLn("");
-            //_output.autoTabLn("return Request.CreateResponse(HttpStatusCode.OK, model);");
-            //_output.tabLevel--;
-            //_output.autoTabLn("}");
-
-
-
             _output.autoTabLn("#endregion");
             _output.autoTabLn("");
             _output.tabLevel--;
@@ -425,52 +394,18 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("}");
 
             _context.FileList.Add("    BaseController.cs");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\Controllers", "BaseController.cs"), SaveActions.Overwrite);
-        }
-
-        private void RenderGlobalAsaxClass()
-        {
-            _output.autoTabLn("using System;");
-            _output.autoTabLn("using System.Linq;");
-            _output.autoTabLn("using System.Web.Http;");
-            _output.autoTabLn("using System.Web.Routing;");
-            _output.autoTabLn("using " + _script.Settings.ServiceLayer.ServiceNamespace + ".App_Start;");
-            _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace);
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("public class Global : System.Web.HttpApplication");
-            _output.autoTabLn("{");
-            _output.autoTabLn("");
-            _output.tabLevel++;
-            _output.autoTabLn("protected void Application_Start(object sender, EventArgs e)");
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("RouteConfig.RegisterRoutes(RouteTable.Routes);");
-            _output.autoTabLn("FormattersConfig.RegisterFormatters(GlobalConfiguration.Configuration);");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-
-            _context.FileList.Add("    Global.asax.cs");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace, "Global.asax.cs"), SaveActions.DontOverwrite);
-
-            _output.writeln("<%@ Application Codebehind=\"Global.asax.cs\" Inherits=\"" + _script.Settings.ServiceLayer.ServiceNamespace + ".Global\" Language=\"C#\" %>");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace, "Global.asax"), SaveActions.DontOverwrite);
+            SaveOutput(CreateFullPath(_namespaceName + "\\Controllers", "BaseController.cs"), SaveActions.Overwrite);
         }
 
         private void RenderUnityWebApiConfigurationClass()
         {
             _hdrUtil.WriteClassHeader(_output);
 
-            _output.autoTabLn("[assembly: WebActivator.PreApplicationStartMethod(typeof(" + _script.Settings.ServiceLayer.ServiceNamespace + ".App_Start.UnityWebApi), \"Start\")]");
-            _output.autoTabLn("[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(" + _script.Settings.ServiceLayer.ServiceNamespace + ".App_Start.UnityWebApi), \"Stop\")]");
+            _output.autoTabLn("[assembly: WebActivator.PreApplicationStartMethod(typeof(" + _namespaceName + ".App_Start.UnityWebApi), \"Start\")]");
+            _output.autoTabLn("[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(" + _namespaceName + ".App_Start.UnityWebApi), \"Stop\")]");
             _output.autoTabLn("");
             _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".App_Start");
+            _output.autoTabLn("namespace " + _namespaceName + ".App_Start");
             _output.autoTabLn("{");
             _output.tabLevel++;
             _output.autoTabLn("using System;");
@@ -534,87 +469,9 @@ namespace WebApi4.Components.ServiceLayer
             _output.autoTabLn("}");
 
             _context.FileList.Add("    UnityWebApi.cs");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\App_Start", "UnityWebApi.cs"), SaveActions.Overwrite);
+            SaveOutput(CreateFullPath(_namespaceName + "\\App_Start", "UnityWebApi.cs"), SaveActions.Overwrite);
         }
-
-        private void RenderRouteConfigClass()
-        {
-            _hdrUtil.WriteClassHeader(_output);
-
-            _output.autoTabLn("using System;");
-            _output.autoTabLn("using System.Linq;");
-            _output.autoTabLn("using System.Web.Http;");
-            _output.autoTabLn("using System.Web.Routing;");
-            _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".App_Start");
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("/// <summary>");
-            _output.autoTabLn("/// Register your routes here.");
-            _output.autoTabLn("/// </summary>");
-            _output.autoTabLn("public class RouteConfig");
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("public static void RegisterRoutes(RouteCollection routes)");
-            _output.autoTabLn("{");
-            _output.autoTabLn("");
-            _output.tabLevel++;
-            _output.autoTabLn("// This is the default route.");
-            _output.autoTabLn("routes.MapHttpRoute(");
-            _output.tabLevel++;
-            _output.autoTabLn("name: \"DefaultApi\",");
-            _output.autoTabLn("routeTemplate: \"api/{controller}/{id}\",");
-            _output.autoTabLn("defaults: new { id = RouteParameter.Optional }");
-            _output.tabLevel--;
-            _output.autoTabLn(");");
-            _output.autoTabLn("");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-
-            _context.FileList.Add("    RouteConfig.cs");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\App_Start", "RouteConfig.cs"), SaveActions.DontOverwrite);
-        }
-
-        private void RenderFormatterClass()
-        {
-            _hdrUtil.WriteClassHeader(_output);
-
-            _output.autoTabLn("using System;");
-            _output.autoTabLn("using System.Linq;");
-            _output.autoTabLn("using System.Web.Http;");
-            _output.autoTabLn("using WebApiContrib.Formatting.Jsonp;");
-            _output.autoTabLn("");
-            _output.autoTabLn("namespace " + _script.Settings.ServiceLayer.ServiceNamespace + ".App_Start");
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("/// <summary>");
-            _output.autoTabLn("/// Register your formatters here.");
-            _output.autoTabLn("/// For the Jsonp formatter, install the NuGet package: install-package WebApiContrib.Formatting.Jsonp");
-            _output.autoTabLn("/// </summary>");
-            _output.autoTabLn("public class FormattersConfig");
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("public static void RegisterFormatters(HttpConfiguration config)");
-            _output.autoTabLn("{");
-            _output.tabLevel++;
-            _output.autoTabLn("config.Formatters.Insert(0, new JsonpMediaTypeFormatter());");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-            _output.tabLevel--;
-            _output.autoTabLn("}");
-
-            _context.FileList.Add("    FormattersConfig.cs");
-            SaveOutput(CreateFullPath(_script.Settings.ServiceLayer.ServiceNamespace + "\\App_Start", "FormattersConfig.cs"), SaveActions.DontOverwrite);
-        }
-
 
         #endregion
     }
 }
-

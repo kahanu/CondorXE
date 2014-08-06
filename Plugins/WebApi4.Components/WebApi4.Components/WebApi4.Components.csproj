@@ -52,10 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\EntityClassBase.cs" />
+    <Compile Include="BusinessObjects\StandardEntityClass.cs" />
+    <Compile Include="BusinessObjects\TrackingEntityClass.cs" />
     <Compile Include="BusinessObjects\WebApiBusinessObjects.cs" />
+    <Compile Include="BusinessObjects\WebApiBusinessObjectsBase.cs" />
+    <Compile Include="BusinessObjects\WebApiTrackingBusinessObjects.cs" />
+    <Compile Include="Interfaces\IEntityClass.cs" />
     <Compile Include="ServiceLayer\WebApiServiceLayerObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLayer\WebApiServiceLayerObjectsForDbContext.cs" />
+    <Compile Include="UI\WebApiUILayerObjectsForDbContext.cs" />
+    <Compile Include="WebApiBaseClass.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
